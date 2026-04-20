@@ -10,9 +10,13 @@ namespace Combat
         [SerializeField] private float lifeTime = 2f;
         [SerializeField] private int damage = 10;
 
+        [Header("Targeting")]
+        [SerializeField] private bool isPlayerBullet = true;
+        [SerializeField] private string playerTag = "Player";
+        [SerializeField] private string enemyTag = "Enemy";
+
         private Vector2 direction;
 
-        // EVENT (optional use)
         public event Action<GameObject> OnHit;
 
         // Set direction from shooter
@@ -35,10 +39,16 @@ namespace Combat
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            // 🔹 Try to damage object
+            if (isPlayerBullet && collision.CompareTag(playerTag))
+            {
+                // Ignore the shooter side so player bullets don't disappear on player contact.
+                return;
+            }
+
+            bool canDamageThisTarget = !isPlayerBullet || collision.CompareTag(enemyTag);
             IDamageable damageable = collision.GetComponent<IDamageable>();
 
-            if (damageable != null)
+            if (canDamageThisTarget && damageable != null)
             {
                 damageable.TakeDamage(damage);
             }
@@ -46,7 +56,7 @@ namespace Combat
             // Invoke hit event
             OnHit?.Invoke(collision.gameObject);
 
-            // Destroy bullet on hit
+            // Destroy bullet on any valid hit except ignored friendly collision.
             Destroy(gameObject);
         }
     }
