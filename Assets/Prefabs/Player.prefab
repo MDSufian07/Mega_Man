@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 7702380241082755171}
   - component: {fileID: 8243651876560889583}
   - component: {fileID: 3609828429846668100}
+  - component: {fileID: 5766483511328077855}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -271,6 +272,19 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2625880693177676917, guid: 162cb3cdbb3507146823e74ad103c162, type: 3}
   firePoint: {fileID: 763319240878742445}
   fireCooldown: 0.5
+--- !u!114 &5766483511328077855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725292501578967241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
+  maxHealth: 100
 --- !u!1 &8569485037881166268
 GameObject:
   m_ObjectHideFlags: 0

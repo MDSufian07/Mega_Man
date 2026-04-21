@@ -82,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7168885419929955175, guid: cffc7de9e48e3854a88567f7954e0f8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c315424778aa2e48b25e9e09e1048aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Bomb
-  explodeDelay: 3
+  explodeDelay: 2.5
   radius: 3
+  damage: 50
   explosionEffect: {fileID: 0}

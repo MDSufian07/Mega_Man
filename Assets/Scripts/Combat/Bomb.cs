@@ -6,6 +6,7 @@ namespace Combat
     {
         public float explodeDelay = 2f;
         public float radius = 2f;
+        public int damage = 20;
         public GameObject explosionEffect;
 
         void Start()
@@ -26,14 +27,19 @@ namespace Combat
             {
                 if (hit.CompareTag("Player"))
                 {
-                    Debug.Log("Player Hit!");
+                    IDamageable damageable = hit.GetComponent<IDamageable>();
+                    if (damageable != null)
+                    {
+                        damageable.TakeDamage(damage);
+                        Debug.Log("Player Hit! Damage: " + damage);
+                    }
                 }
             }
 
             Destroy(gameObject);
         }
 
-        void OnDrawGizmosSelected()
+        void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, radius);

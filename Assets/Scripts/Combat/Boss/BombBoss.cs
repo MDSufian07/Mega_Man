@@ -132,7 +132,24 @@ namespace Combat.Boss
 
             float jumpForce = Random.Range(minJumpForce, maxJumpForce);
             float moveForce = Random.Range(minMoveForce, maxMoveForce);
-            float dir = Random.Range(0, 2) == 0 ? -1f : 1f;
+            
+            // Determine jump direction: sometimes towards player, sometimes away
+            float dir = 1f;
+            if (player != null)
+            {
+                bool jumpTowardsPlayer = Random.value > 0.5f;
+                float playerDirection = (player.position.x > transform.position.x) ? 1f : -1f;
+                dir = jumpTowardsPlayer ? playerDirection : -playerDirection;
+            }
+            else
+            {
+                dir = Random.Range(0, 2) == 0 ? -1f : 1f;
+            }
+
+            // Rotate to face jump direction
+            Vector3 scale = originalScale;
+            scale.x = Mathf.Abs(originalScale.x) * dir;
+            transform.localScale = scale;
 
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
