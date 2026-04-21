@@ -179,6 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c315424778aa2e48b25e9e09e1048aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Bomb
-  explodeDelay: 2
+  explodeDelay: 3
   radius: 3
   explosionEffect: {fileID: 0}
