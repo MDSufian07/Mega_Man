@@ -7,18 +7,19 @@ namespace Combat
         public float explodeDelay = 2f;
         public float radius = 2f;
         public int damage = 20;
-        public GameObject explosionEffect;
+        public GameObject explosionPrefab;
 
         void Start()
         {
+            
             Invoke(nameof(Explode), explodeDelay);
         }
 
         void Explode()
         {
-            if (explosionEffect != null)
+            if (explosionPrefab != null)
             {
-                Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
 
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
@@ -36,6 +37,7 @@ namespace Combat
                 }
             }
 
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
