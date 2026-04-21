@@ -14,6 +14,8 @@ namespace Combat
         [SerializeField] private bool isPlayerBullet = true;
         [SerializeField] private string playerTag = "Player";
         [SerializeField] private string enemyTag = "Enemy";
+        
+        public GameObject bulletExplosionPrefab;
 
         private Vector2 direction;
 
@@ -55,6 +57,8 @@ namespace Combat
 
             // Invoke hit event
             OnHit?.Invoke(collision.gameObject);
+            
+            Instantiate(bulletExplosionPrefab, transform.position, Quaternion.identity);
 
             // Destroy bullet on any valid hit except ignored friendly collision.
             Destroy(gameObject);
