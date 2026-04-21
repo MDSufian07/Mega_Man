@@ -10,6 +10,11 @@ namespace Combat.Boss
         public Transform throwPoint;
         public GameObject bombPrefab;
 
+        [Header("Ground Check")]
+        public Transform groundCheck;
+        public float groundCheckRadius = 0.2f;
+        public LayerMask groundLayer;
+
         [Header("Jump Settings")]
         public float minJumpForce = 6f;
         public float maxJumpForce = 10f;
@@ -28,9 +33,8 @@ namespace Combat.Boss
         private Rigidbody2D rb;
         private Animator animator;
 
-        private bool isGrounded = true;
+        private bool isGrounded;
         private bool isJumping = false;
-        private bool isThrowing = false;
         private bool bombActive = false;
 
         private Vector3 originalScale;
@@ -45,29 +49,35 @@ namespace Combat.Boss
             StartCoroutine(MainLoop());
         }
 
+        void Update()
+        {
+            CheckGround();
+        }
+
         // ================= MAIN LOOP =================
 
         IEnumerator MainLoop()
         {
-            // -------- INTRO --------
+            // INTRO
             animator.Play("BossIntro");
             yield return new WaitForSeconds(introDuration);
 
             while (true)
             {
-                // -------- IDLE --------
+                // IDLE
                 animator.Play("Idle");
                 yield return new WaitForSeconds(idleDelay);
 
                 LookAtPlayer();
 
-                // decide action
                 int action = Random.Range(0, 2);
 
+                // Jump only if no bomb
                 if (action == 0 && !bombActive)
                 {
                     yield return StartCoroutine(JumpRoutine());
                 }
+                // Throw only if grounded
                 else if (action == 1 && isGrounded && !bombActive)
                 {
                     yield return StartCoroutine(ThrowRoutine());
@@ -91,6 +101,23 @@ namespace Combat.Boss
             transform.localScale = scale;
         }
 
+        // ================= GROUND CHECK (BEST METHOD) =================
+
+        void CheckGround()
+        {
+            bool groundedNow = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundCheckRadius,
+                groundLayer
+            );
+
+            if (groundedNow != isGrounded)
+            {
+                isGrounded = groundedNow;
+                animator.SetBool("isGrounded", isGrounded);
+            }
+        }
+
         // ================= JUMP =================
 
         IEnumerator JumpRoutine()
@@ -98,7 +125,6 @@ namespace Combat.Boss
             if (!isGrounded || bombActive) yield break;
 
             isJumping = true;
-            isGrounded = false;
 
             animator.SetTrigger("Jump");
 
@@ -123,8 +149,6 @@ namespace Combat.Boss
         {
             if (!isGrounded || isJumping || bombActive) yield break;
 
-            isThrowing = true;
-
             animator.SetTrigger("Throw");
 
             yield return new WaitForSeconds(0.4f);
@@ -135,12 +159,11 @@ namespace Combat.Boss
             {
                 bombActive = true;
 
-                // wait until bomb is destroyed
+                // wait until bomb destroyed
                 yield return new WaitUntil(() => bomb == null);
             }
 
             bombActive = false;
-            isThrowing = false;
         }
 
         GameObject ThrowBomb()
@@ -167,14 +190,14 @@ namespace Combat.Boss
             return bomb;
         }
 
-        // ================= GROUND CHECK =================
+        // ================= DEBUG VISUAL =================
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        void OnDrawGizmos()
         {
-            if (collision.contacts[0].normal.y > 0.5f)
+            if (groundCheck != null)
             {
-                isGrounded = true;
-                animator.SetBool("isGrounded", true);
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
             }
         }
     }
