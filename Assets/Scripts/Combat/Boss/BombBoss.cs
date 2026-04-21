@@ -22,7 +22,8 @@ namespace Combat.Boss
         public float maxMoveForce = 5f;
 
         [Header("Throw Settings")]
-        public float throwForce = 8f;
+        public float minThrowForce = 20f;
+        public float maxThrowForce = 30f;
         public float minAngle = 30f;
         public float maxAngle = 70f;
 
@@ -38,13 +39,20 @@ namespace Combat.Boss
         private bool bombActive = false;
 
         private Vector3 originalScale;
+        private float jumpDirection = 1f; // Store jump direction
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-
             originalScale = transform.localScale;
+
+            // Auto find player
+            if (player == null)
+            {
+                GameObject p = GameObject.FindGameObjectWithTag("Player");
+                if (p != null) player = p.transform;
+            }
 
             StartCoroutine(MainLoop());
         }
@@ -52,32 +60,39 @@ namespace Combat.Boss
         void Update()
         {
             CheckGround();
+
+            // While jumping and in air, look at jump direction
+            if (isJumping && !isGrounded)
+            {
+                Vector3 scale = originalScale;
+                scale.x = Mathf.Abs(originalScale.x) * jumpDirection;
+                transform.localScale = scale;
+            }
+            // When grounded and not jumping, look at player
+            else if (isGrounded && !isJumping)
+            {
+                LookAtPlayer();
+            }
         }
 
         // ================= MAIN LOOP =================
 
         IEnumerator MainLoop()
         {
-            // INTRO
             animator.Play("BossIntro");
             yield return new WaitForSeconds(introDuration);
 
             while (true)
             {
-                // IDLE
                 animator.Play("Idle");
                 yield return new WaitForSeconds(idleDelay);
 
-                LookAtPlayer();
-
                 int action = Random.Range(0, 2);
 
-                // Jump only if no bomb
                 if (action == 0 && !bombActive)
                 {
                     yield return StartCoroutine(JumpRoutine());
                 }
-                // Throw only if grounded
                 else if (action == 1 && isGrounded && !bombActive)
                 {
                     yield return StartCoroutine(ThrowRoutine());
@@ -101,7 +116,7 @@ namespace Combat.Boss
             transform.localScale = scale;
         }
 
-        // ================= GROUND CHECK (BEST METHOD) =================
+        // ================= GROUND =================
 
         void CheckGround()
         {
@@ -132,30 +147,32 @@ namespace Combat.Boss
 
             float jumpForce = Random.Range(minJumpForce, maxJumpForce);
             float moveForce = Random.Range(minMoveForce, maxMoveForce);
-            
-            // Determine jump direction: sometimes towards player, sometimes away
+
             float dir = 1f;
+
             if (player != null)
             {
                 bool jumpTowardsPlayer = Random.value > 0.5f;
-                float playerDirection = (player.position.x > transform.position.x) ? 1f : -1f;
-                dir = jumpTowardsPlayer ? playerDirection : -playerDirection;
+                float playerDir = (player.position.x > transform.position.x) ? 1f : -1f;
+                dir = jumpTowardsPlayer ? playerDir : -playerDir;
             }
             else
             {
                 dir = Random.Range(0, 2) == 0 ? -1f : 1f;
             }
 
-            // Rotate to face jump direction
-            Vector3 scale = originalScale;
-            scale.x = Mathf.Abs(originalScale.x) * dir;
-            transform.localScale = scale;
+            // Store jump direction for Update() to use
+            jumpDirection = dir;
 
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
 
-            // wait until landed
+            // Wait while jumping (not grounded)
+            yield return new WaitUntil(() => !isGrounded || isGrounded);
             yield return new WaitUntil(() => isGrounded);
+
+            // slight delay to avoid instant flip glitch
+            yield return new WaitForSeconds(0.05f);
 
             isJumping = false;
         }
@@ -175,8 +192,6 @@ namespace Combat.Boss
             if (bomb != null)
             {
                 bombActive = true;
-
-                // wait until bomb destroyed
                 yield return new WaitUntil(() => bomb == null);
             }
 
@@ -188,26 +203,26 @@ namespace Combat.Boss
             if (bombPrefab == null || throwPoint == null) return null;
 
             GameObject bomb = Instantiate(bombPrefab, throwPoint.position, Quaternion.identity);
-
             Rigidbody2D bombRb = bomb.GetComponent<Rigidbody2D>();
 
             if (bombRb != null)
             {
                 float angle = Random.Range(minAngle, maxAngle);
-                float direction = Mathf.Sign(transform.localScale.x);
+                float force = Random.Range(minThrowForce, maxThrowForce);
+                float dir = Mathf.Sign(transform.localScale.x);
 
-                Vector2 dir = new Vector2(
-                    Mathf.Cos(angle * Mathf.Deg2Rad) * direction,
+                Vector2 throwDir = new Vector2(
+                    Mathf.Cos(angle * Mathf.Deg2Rad) * dir,
                     Mathf.Sin(angle * Mathf.Deg2Rad)
                 );
 
-                bombRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
+                bombRb.AddForce(throwDir * force, ForceMode2D.Impulse);
             }
 
             return bomb;
         }
 
-        // ================= DEBUG VISUAL =================
+        // ================= DEBUG =================
 
         void OnDrawGizmos()
         {

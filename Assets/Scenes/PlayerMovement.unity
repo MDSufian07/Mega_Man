@@ -424,6 +424,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1183786233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4408949646964084938, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
+  m_PrefabInstance: {fileID: 1845285864528265757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1275864622
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4408949646964084938, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.94
       objectReference: {fileID: 0}
     - target: {fileID: 4408949646964084938, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -878,6 +883,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 54474944436263022, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.127
+      objectReference: {fileID: 0}
     - target: {fileID: 475055275680704838, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.73
@@ -918,25 +927,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2203397364282439433, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: m_Layer
-      value: 9
+    - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1183786233}
+    - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      propertyPath: maxThrowForce
+      value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 4660469098726000272, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: m_Layer
-      value: 9
+    - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      propertyPath: minThrowForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7638529466350057094, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

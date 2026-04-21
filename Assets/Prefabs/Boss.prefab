@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3119896340077105113}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ThrowPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4031150196784446494}
   - component: {fileID: 5903416778606125539}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ExtraBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2337359052772850692}
   - component: {fileID: 7857567537409249118}
   - component: {fileID: 1650009992892218396}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,15 +335,16 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  minJumpForce: 6
+  minJumpForce: 5
   maxJumpForce: 10
-  minMoveForce: 2
-  maxMoveForce: 5
-  throwForce: 8
-  minAngle: 30
+  minMoveForce: 4
+  maxMoveForce: 8
+  minThrowForce: 30
+  maxThrowForce: 40
+  minAngle: 40
   maxAngle: 90
   introDuration: 2.5
-  idleDelay: 3
+  idleDelay: 0.5
 --- !u!1 &7638529466350057094
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 54474944436263022}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
