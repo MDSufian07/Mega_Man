@@ -1029,6 +1029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3609828429846668100, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
+      propertyPath: fireCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4408949646964084938, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.87
@@ -1082,6 +1086,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 206747521623362045, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 475055275680704838, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.592
@@ -1128,7 +1136,7 @@ PrefabInstance:
       objectReference: {fileID: 1183786233}
     - target: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_Name
-      value: Boss
+      value: BombBoss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Bullet
   speed: 15
   lifeTime: 3
-  damage: 10
+  damage: 5
   isPlayerBullet: 1
   playerTag: Player
   enemyTag: Enemy

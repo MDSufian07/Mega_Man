@@ -1,3 +1,4 @@
+using Combat;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private InputHandler input;
 
+    private PlayerShooting shooting;
+
     private bool isGrounded;
 
     void Awake()
@@ -21,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         input = GetComponent<InputHandler>();
+        
+        shooting = GetComponent<PlayerShooting>();
     }
 
     void Update()
@@ -34,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetBool("isRunning", input.MoveInput != 0);
         anim.SetBool("isJumping", !isGrounded);
-        anim.SetBool("isFiring", input.FirePressed);
+        anim.SetBool("isFiring", shooting.CanFire && input.FirePressed);
 
         if (input.MoveInput > 0)
             transform.localScale = new Vector3(1, 1, 1);
