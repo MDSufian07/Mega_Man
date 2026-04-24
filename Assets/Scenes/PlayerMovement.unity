@@ -1239,7 +1239,15 @@ PrefabInstance:
       objectReference: {fileID: 1183786233}
     - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: maxJumpForce
-      value: 7
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      propertyPath: minJumpForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473603107891428497, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_Name

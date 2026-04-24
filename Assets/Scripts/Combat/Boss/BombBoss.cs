@@ -87,17 +87,17 @@ namespace Combat.Boss
                 animator.Play("Idle");
                 yield return new WaitForSeconds(idleDelay);
 
-                // Jump 33%, Throw 66%
-                int action = Random.Range(0, 3);
+                // Jump 40%, Throw 60%
+                int action = Random.Range(0, 5);
 
-                if (action == 0 && !bombActive)
+                if ((action == 0 || action == 1) && !bombActive)
                 {
-                    // Jump (33% chance)
+                    // Jump (40% chance: 2 out of 5)
                     yield return StartCoroutine(JumpRoutine());
                 }
-                else if ((action == 1 || action == 2) && isGrounded && !bombActive)
+                else if ((action == 2 || action == 3 || action == 4) && isGrounded && !bombActive)
                 {
-                    // Throw (66% chance)
+                    // Throw (60% chance: 3 out of 5)
                     yield return StartCoroutine(ThrowRoutine());
                 }
             }
