@@ -119,6 +119,76 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &36265739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36265741}
+  - component: {fileID: 36265740}
+  - component: {fileID: 36265742}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &36265740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36265739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 617f0587d869e864a9f20c30d33f5035, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: adb7a159291166147b0e7e2ba2fddeda, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!4 &36265741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36265739}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.15882, y: 2.30169, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &36265742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36265739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4c5cbab354c024f940ec0c02a791ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthUIController
+  playerHealth: {fileID: 1894981960}
+  bossHealth: {fileID: 214599755}
 --- !u!1 &180954094
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +369,36 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &214599754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+  m_PrefabInstance: {fileID: 3543557008631736405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &214599755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 206747521623362045, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+  m_PrefabInstance: {fileID: 3543557008631736405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214599754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
+--- !u!114 &214599762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214599754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ea416374d3bae42bed51006805f70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageEffect
+  flickerDuration: 0.3
+  flickerSpeed: 0.04
 --- !u!1 &276496206
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +428,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2607646d229644140b178a03e08aa638, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -374,7 +474,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2607646d229644140b178a03e08aa638, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -819,6 +919,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1894981960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5766483511328077855, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
+  m_PrefabInstance: {fileID: 1845285864528265757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
 --- !u!1 &2101854197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,10 +1140,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3609828429846668100, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
-      propertyPath: fireCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4408949646964084938, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.87
@@ -1086,10 +1193,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 206747521623362045, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 475055275680704838, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.592
@@ -1135,12 +1238,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1183786233}
     - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: idleDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: minJumpForce
-      value: 4
+      propertyPath: maxJumpForce
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_Name
@@ -1149,7 +1248,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 214599762}
   m_SourcePrefab: {fileID: 100100000, guid: 807893aef6384c049a0daaf03808375c, type: 3}
 --- !u!1001 &4397599701681708543
 PrefabInstance:
@@ -1226,3 +1328,4 @@ SceneRoots:
   - {fileID: 450192085612819222}
   - {fileID: 4397599701681708543}
   - {fileID: 569863026}
+  - {fileID: 36265741}

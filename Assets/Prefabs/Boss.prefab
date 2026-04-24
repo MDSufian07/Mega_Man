@@ -336,7 +336,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  minJumpForce: 5
+  minJumpForce: 4
   maxJumpForce: 10
   minMoveForce: 4
   maxMoveForce: 8
@@ -345,7 +345,7 @@ MonoBehaviour:
   minAngle: 40
   maxAngle: 90
   introDuration: 2.5
-  idleDelay: 0.5
+  idleDelay: 0.1
 --- !u!114 &206747521623362045
 MonoBehaviour:
   m_ObjectHideFlags: 0

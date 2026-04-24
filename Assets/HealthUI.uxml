@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="VisualElement" style="flex-direction: column; padding: 10px; width: 335px; left: 50px; top: 20px;">
+        <ui:Label text="Player" style="width: 145px; font-size: 13px; -unity-font-style: bold; left: 130px; top: 43px; color: rgb(255, 255, 255);"/>
+        <ui:VisualElement name="player-bar-bg" style="width: 150px; height: 15px; background-color: rgb(34, 34, 34); top: 40px; left: 130px;">
+            <ui:VisualElement name="player-bar-fill" style="width: 100%; height: 100%; background-color: rgb(255, 211, 18);"/>
+        </ui:VisualElement>
+        <ui:Label text="Boss" name="Label" style="margin-top: 20px; left: 130px; top: 24px; -unity-font-style: bold; color: rgb(255, 255, 255); width: 144px;"/>
+        <ui:VisualElement name="boss-bar-bg" style="width: 150px; height: 15px; background-color: rgb(34, 34, 34); left: 130px; top: 20px; right: 130px;">
+            <ui:VisualElement name="boss-bar-fill" style="width: 100%; height: 100%; background-color: red;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
