@@ -180,6 +180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Bomb
   explodeDelay: 1
-  radius: 2
+  damageDelay: 0.2
+  radius: 1.7
   damage: 1
   explosionPrefab: {fileID: 228732117453192581, guid: c17f595d53956eb49b71c5dbde73c861, type: 3}
+  spriteRenderer: {fileID: 0}
+  col: {fileID: 0}

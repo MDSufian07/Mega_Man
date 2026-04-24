@@ -1,26 +1,43 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Combat
 {
     public class Bomb2D : MonoBehaviour
     {
         public float explodeDelay = 2f;
+        public float damageDelay = 0.1f; // NEW: delay after explosion
         public float radius = 2f;
         public int damage = 20;
         public GameObject explosionPrefab;
+        public SpriteRenderer spriteRenderer;
+        public Collider2D col;
 
         void Start()
         {
-            
-            Invoke(nameof(Explode), explodeDelay);
+            Invoke(nameof(StartExplosion), explodeDelay);
         }
 
-        void Explode()
+        void StartExplosion()
         {
+            // Hide bomb instantly
+            if (spriteRenderer != null)
+                spriteRenderer.enabled = false;
+
+            if (col != null)
+                col.enabled = false;
+
+            // Play explosion effect
             if (explosionPrefab != null)
-            {
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            }
+
+            // Start delayed damage
+            StartCoroutine(ApplyDamageAfterDelay());
+        }
+
+        IEnumerator ApplyDamageAfterDelay()
+        {
+            yield return new WaitForSeconds(damageDelay);
 
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
 
@@ -32,12 +49,11 @@ namespace Combat
                     if (damageable != null)
                     {
                         damageable.TakeDamage(damage);
-                        Debug.Log("Player Hit! Damage: " + damage);
+                        Debug.Log("Player Hit AFTER delay! Damage: " + damage);
                     }
                 }
             }
 
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 

@@ -369,36 +369,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &214599754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-  m_PrefabInstance: {fileID: 3543557008631736405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &214599755 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 206747521623362045, guid: 807893aef6384c049a0daaf03808375c, type: 3}
   m_PrefabInstance: {fileID: 3543557008631736405}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214599754}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
---- !u!114 &214599762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214599754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48ea416374d3bae42bed51006805f70e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageEffect
-  flickerDuration: 0.3
-  flickerSpeed: 0.04
 --- !u!1 &276496206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,16 +1219,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1183786233}
     - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: maxJumpForce
-      value: 10
+      propertyPath: maxThrowForce
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1650009992892218396, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: minJumpForce
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473603107891428497, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      propertyPath: m_GravityScale
-      value: 2
+      propertyPath: minThrowForce
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
       propertyPath: m_Name
@@ -1256,10 +1233,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7361614246600298102, guid: 807893aef6384c049a0daaf03808375c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 214599762}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 807893aef6384c049a0daaf03808375c, type: 3}
 --- !u!1001 &4397599701681708543
 PrefabInstance:

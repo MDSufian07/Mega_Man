@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ea416374d3bae42bed51006805f70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageEffect
-  flickerDuration: 1
+  flickerDuration: 1.5
   flickerSpeed: 0.05
 --- !u!1 &8569485037881166268
 GameObject:

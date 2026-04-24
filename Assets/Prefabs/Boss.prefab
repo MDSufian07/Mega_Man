@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 7857567537409249118}
   - component: {fileID: 1650009992892218396}
   - component: {fileID: 206747521623362045}
+  - component: {fileID: 6686811728641961132}
   m_Layer: 9
   m_Name: Boss
   m_TagString: Enemy
@@ -177,7 +178,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -336,7 +337,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  minJumpForce: 4
+  minJumpForce: 6
   maxJumpForce: 10
   minMoveForce: 4
   maxMoveForce: 8
@@ -344,7 +345,7 @@ MonoBehaviour:
   maxThrowForce: 50
   minAngle: 40
   maxAngle: 90
-  introDuration: 2.5
+  introDuration: 2.1
   idleDelay: 0.1
 --- !u!114 &206747521623362045
 MonoBehaviour:
@@ -359,6 +360,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
   maxHealth: 100
+--- !u!114 &6686811728641961132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361614246600298102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ea416374d3bae42bed51006805f70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageEffect
+  flickerDuration: 0.3
+  flickerSpeed: 0.04
 --- !u!1 &7638529466350057094
 GameObject:
   m_ObjectHideFlags: 0
