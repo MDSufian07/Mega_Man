@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Combat.Boss
 {
-    public class BombBoss2D : MonoBehaviour
+    public class BombBoss : MonoBehaviour
     {
         [Header("References")]
         public Transform player;
