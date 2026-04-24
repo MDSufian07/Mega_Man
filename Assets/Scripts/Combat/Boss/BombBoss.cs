@@ -16,7 +16,7 @@ namespace Combat.Boss
         public LayerMask groundLayer;
 
         [Header("Jump Settings")]
-        public float minJumpForce = 6f;
+        public float minJumpForce = 5f;
         public float maxJumpForce = 10f;
         public float minMoveForce = 2f;
         public float maxMoveForce = 5f;
@@ -29,7 +29,7 @@ namespace Combat.Boss
 
         [Header("Timing")]
         public float introDuration = 2f;
-        public float idleDelay = 1.5f;
+        public float idleDelay = 1f;
 
         private Rigidbody2D rb;
         private Animator animator;
@@ -39,7 +39,7 @@ namespace Combat.Boss
         private bool bombActive = false;
 
         private Vector3 originalScale;
-        private float jumpDirection = 1f; // Store jump direction
+        private float jumpDirection = 1f;
 
         void Start()
         {
@@ -207,9 +207,24 @@ namespace Combat.Boss
 
             if (bombRb != null)
             {
-                float angle = Random.Range(minAngle, maxAngle);
-                float force = Random.Range(minThrowForce, maxThrowForce);
+                // Calculate distance to player for aggressive behavior
+                float distanceToPlayer = float.MaxValue;
+                if (player != null)
+                {
+                    distanceToPlayer = Vector2.Distance(transform.position, player.position);
+                }
+
+                // Normalize distance to 0-1 range
+                float maxDistance = 10f;
+                float normalizedDistance = Mathf.Clamp01(distanceToPlayer / maxDistance);
+                
+                // Close = high angle + low force, Far = low angle + high force
+                float angle = Mathf.Lerp(maxAngle, minAngle, normalizedDistance);
+                float force = Mathf.Lerp(minThrowForce, maxThrowForce, normalizedDistance);
                 float dir = Mathf.Sign(transform.localScale.x);
+
+                // Add randomness to angle
+                angle += Random.Range(-5f, 5f);
 
                 Vector2 throwDir = new Vector2(
                     Mathf.Cos(angle * Mathf.Deg2Rad) * dir,
@@ -221,6 +236,7 @@ namespace Combat.Boss
 
             return bomb;
         }
+
 
         // ================= DEBUG =================
 
