@@ -7,6 +7,7 @@ namespace Combat
         public int damage = 20;
         public GameObject smallStonePrefab;
         public int splitCount = 4;
+        public LayerMask destructibleLayers;
 
         private Rigidbody2D rb;
 
@@ -17,14 +18,18 @@ namespace Combat
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.CompareTag("Player"))
+            // Only destroy when hitting objects on destructible layers
+            if (((1 << collision.gameObject.layer) & destructibleLayers) != 0)
             {
-                var dmg = collision.collider.GetComponent<IDamageable>();
-                if (dmg != null)
-                    dmg.TakeDamage(damage);
-            }
+                if (collision.collider.CompareTag("Player"))
+                {
+                    var dmg = collision.collider.GetComponent<IDamageable>();
+                    if (dmg != null)
+                        dmg.TakeDamage(damage);
+                }
 
-            SplitStone();
+                SplitStone();
+            }
         }
 
         void SplitStone()

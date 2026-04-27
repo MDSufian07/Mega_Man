@@ -50,6 +50,9 @@ MonoBehaviour:
   damage: 20
   smallStonePrefab: {fileID: 6846373156976289910, guid: 9832833190479674f962880a4f9bfb97, type: 3}
   splitCount: 4
+  destructibleLayers:
+    serializedVersion: 2
+    m_Bits: 2120
 --- !u!212 &66735130486011259
 SpriteRenderer:
   serializedVersion: 2

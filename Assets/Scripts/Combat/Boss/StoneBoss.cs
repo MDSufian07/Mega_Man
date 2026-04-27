@@ -19,6 +19,10 @@ namespace Combat.Boss
         public float jumpForce = 8f;
         public float moveForce = 4f;
 
+        [Header("Throw Settings")]
+        public float throwForce = 15f;
+        public float throwUpForce = 5f;
+
         [Header("Timing")]
         public float introDuration = 2f;
         public float idleDelay = 1f;
@@ -28,16 +32,14 @@ namespace Combat.Boss
         public float shakeDuration = 1f;
         public float shakeAmount = 0.2f;
 
-        // Components
         private Rigidbody2D rb;
         private Animator anim;
 
-        // State
         private bool isGrounded;
         private bool wasGrounded;
         private bool isJumping;
 
-        // FIX: Ignore early ground detection
+        // Fix for fake landing
         private float jumpIgnoreTime = 0.2f;
         private float jumpTimer = 0f;
 
@@ -59,7 +61,6 @@ namespace Combat.Boss
         {
             CheckGround();
 
-            // Reduce ignore timer
             if (jumpTimer > 0)
                 jumpTimer -= Time.deltaTime;
 
@@ -102,14 +103,12 @@ namespace Combat.Boss
 
         void HandleLanding()
         {
-            // Ignore ground right after jump
             if (jumpTimer > 0)
             {
                 wasGrounded = isGrounded;
                 return;
             }
 
-            // Detect: air → ground AND falling
             if (!wasGrounded && isGrounded && isJumping && rb.linearVelocity.y <= 0)
             {
                 OnLand();
@@ -143,7 +142,7 @@ namespace Combat.Boss
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
 
-            // Start ignore timer
+            // Ignore early ground detection
             jumpTimer = jumpIgnoreTime;
         }
 
@@ -155,7 +154,20 @@ namespace Combat.Boss
 
             yield return new WaitForSeconds(1.5f);
 
-            Instantiate(stonePrefab, throwPoint.position, Quaternion.identity);
+            GameObject stone = Instantiate(stonePrefab, throwPoint.position, Quaternion.identity);
+
+            Rigidbody2D srb = stone.GetComponent<Rigidbody2D>();
+
+            if (srb != null && player != null)
+            {
+                Vector2 dir = (player.position - throwPoint.position).normalized;
+
+                // Add arc
+                dir.y += throwUpForce / throwForce;
+
+                srb.linearVelocity = Vector2.zero;
+                srb.AddForce(dir * throwForce, ForceMode2D.Impulse);
+            }
         }
 
         // ================= SHAKE =================

@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 276496208}
   - component: {fileID: 276496207}
   - component: {fileID: 276496211}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1705,22 +1705,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3724005702250115156, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724005702250115156, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.27
+      objectReference: {fileID: 0}
     - target: {fileID: 6615337746883957857, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: m_Name
       value: Boss2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916956017609333670, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916956017609333670, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1183786233}
     - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: idleDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: introTime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: throwForce
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: stonePrefab
       value: 
       objectReference: {fileID: 2385910002888394726, guid: 85f4c0c6bb820a64bac70829d11481c1, type: 3}
+    - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: throwUpForce
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: environmentToShake
       value: 
