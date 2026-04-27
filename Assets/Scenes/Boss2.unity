@@ -1714,6 +1714,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1183786233}
     - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
+      propertyPath: introTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: stonePrefab
       value: 
       objectReference: {fileID: 2385910002888394726, guid: 85f4c0c6bb820a64bac70829d11481c1, type: 3}

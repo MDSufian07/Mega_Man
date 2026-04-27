@@ -5,32 +5,41 @@ namespace Combat.Boss
 {
     public class StoneBoss : MonoBehaviour
     {
-        [Header("Refs")]
+        [Header("References")]
         public Transform player;
         public Transform throwPoint;
         public GameObject stonePrefab;
 
-        [Header("Ground")]
+        [Header("Ground Check")]
         public Transform groundCheck;
-        public float groundRadius;
+        public float groundRadius = 0.2f;
         public LayerMask groundLayer;
 
-        [Header("Jump")]
+        [Header("Jump Settings")]
         public float jumpForce = 8f;
         public float moveForce = 4f;
 
         [Header("Timing")]
-        public float introTime = 2f;
-        public float idleTime = 1f;
+        public float introDuration = 2f;
+        public float idleDelay = 1f;
 
-        [Header("Environment")]
+        [Header("Environment Shake")]
         public Transform environmentToShake;
+        public float shakeDuration = 1f;
+        public float shakeAmount = 0.2f;
 
+        // Components
         private Rigidbody2D rb;
         private Animator anim;
 
+        // State
         private bool isGrounded;
+        private bool wasGrounded;
         private bool isJumping;
+
+        // FIX: Ignore early ground detection
+        private float jumpIgnoreTime = 0.2f;
+        private float jumpTimer = 0f;
 
         void Start()
         {
@@ -38,57 +47,107 @@ namespace Combat.Boss
             anim = GetComponent<Animator>();
 
             if (player == null)
-                player = GameObject.FindGameObjectWithTag("Player").transform;
+            {
+                GameObject p = GameObject.FindGameObjectWithTag("Player");
+                if (p != null) player = p.transform;
+            }
 
             StartCoroutine(MainLoop());
         }
 
         void Update()
         {
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+            CheckGround();
+
+            // Reduce ignore timer
+            if (jumpTimer > 0)
+                jumpTimer -= Time.deltaTime;
+
+            HandleLanding();
         }
+
+        // ================= MAIN LOOP =================
 
         IEnumerator MainLoop()
         {
             anim.Play("Idle");
-            yield return new WaitForSeconds(introTime);
+            yield return new WaitForSeconds(introDuration);
 
             while (true)
             {
                 anim.Play("Idle");
-                yield return new WaitForSeconds(idleTime);
+                yield return new WaitForSeconds(idleDelay);
 
                 int action = Random.Range(0, 2);
 
                 if (action == 0)
-                    yield return JumpRoutine();
+                    yield return StartCoroutine(JumpRoutine());
                 else
-                    yield return ThrowRoutine();
+                    yield return StartCoroutine(ThrowRoutine());
             }
         }
+
+        // ================= GROUND =================
+
+        void CheckGround()
+        {
+            isGrounded = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundRadius,
+                groundLayer
+            );
+        }
+
+        // ================= LAND DETECTION =================
+
+        void HandleLanding()
+        {
+            // Ignore ground right after jump
+            if (jumpTimer > 0)
+            {
+                wasGrounded = isGrounded;
+                return;
+            }
+
+            // Detect: air → ground AND falling
+            if (!wasGrounded && isGrounded && isJumping && rb.linearVelocity.y <= 0)
+            {
+                OnLand();
+            }
+
+            wasGrounded = isGrounded;
+        }
+
+        void OnLand()
+        {
+            StartCoroutine(ShakeEnvironment());
+            StartCoroutine(DisablePlayer());
+
+            isJumping = false;
+        }
+
+        // ================= JUMP =================
 
         IEnumerator JumpRoutine()
         {
             if (!isGrounded) yield break;
 
             isJumping = true;
+
             anim.SetTrigger("Jump");
 
             yield return new WaitForSeconds(0.2f);
 
-            float dir = (player.position.x > transform.position.x) ? 1 : -1;
+            float dir = (player.position.x > transform.position.x) ? 1f : -1f;
 
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
 
-            yield return new WaitUntil(() => isGrounded);
-
-            // LAND EFFECT
-            StartCoroutine(ShakeEnvironment());
-            StartCoroutine(DisablePlayer());
-
-            isJumping = false;
+            // Start ignore timer
+            jumpTimer = jumpIgnoreTime;
         }
+
+        // ================= THROW =================
 
         IEnumerator ThrowRoutine()
         {
@@ -99,20 +158,26 @@ namespace Combat.Boss
             Instantiate(stonePrefab, throwPoint.position, Quaternion.identity);
         }
 
+        // ================= SHAKE =================
+
         IEnumerator ShakeEnvironment()
         {
-            float time = 1f;
-            Vector3 original = environmentToShake.position;
+            Vector3 originalPos = environmentToShake.position;
+            float time = shakeDuration;
 
             while (time > 0)
             {
-                environmentToShake.position = original + (Vector3)Random.insideUnitCircle * 0.2f;
+                environmentToShake.position =
+                    originalPos + (Vector3)Random.insideUnitCircle * shakeAmount;
+
                 time -= Time.deltaTime;
                 yield return null;
             }
 
-            environmentToShake.position = original;
+            environmentToShake.position = originalPos;
         }
+
+        // ================= PLAYER DISABLE =================
 
         IEnumerator DisablePlayer()
         {
@@ -121,13 +186,24 @@ namespace Combat.Boss
             var move = p.GetComponent<PlayerMovement>();
             var shoot = p.GetComponent<PlayerShooting>();
 
-            move.enabled = false;
-            shoot.enabled = false;
+            if (move != null) move.enabled = false;
+            if (shoot != null) shoot.enabled = false;
 
             yield return new WaitForSeconds(1f);
 
-            move.enabled = true;
-            shoot.enabled = true;
+            if (move != null) move.enabled = true;
+            if (shoot != null) shoot.enabled = true;
+        }
+
+        // ================= DEBUG =================
+
+        void OnDrawGizmos()
+        {
+            if (groundCheck != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
+            }
         }
     }
 }
