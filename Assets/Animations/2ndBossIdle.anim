@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 2ndBoss
+  m_Name: 2ndBossIdle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
