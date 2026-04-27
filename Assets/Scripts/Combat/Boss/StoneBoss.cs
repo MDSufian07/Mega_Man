@@ -42,11 +42,14 @@ namespace Combat.Boss
         // Fix for fake landing
         private float jumpIgnoreTime = 0.2f;
         private float jumpTimer = 0f;
+        
+        private Vector3 originalScale;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
+            originalScale = transform.localScale;
 
             if (player == null)
             {
@@ -65,6 +68,10 @@ namespace Combat.Boss
                 jumpTimer -= Time.deltaTime;
 
             HandleLanding();
+            
+            // Always look at player when grounded
+            if (isGrounded && !isJumping)
+                LookAtPlayer();
         }
 
         // ================= MAIN LOOP =================
@@ -97,6 +104,22 @@ namespace Combat.Boss
                 groundRadius,
                 groundLayer
             );
+        }
+
+        // ================= LOOK =================
+
+        void LookAtPlayer()
+        {
+            if (player == null) return;
+
+            Vector3 scale = originalScale;
+
+            if (player.position.x > transform.position.x)
+                scale.x = Mathf.Abs(originalScale.x);
+            else
+                scale.x = -Mathf.Abs(originalScale.x);
+
+            transform.localScale = scale;
         }
 
         // ================= LAND DETECTION =================

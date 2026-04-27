@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5508985910155406618}
   - component: {fileID: 8965775551511385383}
   - component: {fileID: 293300139911699293}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SmallStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b37ef7c4fd44f88ae046473c90376a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.SmallStone
-  damage: 10
+  damage: 1
+  extraForce: 6
+  upwardForce: 3
+  lifeTime: 3
 --- !u!61 &5508985910155406618
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +144,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1663800516, guid: c828846120138da44a02e96676b3b8af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
