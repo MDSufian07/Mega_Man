@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded;
 
+    public bool IsGrounded => isGrounded;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

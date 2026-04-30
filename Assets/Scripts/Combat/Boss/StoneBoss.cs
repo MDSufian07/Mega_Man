@@ -229,15 +229,26 @@ namespace Combat.Boss
 
             var move = p.GetComponent<PlayerMovement>();
             var shoot = p.GetComponent<PlayerShooting>();
+            var playerAnim = p.GetComponent<Animator>();
 
-            if (move != null) move.enabled = false;
-            if (shoot != null) shoot.enabled = false;
+            // Only disable movement and shooting if player is grounded
+            if (move != null && move.IsGrounded)
+            {
+                move.enabled = false;
+                if (shoot != null) shoot.enabled = false;
 
-            // Disable player only for the duration of the shake
-            yield return new WaitForSeconds(shakeDuration);
+                // Trigger fall animation when boss lands
+                if (playerAnim != null)
+                {
+                    playerAnim.SetTrigger("Fall");
+                }
 
-            if (move != null) move.enabled = true;
-            if (shoot != null) shoot.enabled = true;
+                // Disable player only for the duration of the shake
+                yield return new WaitForSeconds(shakeDuration);
+
+                move.enabled = true;
+                if (shoot != null) shoot.enabled = true;
+            }
         }
 
         // ================= DEBUG =================
