@@ -72,7 +72,7 @@ namespace Combat.Boss
             HandleLanding();
             
             // Always look at player when grounded
-            if (isGrounded && !isJumping)
+            if (isGrounded)
                 LookAtPlayer();
         }
 

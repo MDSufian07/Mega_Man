@@ -4,33 +4,38 @@ namespace Combat
 {
     public class BigStone : MonoBehaviour
     {
-        public int damage = 20;
-        public GameObject smallStonePrefab;
-        public int splitCount = 4;
-        public LayerMask destructibleLayers;
+    public int damage = 20;
+    public GameObject smallStonePrefab;
+    public int splitCount = 4;
+    public LayerMask destructibleLayers;
 
-        private Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private bool hasAlreadySplit = false;
 
-        void Start()
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Prevent multiple splits
+        if (hasAlreadySplit) return;
+
+        // Only destroy when hitting objects on destructible layers
+        if (((1 << collision.gameObject.layer) & destructibleLayers) != 0)
         {
-            rb = GetComponent<Rigidbody2D>();
-        }
-
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            // Only destroy when hitting objects on destructible layers
-            if (((1 << collision.gameObject.layer) & destructibleLayers) != 0)
+            if (collision.collider.CompareTag("Player"))
             {
-                if (collision.collider.CompareTag("Player"))
-                {
-                    var dmg = collision.collider.GetComponent<IDamageable>();
-                    if (dmg != null)
-                        dmg.TakeDamage(damage);
-                }
-
-                SplitStone();
+                var dmg = collision.collider.GetComponent<IDamageable>();
+                if (dmg != null)
+                    dmg.TakeDamage(damage);
             }
+
+            hasAlreadySplit = true;
+            SplitStone();
         }
+    }
 
         void SplitStone()
         {
