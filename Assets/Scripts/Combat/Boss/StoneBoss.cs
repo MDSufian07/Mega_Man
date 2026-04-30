@@ -175,8 +175,13 @@ namespace Combat.Boss
         {
             anim.SetTrigger("Throw");
 
-            yield return new WaitForSeconds(1.5f);
-
+            // Wait until animation event calls SpawnStone()
+            yield return null;
+        }
+        
+        //================== SpawnStone=============
+        public void SpawnStone()
+        {
             GameObject stone = Instantiate(stonePrefab, throwPoint.position, Quaternion.identity);
 
             Rigidbody2D srb = stone.GetComponent<Rigidbody2D>();
@@ -192,7 +197,6 @@ namespace Combat.Boss
                 srb.AddForce(dir * throwForce, ForceMode2D.Impulse);
             }
         }
-
         // ================= SHAKE =================
 
         IEnumerator ShakeEnvironment()
