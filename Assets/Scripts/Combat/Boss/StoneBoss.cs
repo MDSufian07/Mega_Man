@@ -17,7 +17,9 @@ namespace Combat.Boss
 
         [Header("Jump Settings")]
         public float jumpForce = 8f;
-        public float moveForce = 4f;
+        public float maxMoveForce = 4f;
+        public float minMoveForce = -1f;
+        
 
         [Header("Throw Settings")]
         public float throwForce = 15f;
@@ -161,9 +163,12 @@ namespace Combat.Boss
             yield return new WaitForSeconds(0.2f);
 
             float dir = (player.position.x > transform.position.x) ? 1f : -1f;
+            
+            // Random moveForce between -1 and 3
+            float randomMoveForce = Random.Range(minMoveForce, maxMoveForce);
 
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(dir * randomMoveForce, jumpForce), ForceMode2D.Impulse);
 
             // Ignore early ground detection
             jumpTimer = jumpIgnoreTime;
@@ -228,7 +233,8 @@ namespace Combat.Boss
             if (move != null) move.enabled = false;
             if (shoot != null) shoot.enabled = false;
 
-            yield return new WaitForSeconds(1f);
+            // Disable player only for the duration of the shake
+            yield return new WaitForSeconds(shakeDuration);
 
             if (move != null) move.enabled = true;
             if (shoot != null) shoot.enabled = true;

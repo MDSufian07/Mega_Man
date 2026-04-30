@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 66735130486011259}
   - component: {fileID: 2030532406029055113}
   - component: {fileID: 8876997128747318561}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BigStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12db991405dddb7448b4e3b480908653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.BigStone
-  damage: 2
+  damage: 1
   smallStonePrefab: {fileID: 6846373156976289910, guid: 9832833190479674f962880a4f9bfb97, type: 3}
   splitCount: 4
   destructibleLayers:

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7031327739990579698}
   - component: {fileID: 728358465125596584}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1849348874242269686}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,8 @@ GameObject:
   - component: {fileID: 6916956017609333670}
   - component: {fileID: 5429382455213954980}
   - component: {fileID: 8769267428247096375}
-  m_Layer: 0
+  - component: {fileID: 1575775932505045121}
+  m_Layer: 13
   m_Name: Boss2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +282,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -329,17 +330,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Boss.StoneBoss
   player: {fileID: 0}
   throwPoint: {fileID: 3724005702250115156}
-  stonePrefab: {fileID: 0}
+  stonePrefab: {fileID: 2385910002888394726, guid: 85f4c0c6bb820a64bac70829d11481c1, type: 3}
   groundCheck: {fileID: 1849348874242269686}
   groundRadius: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   jumpForce: 8
-  moveForce: 4
-  introTime: 2
-  idleTime: 1
+  maxMoveForce: 3
+  minMoveForce: -1
+  throwForce: 8
+  throwUpForce: 4
+  introDuration: 2
+  idleDelay: 2
   environmentToShake: {fileID: 0}
+  shakeDuration: 0.7
+  shakeAmount: 0.15
+--- !u!114 &1575775932505045121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615337746883957857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
+  maxHealth: 100
 --- !u!1 &9041160930780746530
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3724005702250115156}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ThrowPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +384,7 @@ Transform:
   m_GameObject: {fileID: 9041160930780746530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.181, y: 0.908, z: 0}
+  m_LocalPosition: {x: -0.18, y: 1.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

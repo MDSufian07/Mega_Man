@@ -50,7 +50,7 @@ MonoBehaviour:
   damage: 1
   extraForce: 6
   upwardForce: 3
-  lifeTime: 3
+  lifeTime: 2
 --- !u!61 &5508985910155406618
 BoxCollider2D:
   m_ObjectHideFlags: 0
