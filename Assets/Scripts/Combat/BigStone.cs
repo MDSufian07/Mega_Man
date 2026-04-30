@@ -17,7 +17,7 @@ namespace Combat
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         // Prevent multiple splits
         if (hasAlreadySplit) return;
@@ -25,9 +25,9 @@ namespace Combat
         // Only destroy when hitting objects on destructible layers
         if (((1 << collision.gameObject.layer) & destructibleLayers) != 0)
         {
-            if (collision.collider.CompareTag("Player"))
+            if (collision.CompareTag("Player"))
             {
-                var dmg = collision.collider.GetComponent<IDamageable>();
+                var dmg = collision.GetComponent<IDamageable>();
                 if (dmg != null)
                     dmg.TakeDamage(damage);
             }
