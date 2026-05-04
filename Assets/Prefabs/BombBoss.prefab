@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 206747521623362045}
   - component: {fileID: 6686811728641961132}
   m_Layer: 9
-  m_Name: Boss
+  m_Name: BombBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

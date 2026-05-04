@@ -1800,14 +1800,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2611367831777035602, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2611367831777035602, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2611367831777035602, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.17
       objectReference: {fileID: 0}
@@ -1849,11 +1841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6615337746883957857, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: m_Name
-      value: Boss2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6615337746883957857, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
+      value: StoneBoss
       objectReference: {fileID: 0}
     - target: {fileID: 8769267428247096375, guid: 34fecfa7bed6fdb458dd9b9cffedf419, type: 3}
       propertyPath: player
