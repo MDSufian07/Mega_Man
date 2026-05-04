@@ -4,14 +4,17 @@ namespace Combat
 {
     public class SmallStone : MonoBehaviour
     {
-        public int damage = 10;
+    public int damage = 10;
 
-        [Header("Force Settings")]
-        public float extraForce = 2f;
-        public float upwardForce = 5f;
+    [Header("Force Settings")]
+    public float extraForce = 2f;
+    public float upwardForce = 5f;
 
-        [Header("Lifetime")]
-        public float lifeTime = 3f;
+    [Header("Lifetime")]
+    public float lifeTime = 3f;
+
+    [Header("Effect")]
+    public GameObject effectPrefab;
 
         private Rigidbody2D rb;
 
@@ -32,7 +35,7 @@ namespace Combat
                 rb.AddForce(Vector2.up * upwardForce, ForceMode2D.Impulse);
             }
 
-            // ⏱ Auto destroy after time
+            //  Auto destroy after time
             Destroy(gameObject, lifeTime);
         }
 
@@ -44,6 +47,10 @@ namespace Combat
                 if (dmg != null)
                     dmg.TakeDamage(damage);
             }
+
+            // Spawn effect before destroying
+            if (effectPrefab != null)
+                Instantiate(effectPrefab, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }

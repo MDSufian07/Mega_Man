@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat.BigStone
   damage: 2
   smallStonePrefab: {fileID: 6846373156976289910, guid: 9832833190479674f962880a4f9bfb97, type: 3}
+  effectPrefab: {fileID: 5807414071873683926, guid: 882386dd7ce5765438215b49d997fa6c, type: 3}
   splitCount: 4
   destructibleLayers:
     serializedVersion: 2

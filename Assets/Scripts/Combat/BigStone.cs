@@ -6,6 +6,7 @@ namespace Combat
     {
     public int damage = 20;
     public GameObject smallStonePrefab;
+    public GameObject effectPrefab;
     public int splitCount = 4;
     public LayerMask destructibleLayers;
 
@@ -39,6 +40,19 @@ namespace Combat
 
         void SplitStone()
         {
+            // Spawn effect and apply slight velocity from big stone
+            if (effectPrefab != null)
+            {
+                GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+                Rigidbody2D effectRb = effect.GetComponent<Rigidbody2D>();
+                
+                // Apply reduced velocity for subtle movement
+                if (effectRb != null && rb != null)
+                {
+                    effectRb.linearVelocity = rb.linearVelocity * 0.3f;
+                }
+            }
+
             Vector2 baseDir = rb.linearVelocity.normalized;
 
             for (int i = 0; i < splitCount; i++)

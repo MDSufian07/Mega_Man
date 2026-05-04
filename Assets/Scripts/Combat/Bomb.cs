@@ -6,7 +6,7 @@ namespace Combat
     public class Bomb2D : MonoBehaviour
     {
         public float explodeDelay = 2f;
-        public float damageDelay = 0.1f; // NEW: delay after explosion
+        public float damageDelay = 0.1f;
         public float radius = 2f;
         public int damage = 20;
         public GameObject explosionPrefab;
