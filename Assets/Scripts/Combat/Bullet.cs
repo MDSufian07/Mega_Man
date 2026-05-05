@@ -49,7 +49,13 @@ namespace Combat
 
             bool canDamageThisTarget = !isPlayerBullet || collision.CompareTag(enemyTag);
             IDamageable damageable = collision.GetComponent<IDamageable>();
-
+            
+            // Fallback: check parent if not found on child
+            if (damageable == null)
+            {
+                damageable = collision.GetComponentInParent<IDamageable>();
+            }
+            
             if (canDamageThisTarget && damageable != null)
             {
                 damageable.TakeDamage(damage);
