@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Combat;
 
 namespace Combat.Boss
 {
@@ -19,41 +20,71 @@ namespace Combat.Boss
         public GameObject blobPrefab;
         public Transform[] rightPoints; // 19 points on the Right Base
         public Transform[] leftPoints;  // 19 points on the Left Base
-        public GameObject eyeObject;    // Eye child object (attach to the active base)
+        public GameObject rightEyeObject; // Eye child object (Right base)
+        public GameObject leftEyeObject;  // Eye child object (Left base)
 
         [Header("Settings")]
         public float blobSpeed = 18f;
         public float timeBetweenParts = 0.12f;
         public float eyeOpenTime = 2.0f;
+        public float introDelay = 2.0f;
+        public float eyeJitterRadius = 0.5f;
+
+        [Header("Attack")]
+        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private Transform playerTarget;
+        [SerializeField] private string playerTag = "Player";
 
         private bool bossIsAtRight = true;
+        private Vector3 rightEyeBaseLocalPos;
+        private Vector3 leftEyeBaseLocalPos;
 
         void Start()
         {
             // Initial State: Right base is full, Left base is empty
             rightBaseSR.sprite = disassemblySprites[0];
             leftBaseSR.sprite = null;
-            eyeObject.SetActive(false);
+
+            if (rightEyeObject != null)
+            {
+                rightEyeBaseLocalPos = rightEyeObject.transform.localPosition;
+                rightEyeObject.SetActive(false);
+            }
+
+            if (leftEyeObject != null)
+            {
+                leftEyeBaseLocalPos = leftEyeObject.transform.localPosition;
+                leftEyeObject.SetActive(false);
+            }
 
             StartCoroutine(BossMasterLoop());
         }
 
         IEnumerator BossMasterLoop()
         {
+            yield return new WaitForSeconds(introDelay);
+
             while (true)
             {
                 // PHASE 1: Attack (Show eye on the current active base)
-                GameObject activeEye = bossIsAtRight ? eyeObject : null; // Logic to handle eye position
-                if(bossIsAtRight) {
-                    eyeObject.transform.SetParent(rightBaseSR.transform, false);
-                    eyeObject.SetActive(true);
-                } else {
-                    eyeObject.transform.SetParent(leftBaseSR.transform, false);
-                    eyeObject.SetActive(true);
+                GameObject activeEye = bossIsAtRight ? rightEyeObject : leftEyeObject;
+                ShowEye(activeEye, bossIsAtRight);
+
+                float halfOpenTime = Mathf.Max(0f, eyeOpenTime * 0.5f);
+                float remainingOpenTime = Mathf.Max(0f, eyeOpenTime - halfOpenTime);
+
+                if (halfOpenTime > 0f)
+                {
+                    yield return new WaitForSeconds(halfOpenTime);
+                    FireEyeBullet(activeEye);
                 }
 
-                yield return new WaitForSeconds(eyeOpenTime);
-                eyeObject.SetActive(false);
+                if (remainingOpenTime > 0f)
+                {
+                    yield return new WaitForSeconds(remainingOpenTime);
+                }
+
+                HideEyes();
 
                 // PHASE 2: Sync Move
                 if (bossIsAtRight)
@@ -63,6 +94,72 @@ namespace Combat.Boss
 
                 bossIsAtRight = !bossIsAtRight;
                 yield return new WaitForSeconds(1f);
+            }
+        }
+
+        void ShowEye(GameObject eyeObject, bool isRightSide)
+        {
+            if (eyeObject == null)
+            {
+                return;
+            }
+
+            if (isRightSide)
+            {
+                eyeObject.transform.SetParent(rightBaseSR.transform, false);
+                eyeObject.transform.localPosition = rightEyeBaseLocalPos + (Vector3)(Random.insideUnitCircle * eyeJitterRadius);
+            }
+            else
+            {
+                eyeObject.transform.SetParent(leftBaseSR.transform, false);
+                eyeObject.transform.localPosition = leftEyeBaseLocalPos + (Vector3)(Random.insideUnitCircle * eyeJitterRadius);
+            }
+
+            eyeObject.SetActive(true);
+        }
+
+        void HideEyes()
+        {
+            if (rightEyeObject != null)
+            {
+                rightEyeObject.SetActive(false);
+            }
+
+            if (leftEyeObject != null)
+            {
+                leftEyeObject.SetActive(false);
+            }
+        }
+
+        void FireEyeBullet(GameObject eyeObject)
+        {
+            if (eyeObject == null || bulletPrefab == null)
+            {
+                return;
+            }
+
+            Transform target = playerTarget;
+            if (target == null)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+                if (player != null)
+                {
+                    target = player.transform;
+                }
+            }
+
+            if (target == null)
+            {
+                return;
+            }
+
+            Vector2 direction = (target.position - eyeObject.transform.position).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, eyeObject.transform.position, Quaternion.identity);
+
+            Bullet bulletComponent = bullet.GetComponent<Bullet>();
+            if (bulletComponent != null)
+            {
+                bulletComponent.SetDirection(direction);
             }
         }
 
