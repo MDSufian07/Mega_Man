@@ -38,6 +38,7 @@ namespace Combat.Boss
         private bool bossIsAtRight = true;
         private Vector3 rightEyeBaseLocalPos;
         private Vector3 leftEyeBaseLocalPos;
+        private bool hasPlayedFirstEyeOpen;
 
         void Start()
         {
@@ -62,13 +63,21 @@ namespace Combat.Boss
 
         IEnumerator BossMasterLoop()
         {
-            yield return new WaitForSeconds(introDelay);
+            if (introDelay > 0f)
+            {
+                GameObject introEye = bossIsAtRight ? rightEyeObject : leftEyeObject;
+                ShowEye(introEye, bossIsAtRight, false);
+                yield return new WaitForSeconds(introDelay);
+                HideEyes();
+            }
 
             while (true)
             {
                 // PHASE 1: Attack (Show eye on the current active base)
                 GameObject activeEye = bossIsAtRight ? rightEyeObject : leftEyeObject;
-                ShowEye(activeEye, bossIsAtRight);
+                bool applyJitter = hasPlayedFirstEyeOpen;
+                ShowEye(activeEye, bossIsAtRight, applyJitter);
+                hasPlayedFirstEyeOpen = true;
 
                 float halfOpenTime = Mathf.Max(0f, eyeOpenTime * 0.5f);
                 float remainingOpenTime = Mathf.Max(0f, eyeOpenTime - halfOpenTime);
@@ -97,22 +106,24 @@ namespace Combat.Boss
             }
         }
 
-        void ShowEye(GameObject eyeObject, bool isRightSide)
+        void ShowEye(GameObject eyeObject, bool isRightSide, bool applyJitter)
         {
             if (eyeObject == null)
             {
                 return;
             }
 
+            Vector3 jitterOffset = applyJitter ? (Vector3)(Random.insideUnitCircle * eyeJitterRadius) : Vector3.zero;
+
             if (isRightSide)
             {
                 eyeObject.transform.SetParent(rightBaseSR.transform, false);
-                eyeObject.transform.localPosition = rightEyeBaseLocalPos + (Vector3)(Random.insideUnitCircle * eyeJitterRadius);
+                eyeObject.transform.localPosition = rightEyeBaseLocalPos + jitterOffset;
             }
             else
             {
                 eyeObject.transform.SetParent(leftBaseSR.transform, false);
-                eyeObject.transform.localPosition = leftEyeBaseLocalPos + (Vector3)(Random.insideUnitCircle * eyeJitterRadius);
+                eyeObject.transform.localPosition = leftEyeBaseLocalPos + jitterOffset;
             }
 
             eyeObject.SetActive(true);
@@ -155,6 +166,14 @@ namespace Combat.Boss
 
             Vector2 direction = (target.position - eyeObject.transform.position).normalized;
             GameObject bullet = Instantiate(bulletPrefab, eyeObject.transform.position, Quaternion.identity);
+
+            YellowDevilBullet yellowDevilBullet = bullet.GetComponent<YellowDevilBullet>();
+            if (yellowDevilBullet != null)
+            {
+                yellowDevilBullet.SetDirection(direction);
+                yellowDevilBullet.SetPlayerTag(playerTag);
+                return;
+            }
 
             Bullet bulletComponent = bullet.GetComponent<Bullet>();
             if (bulletComponent != null)
