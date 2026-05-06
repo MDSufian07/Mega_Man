@@ -1382,12 +1382,13 @@ MonoBehaviour:
   leftEyeObject: {fileID: 5267827884363106540}
   blobSpeed: 8
   timeBetweenParts: 0.5
-  eyeOpenTime: 1.5
+  eyeOpenTime: 1.2
   introDelay: 2
   eyeJitterRadius: 0.1
   bulletPrefab: {fileID: 8579172903383117311, guid: 02cd3f9ecd765214b9a71a5157cb3500, type: 3}
   playerTarget: {fileID: 0}
   playerTag: Player
+  deathEffectPrefab: {fileID: 0}
 --- !u!114 &5196118779953733347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1696,17 +1697,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3205679838521950032}
     m_Modifications:
+    - target: {fileID: 5850324735844871624, guid: 5d5be49fe84369e41b941c0a157cbcd1, type: 3}
+      propertyPath: targetHealth
+      value: 
+      objectReference: {fileID: 5196118779953733347}
     - target: {fileID: 7238610540741955303, guid: 5d5be49fe84369e41b941c0a157cbcd1, type: 3}
       propertyPath: m_Name
       value: Eye
       objectReference: {fileID: 0}
     - target: {fileID: 8317349522915808698, guid: 5d5be49fe84369e41b941c0a157cbcd1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.27309
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317349522915808698, guid: 5d5be49fe84369e41b941c0a157cbcd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15955248
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317349522915808698, guid: 5d5be49fe84369e41b941c0a157cbcd1, type: 3}
       propertyPath: m_LocalPosition.z

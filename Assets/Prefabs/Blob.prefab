@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6763993936141732727}
   - component: {fileID: 5955091264213743727}
   - component: {fileID: -2749065429420867603}
-  m_Layer: 0
+  - component: {fileID: -7375576486519378781}
+  m_Layer: 15
   m_Name: Blob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,3 +177,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Boss.BlobDamage
   damage: 1
   playerTag: Player
+--- !u!114 &-7375576486519378781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3156508503952434575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4711d926b2d444f380211f2ecf24d06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Combat.Boss.BlobMover
+  moveSpeed: 18
+  startDelay: 0.3
+  arriveDelay: 0.3
+  arriveDistance: 0.05
+  initialState: BlobInitial
+  runState: BlobRun
+  endState: BlobEnd

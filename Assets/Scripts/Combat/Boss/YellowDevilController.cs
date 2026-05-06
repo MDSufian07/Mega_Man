@@ -29,11 +29,19 @@ namespace Combat.Boss
         public float eyeOpenTime = 2.0f;
         public float introDelay = 2.0f;
         public float eyeJitterRadius = 0.5f;
+        [SerializeField] private float blobStartDelay = 0.3f;
+        [SerializeField] private float blobArriveDelay = 0.3f;
+        [SerializeField] private string blobInitialState = "BlobInitial";
+        [SerializeField] private string blobRunState = "BlobRun";
+        [SerializeField] private string blobEndState = "BlobEnd";
 
         [Header("Attack")]
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform playerTarget;
         [SerializeField] private string playerTag = "Player";
+        
+        [Header("Death Effects")]
+        [SerializeField] private GameObject deathEffectPrefab;
 
         private bool bossIsAtRight = true;
         private Vector3 rightEyeBaseLocalPos;
@@ -200,30 +208,25 @@ namespace Combat.Boss
 
                 // 2. Spawn blob at the exact point index
                 GameObject blob = Instantiate(blobPrefab, sourcePoints[i].position, Quaternion.identity);
-            
-                // 3. Move blob and update target base when it arrives
-                StartCoroutine(MoveAndRebuild(blob, targetPoints[i].position, targetSR, i));
+
+                BlobMover blobMover = blob.GetComponent<BlobMover>();
+                if (blobMover != null)
+                {
+                    int partIndex = i;
+                    blobMover.Configure(blobSpeed, blobStartDelay, blobArriveDelay);
+                    blobMover.SetAnimationStates(blobInitialState, blobRunState, blobEndState);
+                    blobMover.BeginMove(targetPoints[i].position, () =>
+                    {
+                        if (partIndex < reassemblySprites.Length)
+                        {
+                            targetSR.sprite = reassemblySprites[partIndex];
+                        }
+                    });
+                }
 
                 // Wait before sending the next part
                 yield return new WaitForSeconds(timeBetweenParts);
             }
-        }
-
-        IEnumerator MoveAndRebuild(GameObject blob, Vector3 destination, SpriteRenderer targetSR, int partIndex)
-        {
-            while (Vector3.Distance(blob.transform.position, destination) > 0.05f)
-            {
-                blob.transform.position = Vector3.MoveTowards(blob.transform.position, destination, blobSpeed * Time.deltaTime);
-                yield return null;
-            }
-
-            // 4. Blob arrived: Destroy blob and update target sprite
-            Destroy(blob);
-        
-            // Visual: Part appears on the target body
-            // index 0 of reassemblySprites is '1 part added'
-            if (partIndex < reassemblySprites.Length)
-                targetSR.sprite = reassemblySprites[partIndex];
         }
     }
 }

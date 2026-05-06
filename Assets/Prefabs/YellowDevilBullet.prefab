@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8179968135664627508}
   - component: {fileID: 1873965752276314696}
   - component: {fileID: -6964162046224506351}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: YellowDevilBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
