@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9adf11eac3594b79950e68ed67d39143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Boss.YellowDevilBullet
-  speed: 15
+  speed: 20
   lifeTime: 2
   damage: 1
   playerTag: Player

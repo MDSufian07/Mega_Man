@@ -6,9 +6,9 @@ namespace Combat.Boss
     public class BlobMover : MonoBehaviour
     {
         [Header("Movement")]
-        [SerializeField] private float moveSpeed = 18f;
-        [SerializeField] private float startDelay = 0.3f;
-        [SerializeField] private float arriveDelay = 0.3f;
+        private float moveSpeed;
+        private float startDelay;
+        private float arriveDelay;
 
         [Header("Animation State Names")]
         [SerializeField] private string initialState = "BlobInitial";
@@ -30,13 +30,6 @@ namespace Combat.Boss
             moveSpeed = speed;
             startDelay = startDelaySeconds;
             arriveDelay = arriveDelaySeconds;
-        }
-
-        public void SetAnimationStates(string initial, string run, string end)
-        {
-            initialState = initial;
-            runState = run;
-            endState = end;
         }
 
         public void BeginMove(Vector3 targetPosition, System.Action arrivedCallback)

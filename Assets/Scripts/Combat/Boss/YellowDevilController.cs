@@ -31,9 +31,6 @@ namespace Combat.Boss
         public float eyeJitterRadius = 0.5f;
         [SerializeField] private float blobStartDelay = 0.3f;
         [SerializeField] private float blobArriveDelay = 0.3f;
-        [SerializeField] private string blobInitialState = "BlobInitial";
-        [SerializeField] private string blobRunState = "BlobRun";
-        [SerializeField] private string blobEndState = "BlobEnd";
 
         [Header("Attack")]
         [SerializeField] private GameObject bulletPrefab;
@@ -214,7 +211,6 @@ namespace Combat.Boss
                 {
                     int partIndex = i;
                     blobMover.Configure(blobSpeed, blobStartDelay, blobArriveDelay);
-                    blobMover.SetAnimationStates(blobInitialState, blobRunState, blobEndState);
                     blobMover.BeginMove(targetPoints[i].position, () =>
                     {
                         if (partIndex < reassemblySprites.Length)
