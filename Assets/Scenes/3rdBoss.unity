@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthUIController
   playerHealth: {fileID: 1894981960}
   bossHealth: {fileID: 1491866102}
+  panelShowDelay: 1.5
 --- !u!1 &180954094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1602,10 @@ PrefabInstance:
       value: YellowDevil_Manager
       objectReference: {fileID: 0}
     - target: {fileID: 8655801160100609381, guid: e49b689394167934eb0c76bacb5db1e0, type: 3}
+      propertyPath: eyeOpenTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655801160100609381, guid: e49b689394167934eb0c76bacb5db1e0, type: 3}
       propertyPath: playerTarget
       value: 
       objectReference: {fileID: 1183786233}
@@ -1659,7 +1664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3609828429846668100, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: fireCooldown
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4408949646964084938, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: m_LocalPosition.x

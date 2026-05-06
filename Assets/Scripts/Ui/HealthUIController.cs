@@ -13,6 +13,8 @@ public class HealthUIController : MonoBehaviour
     private VisualElement bossBarFill;
     private VisualElement gameOverPanel;
     private VisualElement winPanel;
+    
+    [SerializeField] private float panelShowDelay = 1.5f;
 
     private int playerMax;
     private int bossMax;
@@ -65,12 +67,12 @@ public class HealthUIController : MonoBehaviour
 
     void ShowGameOver()
     {
-        Invoke(nameof(DisplayGameOverPanel), 1f);
+        Invoke(nameof(DisplayGameOverPanel), panelShowDelay);
     }
 
     void ShowWin()
     {
-        Invoke(nameof(DisplayWinPanel), 1f);
+        Invoke(nameof(DisplayWinPanel), panelShowDelay);
     }
 
     void DisplayGameOverPanel()
@@ -103,3 +105,4 @@ public class HealthUIController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+
