@@ -8,15 +8,12 @@ namespace Boss.StoneBoss
     public int damage = 10;
 
     [Header("Force Settings")]
-    public float extraForce = 2f;
-    public float upwardForce = 5f;
+    [SerializeField] private float extraForce = 2f;
+    [SerializeField] private float upwardForce = 5f;
 
     [Header("Lifetime")]
-    public float lifeTime = 3f;
-
-    [Header("Effect")]
-    public GameObject effectPrefab;
-
+    [SerializeField] private float lifeTime = 3f;
+    
         private Rigidbody2D _rb;
 
         void Start()
@@ -48,10 +45,6 @@ namespace Boss.StoneBoss
                 if (dmg != null)
                     dmg.TakeDamage(damage);
             }
-
-            // Spawn effect before destroying
-            if (effectPrefab != null)
-                Instantiate(effectPrefab, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }

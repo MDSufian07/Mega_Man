@@ -1,108 +1,111 @@
-using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 using Combat;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
-public class HealthUIController : MonoBehaviour
+namespace Ui
 {
-    [Header("References")]
-    [SerializeField] private Health playerHealth;
-    [SerializeField] private Health bossHealth;
+    public class HealthUIController : MonoBehaviour
+    {
+        [Header("References")]
+        [SerializeField] private Health playerHealth;
+        [SerializeField] private Health bossHealth;
 
-    private VisualElement playerBarFill;
-    private VisualElement bossBarFill;
-    private VisualElement gameOverPanel;
-    private VisualElement winPanel;
+        private VisualElement _playerBarFill;
+        private VisualElement _bossBarFill;
+        private VisualElement _gameOverPanel;
+        private VisualElement _winPanel;
     
-    [SerializeField] private float panelShowDelay = 1.5f;
+        [SerializeField] private float panelShowDelay = 1.5f;
 
-    private int playerMax;
-    private int bossMax;
+        private int _playerMax;
+        private int _bossMax;
 
-    void Start()
-    {
-        var root = GetComponent<UIDocument>().rootVisualElement;
+        void Start()
+        {
+            var root = GetComponent<UIDocument>().rootVisualElement;
 
-        playerBarFill = root.Q<VisualElement>("player-bar-fill");
-        bossBarFill = root.Q<VisualElement>("boss-bar-fill");
-        gameOverPanel = root.Q<VisualElement>("game-over-panel");
-        winPanel = root.Q<VisualElement>("win-panel");
+            _playerBarFill = root.Q<VisualElement>("player-bar-fill");
+            _bossBarFill = root.Q<VisualElement>("boss-bar-fill");
+            _gameOverPanel = root.Q<VisualElement>("game-over-panel");
+            _winPanel = root.Q<VisualElement>("win-panel");
 
-        playerMax = playerHealthMax();
-        bossMax = bossHealthMax();
+            _playerMax = PlayerHealthMax();
+            _bossMax = BossHealthMax();
 
-        playerHealth.OnHealthChanged += UpdatePlayerBar;
-        playerHealth.OnDeath += ShowGameOver;
+            playerHealth.OnHealthChanged += UpdatePlayerBar;
+            playerHealth.OnDeath += ShowGameOver;
         
-        bossHealth.OnHealthChanged += UpdateBossBar;
-        bossHealth.OnDeath += ShowWin;
+            bossHealth.OnHealthChanged += UpdateBossBar;
+            bossHealth.OnDeath += ShowWin;
 
-        UpdatePlayerBar(playerMax);
-        UpdateBossBar(bossMax);
+            UpdatePlayerBar(_playerMax);
+            UpdateBossBar(_bossMax);
 
-        SetupButtons();
-    }
+            SetupButtons();
+        }
 
-    int playerHealthMax() => GetMaxHealth(playerHealth);
-    int bossHealthMax() => GetMaxHealth(bossHealth);
+        private int PlayerHealthMax() => GetMaxHealth(playerHealth);
+        private int BossHealthMax() => GetMaxHealth(bossHealth);
 
-    int GetMaxHealth(Health h)
-    {
-        return typeof(Health)
-            .GetField("maxHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-            .GetValue(h) as int? ?? 100;
-    }
+        int GetMaxHealth(Health h)
+        {
+            return typeof(Health)
+                .GetField("maxHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                ?.GetValue(h) as int? ?? 100;
+        }
 
-    void UpdatePlayerBar(int current)
-    {
-        float percent = (float)current / playerMax;
-        playerBarFill.style.width = Length.Percent(percent * 100);
-    }
+        void UpdatePlayerBar(int current)
+        {
+            float percent = (float)current / _playerMax;
+            _playerBarFill.style.width = Length.Percent(percent * 100);
+        }
 
-    void UpdateBossBar(int current)
-    {
-        float percent = (float)current / bossMax;
-        bossBarFill.style.width = Length.Percent(percent * 100);
-    }
+        void UpdateBossBar(int current)
+        {
+            float percent = (float)current / _bossMax;
+            _bossBarFill.style.width = Length.Percent(percent * 100);
+        }
 
-    void ShowGameOver()
-    {
-        Invoke(nameof(DisplayGameOverPanel), panelShowDelay);
-    }
+        void ShowGameOver()
+        {
+            Invoke(nameof(DisplayGameOverPanel), panelShowDelay);
+        }
 
-    void ShowWin()
-    {
-        Invoke(nameof(DisplayWinPanel), panelShowDelay);
-    }
+        void ShowWin()
+        {
+            Invoke(nameof(DisplayWinPanel), panelShowDelay);
+        }
 
-    void DisplayGameOverPanel()
-    {
-        gameOverPanel.style.display = DisplayStyle.Flex;
-        Time.timeScale = 0f;
-    }
+        void DisplayGameOverPanel()
+        {
+            _gameOverPanel.style.display = DisplayStyle.Flex;
+            Time.timeScale = 0f;
+        }
 
-    void DisplayWinPanel()
-    {
-        winPanel.style.display = DisplayStyle.Flex;
-        Time.timeScale = 0f;
-    }
+        void DisplayWinPanel()
+        {
+            _winPanel.style.display = DisplayStyle.Flex;
+            Time.timeScale = 0f;
+        }
 
-    void SetupButtons()
-    {
-        Button retryButton = gameOverPanel.Q<Button>("retry-button");
-        Button exitButton = winPanel.Q<Button>("exit-button");
+        void SetupButtons()
+        {
+            Button retryButton = _gameOverPanel.Q<Button>("retry-button");
+            Button exitButton = _winPanel.Q<Button>("exit-button");
 
-        if (retryButton != null)
-            retryButton.clicked += Retry;
+            if (retryButton != null)
+                retryButton.clicked += Retry;
 
-        if (exitButton != null)
-            exitButton.clicked += Retry;
-    }
+            if (exitButton != null)
+                exitButton.clicked += Retry;
+        }
 
-    void Retry()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        void Retry()
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
 

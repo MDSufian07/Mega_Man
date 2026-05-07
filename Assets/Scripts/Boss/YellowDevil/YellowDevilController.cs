@@ -8,28 +8,29 @@ namespace Boss.YellowDevil
     public class YellowDevilController : MonoBehaviour
     {
         [FormerlySerializedAs("rightBaseSR")] [Header("Sprite Renderers")]
-        public SpriteRenderer rightBaseSr; // Renderer for the Right Side
-        [FormerlySerializedAs("leftBaseSR")] public SpriteRenderer leftBaseSr;  // Renderer for the Left Side
+        [SerializeField] private SpriteRenderer rightBaseSr; 
+        [FormerlySerializedAs("leftBaseSR")] 
+        [SerializeField] private SpriteRenderer leftBaseSr;  // Renderer for the Left Side
 
         [Header("Sprite Arrays")]
         // Order: Full Body -> 1 part removed -> 2 parts removed ... -> Empty
-        public Sprite[] disassemblySprites; 
+        [SerializeField] private Sprite[] disassemblySprites; 
         // Order: Empty -> 1 part added -> 2 parts added ... -> Full Body
-        public Sprite[] reassemblySprites; 
+        [SerializeField] private Sprite[] reassemblySprites; 
 
         [Header("Anchors & Prefabs")]
-        public GameObject blobPrefab;
-        public Transform[] rightPoints; // 19 points on the Right Base
-        public Transform[] leftPoints;  // 19 points on the Left Base
-        public GameObject rightEyeObject; // Eye child object (Right base)
-        public GameObject leftEyeObject;  // Eye child object (Left base)
+        [SerializeField] GameObject blobPrefab;
+        [SerializeField] Transform[] rightPoints; // 19 points on the Right Base
+        [SerializeField] Transform[] leftPoints;  // 19 points on the Left Base
+        [SerializeField] GameObject rightEyeObject; // Eye child object (Right base)
+        [SerializeField] GameObject leftEyeObject;  // Eye child object (Left base)
 
         [Header("Settings")]
-        public float blobSpeed = 18f;
-        public float timeBetweenParts = 0.12f;
-        public float eyeOpenTime = 2.0f;
-        public float introDelay = 2.0f;
-        public float eyeJitterRadius = 0.5f;
+        [SerializeField] float blobSpeed = 18f;
+        [SerializeField] float timeBetweenParts = 0.12f;
+        [SerializeField] float eyeOpenTime = 2.0f;
+        [SerializeField] float introDelay = 2.0f;
+        [SerializeField] float eyeJitterRadius = 0.5f;
         [SerializeField] private float blobStartDelay = 0.3f;
         [SerializeField] private float blobArriveDelay = 0.3f;
 

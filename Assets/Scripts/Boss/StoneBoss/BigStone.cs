@@ -5,11 +5,11 @@ namespace Boss.StoneBoss
 {
     public class BigStone : MonoBehaviour
     {
-    public int damage = 20;
-    public GameObject smallStonePrefab;
-    public GameObject effectPrefab;
-    public int splitCount = 4;
-    public LayerMask destructibleLayers;
+    [SerializeField] private int damage = 20;
+    [SerializeField] private GameObject smallStonePrefab;
+    [SerializeField] private GameObject effectPrefab;
+    [SerializeField]  private int splitCount = 4;
+    [SerializeField] private LayerMask destructibleLayers;
 
     private Rigidbody2D _rb;
     private bool _hasAlreadySplit;

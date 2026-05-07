@@ -6,13 +6,13 @@ namespace Boss.BombBoss
 {
     public class Bomb2D : MonoBehaviour
     {
-        public float explodeDelay = 2f;
-        public float damageDelay = 0.1f;
-        public float radius = 2f;
-        public int damage = 20;
-        public GameObject explosionPrefab;
-        public SpriteRenderer spriteRenderer;
-        public Collider2D col;
+        [SerializeField] private float explodeDelay = 2f; 
+        [SerializeField] private float damageDelay = 0.1f;
+        [SerializeField] private float radius = 2f;
+        [SerializeField] private int damage = 20;
+        [SerializeField] private GameObject explosionPrefab;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Collider2D col;
 
         void Start()
         {

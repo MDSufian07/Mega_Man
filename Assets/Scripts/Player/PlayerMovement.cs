@@ -8,6 +8,7 @@ namespace Player
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
         private static readonly int IsJumping = Animator.StringToHash("isJumping");
         private static readonly int IsFiring = Animator.StringToHash("isFiring");
+        
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float jumpForce = 10f;
 
@@ -36,6 +37,16 @@ namespace Player
 
         void Update()
         {
+            HandleMovementState();
+        }
+
+        void FixedUpdate()
+        {
+            _rb.linearVelocity = new Vector2(_input.MoveInput * moveSpeed, _rb.linearVelocity.y);
+        }
+
+        private void HandleMovementState()
+        {
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
 
             if (_input.JumpPressed && _isGrounded)
@@ -51,11 +62,6 @@ namespace Player
                 transform.localScale = new Vector3(1, 1, 1);
             else if (_input.MoveInput < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-        void FixedUpdate()
-        {
-            _rb.linearVelocity = new Vector2(_input.MoveInput * moveSpeed, _rb.linearVelocity.y);
         }
     }
 }

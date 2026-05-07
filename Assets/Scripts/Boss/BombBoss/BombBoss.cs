@@ -10,30 +10,30 @@ namespace Boss.BombBoss
         private static readonly int Jump = Animator.StringToHash("Jump");
 
         [Header("References")]
-        public Transform player;
-        public Transform throwPoint;
-        public GameObject bombPrefab;
+        [SerializeField] private Transform player;
+        [SerializeField] private Transform throwPoint;
+        [SerializeField] private GameObject bombPrefab;
 
         [Header("Ground Check")]
-        public Transform groundCheck;
-        public float groundCheckRadius = 0.2f;
-        public LayerMask groundLayer;
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private float groundCheckRadius = 0.2f;
+        [SerializeField] private LayerMask groundLayer;
 
         [Header("Jump Settings")]
-        public float minJumpForce = 5f;
-        public float maxJumpForce = 10f;
-        public float minMoveForce = 2f;
-        public float maxMoveForce = 5f;
+        [SerializeField] private float minJumpForce = 5f;
+        [SerializeField] private float maxJumpForce = 10f;
+        [SerializeField] private float minMoveForce = 2f;
+        [SerializeField] private float maxMoveForce = 5f;
 
         [Header("Throw Settings")]
-        public float minThrowForce = 20f;
-        public float maxThrowForce = 30f;
-        public float minAngle = 30f;
-        public float maxAngle = 70f;
+        [SerializeField] private float minThrowForce = 20f;
+        [SerializeField] private float maxThrowForce = 30f;
+        [SerializeField] private float minAngle = 30f;
+        [SerializeField] private float maxAngle = 70f;
 
         [Header("Timing")]
-        public float introDuration = 2f;
-        public float idleDelay = 1f;
+        [SerializeField] private float introDuration = 2f;
+        [SerializeField] private float idleDelay = 1f;
 
         private Rigidbody2D _rb;
         private Animator _animator;
@@ -155,7 +155,7 @@ namespace Boss.BombBoss
             float jumpForce = Random.Range(minJumpForce, maxJumpForce);
             float moveForce = Random.Range(minMoveForce, maxMoveForce);
 
-            float dir = 1f;
+            float dir;
 
             if (player != null)
             {

@@ -11,33 +11,33 @@ namespace Boss.StoneBoss
         private static readonly int Fall = Animator.StringToHash("Fall");
 
         [Header("References")]
-        public Transform player;
-        public Transform throwPoint;
-        public GameObject stonePrefab;
+        [SerializeField] private Transform player;
+        [SerializeField] private Transform throwPoint;
+        [SerializeField] private GameObject stonePrefab;
 
         [Header("Ground Check")]
-        public Transform groundCheck;
-        public float groundRadius = 0.2f;
-        public LayerMask groundLayer;
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private float groundRadius = 0.2f;
+        [SerializeField] private LayerMask groundLayer;
 
         [Header("Jump Settings")]
-        public float jumpForce = 8f;
-        public float maxMoveForce = 4f;
-        public float minMoveForce = -1f;
+        [SerializeField] private float jumpForce = 8f;
+        [SerializeField] private float maxMoveForce = 4f;
+        [SerializeField] private float minMoveForce = -1f;
         
 
         [Header("Throw Settings")]
-        public float throwForce = 15f;
-        public float throwUpForce = 5f;
+        [SerializeField] private float throwForce = 15f;
+        [SerializeField] private float throwUpForce = 5f;
 
         [Header("Timing")]
-        public float introDuration = 2f;
-        public float idleDelay = 1f;
+        [SerializeField] private float introDuration = 2f;
+        [SerializeField] private float idleDelay = 1f;
 
         [Header("Environment Shake")]
-        public Transform environmentToShake;
-        public float shakeDuration = 1f;
-        public float shakeAmount = 0.2f;
+        [SerializeField] private Transform environmentToShake;
+        [SerializeField] private float shakeDuration = 1f;
+        [SerializeField] private float shakeAmount = 0.2f;
 
         private Rigidbody2D _rb;
         private Animator _anim;
@@ -166,7 +166,8 @@ namespace Boss.StoneBoss
             _anim.SetTrigger(Jump);
 
             yield return new WaitForSeconds(0.2f);
-
+            
+            if(player == null) yield break;
             float dir = (player.position.x > transform.position.x) ? 1f : -1f;
             
             // Random moveForce between -1 and 3
@@ -231,13 +232,16 @@ namespace Boss.StoneBoss
         IEnumerator DisablePlayer()
         {
             GameObject p = GameObject.FindGameObjectWithTag("Player");
-
+            
+            if (p == null) yield break;
             var move = p.GetComponent<PlayerMovement>();
             var shoot = p.GetComponent<PlayerShooting>();
             var playerAnim = p.GetComponent<Animator>();
 
+            if (move == null) yield break;
+
             // Only disable movement and shooting if player is grounded
-            if (move != null && move.IsGrounded)
+            if (move.IsGrounded)
             {
                 move.enabled = false;
                 if (shoot != null) shoot.enabled = false;
@@ -250,6 +254,8 @@ namespace Boss.StoneBoss
 
                 // Disable player only for the duration of the shake
                 yield return new WaitForSeconds(shakeDuration);
+
+                if (move == null) yield break;
 
                 move.enabled = true;
                 if (shoot != null) shoot.enabled = true;
@@ -268,3 +274,4 @@ namespace Boss.StoneBoss
         }
     }
 }
+
