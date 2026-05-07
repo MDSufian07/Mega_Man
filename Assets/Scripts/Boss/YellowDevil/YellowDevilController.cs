@@ -1,14 +1,15 @@
 using System.Collections;
-using UnityEngine;
 using Combat;
+using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Combat.Boss
+namespace Boss.YellowDevil
 {
     public class YellowDevilController : MonoBehaviour
     {
-        [Header("Sprite Renderers")]
-        public SpriteRenderer rightBaseSR; // Renderer for the Right Side
-        public SpriteRenderer leftBaseSR;  // Renderer for the Left Side
+        [FormerlySerializedAs("rightBaseSR")] [Header("Sprite Renderers")]
+        public SpriteRenderer rightBaseSr; // Renderer for the Right Side
+        [FormerlySerializedAs("leftBaseSR")] public SpriteRenderer leftBaseSr;  // Renderer for the Left Side
 
         [Header("Sprite Arrays")]
         // Order: Full Body -> 1 part removed -> 2 parts removed ... -> Empty
@@ -40,26 +41,26 @@ namespace Combat.Boss
         [Header("Death Effects")]
         [SerializeField] private GameObject deathEffectPrefab;
 
-        private bool bossIsAtRight = true;
-        private Vector3 rightEyeBaseLocalPos;
-        private Vector3 leftEyeBaseLocalPos;
-        private bool hasPlayedFirstEyeOpen;
+        private bool _bossIsAtRight = true;
+        private Vector3 _rightEyeBaseLocalPos;
+        private Vector3 _leftEyeBaseLocalPos;
+        private bool _hasPlayedFirstEyeOpen;
 
         void Start()
         {
             // Initial State: Right base is full, Left base is empty
-            rightBaseSR.sprite = disassemblySprites[0];
-            leftBaseSR.sprite = null;
+            rightBaseSr.sprite = disassemblySprites[0];
+            leftBaseSr.sprite = null;
 
             if (rightEyeObject != null)
             {
-                rightEyeBaseLocalPos = rightEyeObject.transform.localPosition;
+                _rightEyeBaseLocalPos = rightEyeObject.transform.localPosition;
                 rightEyeObject.SetActive(false);
             }
 
             if (leftEyeObject != null)
             {
-                leftEyeBaseLocalPos = leftEyeObject.transform.localPosition;
+                _leftEyeBaseLocalPos = leftEyeObject.transform.localPosition;
                 leftEyeObject.SetActive(false);
             }
 
@@ -70,8 +71,8 @@ namespace Combat.Boss
         {
             if (introDelay > 0f)
             {
-                GameObject introEye = bossIsAtRight ? rightEyeObject : leftEyeObject;
-                ShowEye(introEye, bossIsAtRight, false);
+                GameObject introEye = _bossIsAtRight ? rightEyeObject : leftEyeObject;
+                ShowEye(introEye, _bossIsAtRight, false);
                 yield return new WaitForSeconds(introDelay);
                 HideEyes();
             }
@@ -79,10 +80,10 @@ namespace Combat.Boss
             while (true)
             {
                 // PHASE 1: Attack (Show eye on the current active base)
-                GameObject activeEye = bossIsAtRight ? rightEyeObject : leftEyeObject;
-                bool applyJitter = hasPlayedFirstEyeOpen;
-                ShowEye(activeEye, bossIsAtRight, applyJitter);
-                hasPlayedFirstEyeOpen = true;
+                GameObject activeEye = _bossIsAtRight ? rightEyeObject : leftEyeObject;
+                bool applyJitter = _hasPlayedFirstEyeOpen;
+                ShowEye(activeEye, _bossIsAtRight, applyJitter);
+                _hasPlayedFirstEyeOpen = true;
 
                 float halfOpenTime = Mathf.Max(0f, eyeOpenTime * 0.5f);
                 float remainingOpenTime = Mathf.Max(0f, eyeOpenTime - halfOpenTime);
@@ -101,12 +102,12 @@ namespace Combat.Boss
                 HideEyes();
 
                 // PHASE 2: Sync Move
-                if (bossIsAtRight)
-                    yield return StartCoroutine(MoveSideToSide(rightBaseSR, leftBaseSR, rightPoints, leftPoints, true));
+                if (_bossIsAtRight)
+                    yield return StartCoroutine(MoveSideToSide(rightBaseSr, leftBaseSr, rightPoints, leftPoints, true));
                 else
-                    yield return StartCoroutine(MoveSideToSide(leftBaseSR, rightBaseSR, leftPoints, rightPoints, false));
+                    yield return StartCoroutine(MoveSideToSide(leftBaseSr, rightBaseSr, leftPoints, rightPoints, false));
 
-                bossIsAtRight = !bossIsAtRight;
+                _bossIsAtRight = !_bossIsAtRight;
                 yield return new WaitForSeconds(1f);
             }
         }
@@ -118,17 +119,17 @@ namespace Combat.Boss
                 return;
             }
 
-            Vector3 jitterOffset = applyJitter ? (Vector3)(Random.insideUnitCircle * eyeJitterRadius) : Vector3.zero;
+            Vector3 jitterOffset = applyJitter ? Random.insideUnitCircle * eyeJitterRadius : Vector3.zero;
 
             if (isRightSide)
             {
-                eyeObject.transform.SetParent(rightBaseSR.transform, false);
-                eyeObject.transform.localPosition = rightEyeBaseLocalPos + jitterOffset;
+                eyeObject.transform.SetParent(rightBaseSr.transform, false);
+                eyeObject.transform.localPosition = _rightEyeBaseLocalPos + jitterOffset;
             }
             else
             {
-                eyeObject.transform.SetParent(leftBaseSR.transform, false);
-                eyeObject.transform.localPosition = leftEyeBaseLocalPos + jitterOffset;
+                eyeObject.transform.SetParent(leftBaseSr.transform, false);
+                eyeObject.transform.localPosition = _leftEyeBaseLocalPos + jitterOffset;
             }
 
             eyeObject.SetActive(true);
@@ -187,21 +188,18 @@ namespace Combat.Boss
             }
         }
 
-        IEnumerator MoveSideToSide(SpriteRenderer sourceSR, SpriteRenderer targetSR, Transform[] sourcePoints, Transform[] targetPoints, bool movingLeft)
+        IEnumerator MoveSideToSide(SpriteRenderer sourceSr, SpriteRenderer targetSr, Transform[] sourcePoints, Transform[] targetPoints, bool movingLeft)
         {
             // Reset the target side to be empty before rebuilding
-            targetSR.sprite = null;
+            targetSr.sprite = null;
             // Ensure flip is correct based on direction
-            targetSR.flipX = movingLeft; 
+            targetSr.flipX = movingLeft; 
 
             for (int i = 0; i < sourcePoints.Length; i++)
             {
                 // 1. Change source sprite (Visual: Part disappears from current body)
                 // Using i + 1 because index 0 is 'Full' and index 1 is '1 part missing'
-                if (i + 1 < disassemblySprites.Length)
-                    sourceSR.sprite = disassemblySprites[i + 1];
-                else
-                    sourceSR.sprite = null;
+                sourceSr.sprite = i + 1 < disassemblySprites.Length ? disassemblySprites[i + 1] : null;
 
                 // 2. Spawn blob at the exact point index
                 GameObject blob = Instantiate(blobPrefab, sourcePoints[i].position, Quaternion.identity);
@@ -215,7 +213,7 @@ namespace Combat.Boss
                     {
                         if (partIndex < reassemblySprites.Length)
                         {
-                            targetSR.sprite = reassemblySprites[partIndex];
+                            targetSr.sprite = reassemblySprites[partIndex];
                         }
                     });
                 }

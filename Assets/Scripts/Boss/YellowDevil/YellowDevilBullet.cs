@@ -1,7 +1,8 @@
 using System;
+using Combat;
 using UnityEngine;
 
-namespace Combat.Boss
+namespace Boss.YellowDevil
 {
     public class YellowDevilBullet : MonoBehaviour
     {
@@ -16,14 +17,14 @@ namespace Combat.Boss
         [Header("VFX")]
         [SerializeField] private GameObject bulletExplosionPrefab;
 
-        private Vector2 direction;
+        private Vector2 _direction;
 
         public event Action<GameObject> OnHit;
 
         // Set direction from shooter
         public void SetDirection(Vector2 dir)
         {
-            direction = dir.normalized;
+            _direction = dir.normalized;
         }
 
         public void SetPlayerTag(string tag)
@@ -43,7 +44,7 @@ namespace Combat.Boss
         void Update()
         {
             // Move bullet
-            transform.Translate(direction * (speed * Time.deltaTime));
+            transform.Translate(_direction * (speed * Time.deltaTime));
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

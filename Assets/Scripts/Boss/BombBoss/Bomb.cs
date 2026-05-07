@@ -1,7 +1,8 @@
-using UnityEngine;
 using System.Collections;
+using Combat;
+using UnityEngine;
 
-namespace Combat
+namespace Boss.BombBoss
 {
     public class Bomb2D : MonoBehaviour
     {

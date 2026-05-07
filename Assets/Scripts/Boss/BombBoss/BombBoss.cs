@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Combat.Boss
+namespace Boss.BombBoss
 {
     public class BombBoss : MonoBehaviour
     {
+        private static readonly int Throw = Animator.StringToHash("Throw");
+        private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
+        private static readonly int Jump = Animator.StringToHash("Jump");
+
         [Header("References")]
         public Transform player;
         public Transform throwPoint;
@@ -31,21 +35,21 @@ namespace Combat.Boss
         public float introDuration = 2f;
         public float idleDelay = 1f;
 
-        private Rigidbody2D rb;
-        private Animator animator;
+        private Rigidbody2D _rb;
+        private Animator _animator;
 
-        private bool isGrounded;
-        private bool isJumping = false;
-        private bool bombActive = false;
+        private bool _isGrounded;
+        private bool _isJumping;
+        private bool _bombActive;
 
-        private Vector3 originalScale;
-        private float jumpDirection = 1f;
+        private Vector3 _originalScale;
+        private float _jumpDirection = 1f;
 
         void Start()
         {
-            rb = GetComponent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
-            originalScale = transform.localScale;
+            _rb = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _originalScale = transform.localScale;
 
             // Auto find player
             if (player == null)
@@ -62,14 +66,14 @@ namespace Combat.Boss
             CheckGround();
 
             // While jumping and in air, look at jump direction
-            if (isJumping && !isGrounded)
+            if (_isJumping && !_isGrounded)
             {
-                Vector3 scale = originalScale;
-                scale.x = Mathf.Abs(originalScale.x) * jumpDirection;
+                Vector3 scale = _originalScale;
+                scale.x = Mathf.Abs(_originalScale.x) * _jumpDirection;
                 transform.localScale = scale;
             }
             // When grounded and not jumping, look at player
-            else if (isGrounded && !isJumping)
+            else if (_isGrounded && !_isJumping)
             {
                 LookAtPlayer();
             }
@@ -79,23 +83,23 @@ namespace Combat.Boss
 
         IEnumerator MainLoop()
         {
-            animator.Play("BossIntro");
+            _animator.Play("BossIntro");
             yield return new WaitForSeconds(introDuration);
 
             while (true)
             {
-                animator.Play("Idle");
+                _animator.Play("Idle");
                 yield return new WaitForSeconds(idleDelay);
 
                 // Jump 40%, Throw 60%
                 int action = Random.Range(0, 5);
 
-                if ((action == 0 || action == 1) && !bombActive)
+                if ((action == 0 || action == 1) && !_bombActive)
                 {
                     // Jump (40% chance: 2 out of 5)
                     yield return StartCoroutine(JumpRoutine());
                 }
-                else if ((action == 2 || action == 3 || action == 4) && isGrounded && !bombActive)
+                else if ((action == 2 || action == 3 || action == 4) && _isGrounded && !_bombActive)
                 {
                     // Throw (60% chance: 3 out of 5)
                     yield return StartCoroutine(ThrowRoutine());
@@ -109,12 +113,12 @@ namespace Combat.Boss
         {
             if (player == null) return;
 
-            Vector3 scale = originalScale;
+            Vector3 scale = _originalScale;
 
             if (player.position.x > transform.position.x)
-                scale.x = Mathf.Abs(originalScale.x);
+                scale.x = Mathf.Abs(_originalScale.x);
             else
-                scale.x = -Mathf.Abs(originalScale.x);
+                scale.x = -Mathf.Abs(_originalScale.x);
 
             transform.localScale = scale;
         }
@@ -129,10 +133,10 @@ namespace Combat.Boss
                 groundLayer
             );
 
-            if (groundedNow != isGrounded)
+            if (groundedNow != _isGrounded)
             {
-                isGrounded = groundedNow;
-                animator.SetBool("isGrounded", isGrounded);
+                _isGrounded = groundedNow;
+                _animator.SetBool(IsGrounded, _isGrounded);
             }
         }
 
@@ -140,11 +144,11 @@ namespace Combat.Boss
 
         IEnumerator JumpRoutine()
         {
-            if (!isGrounded || bombActive) yield break;
+            if (!_isGrounded || _bombActive) yield break;
 
-            isJumping = true;
+            _isJumping = true;
 
-            animator.SetTrigger("Jump");
+            _animator.SetTrigger(Jump);
 
             yield return new WaitForSeconds(0.2f);
 
@@ -164,28 +168,28 @@ namespace Combat.Boss
             }
 
             // Store jump direction for Update() to use
-            jumpDirection = dir;
+            _jumpDirection = dir;
 
-            rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
+            _rb.linearVelocity = Vector2.zero;
+            _rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
 
             // Wait while jumping (not grounded)
-            yield return new WaitUntil(() => !isGrounded || isGrounded);
-            yield return new WaitUntil(() => isGrounded);
+            yield return new WaitUntil(() => !_isGrounded || _isGrounded);
+            yield return new WaitUntil(() => _isGrounded);
 
             // slight delay to avoid instant flip glitch
             yield return new WaitForSeconds(0.05f);
 
-            isJumping = false;
+            _isJumping = false;
         }
 
         // ================= THROW =================
 
         IEnumerator ThrowRoutine()
         {
-            if (!isGrounded || isJumping || bombActive) yield break;
+            if (!_isGrounded || _isJumping || _bombActive) yield break;
 
-            animator.SetTrigger("Throw");
+            _animator.SetTrigger(Throw);
 
             yield return new WaitForSeconds(0.4f);
 
@@ -193,11 +197,11 @@ namespace Combat.Boss
 
             if (bomb != null)
             {
-                bombActive = true;
+                _bombActive = true;
                 yield return new WaitUntil(() => bomb == null);
             }
 
-            bombActive = false;
+            _bombActive = false;
         }
 
         GameObject ThrowBomb()

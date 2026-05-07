@@ -1,10 +1,15 @@
 using System.Collections;
+using Player;
 using UnityEngine;
 
-namespace Combat.Boss
+namespace Boss.StoneBoss
 {
     public class StoneBoss : MonoBehaviour
     {
+        private static readonly int Jump = Animator.StringToHash("Jump");
+        private static readonly int Throw = Animator.StringToHash("Throw");
+        private static readonly int Fall = Animator.StringToHash("Fall");
+
         [Header("References")]
         public Transform player;
         public Transform throwPoint;
@@ -34,24 +39,24 @@ namespace Combat.Boss
         public float shakeDuration = 1f;
         public float shakeAmount = 0.2f;
 
-        private Rigidbody2D rb;
-        private Animator anim;
+        private Rigidbody2D _rb;
+        private Animator _anim;
 
-        private bool isGrounded;
-        private bool wasGrounded;
-        private bool isJumping;
+        private bool _isGrounded;
+        private bool _wasGrounded;
+        private bool _isJumping;
 
         // Fix for fake landing
-        private float jumpIgnoreTime = 0.2f;
-        private float jumpTimer = 0f;
+        private readonly float _jumpIgnoreTime = 0.2f;
+        private float _jumpTimer;
         
-        private Vector3 originalScale;
+        private Vector3 _originalScale;
 
         void Start()
         {
-            rb = GetComponent<Rigidbody2D>();
-            anim = GetComponent<Animator>();
-            originalScale = transform.localScale;
+            _rb = GetComponent<Rigidbody2D>();
+            _anim = GetComponent<Animator>();
+            _originalScale = transform.localScale;
 
             if (player == null)
             {
@@ -66,13 +71,13 @@ namespace Combat.Boss
         {
             CheckGround();
 
-            if (jumpTimer > 0)
-                jumpTimer -= Time.deltaTime;
+            if (_jumpTimer > 0)
+                _jumpTimer -= Time.deltaTime;
 
             HandleLanding();
             
             // Always look at player when grounded
-            if (isGrounded)
+            if (_isGrounded)
                 LookAtPlayer();
         }
 
@@ -80,12 +85,12 @@ namespace Combat.Boss
 
         IEnumerator MainLoop()
         {
-            anim.Play("Idle");
+            _anim.Play("Idle");
             yield return new WaitForSeconds(introDuration);
 
             while (true)
             {
-                anim.Play("Idle");
+                _anim.Play("Idle");
                 yield return new WaitForSeconds(idleDelay);
 
                 int action = Random.Range(0, 2);
@@ -101,7 +106,7 @@ namespace Combat.Boss
 
         void CheckGround()
         {
-            isGrounded = Physics2D.OverlapCircle(
+            _isGrounded = Physics2D.OverlapCircle(
                 groundCheck.position,
                 groundRadius,
                 groundLayer
@@ -114,12 +119,12 @@ namespace Combat.Boss
         {
             if (player == null) return;
 
-            Vector3 scale = originalScale;
+            Vector3 scale = _originalScale;
 
             if (player.position.x > transform.position.x)
-                scale.x = Mathf.Abs(originalScale.x);
+                scale.x = Mathf.Abs(_originalScale.x);
             else
-                scale.x = -Mathf.Abs(originalScale.x);
+                scale.x = -Mathf.Abs(_originalScale.x);
 
             transform.localScale = scale;
         }
@@ -128,18 +133,18 @@ namespace Combat.Boss
 
         void HandleLanding()
         {
-            if (jumpTimer > 0)
+            if (_jumpTimer > 0)
             {
-                wasGrounded = isGrounded;
+                _wasGrounded = _isGrounded;
                 return;
             }
 
-            if (!wasGrounded && isGrounded && isJumping && rb.linearVelocity.y <= 0)
+            if (!_wasGrounded && _isGrounded && _isJumping && _rb.linearVelocity.y <= 0)
             {
                 OnLand();
             }
 
-            wasGrounded = isGrounded;
+            _wasGrounded = _isGrounded;
         }
 
         void OnLand()
@@ -147,18 +152,18 @@ namespace Combat.Boss
             StartCoroutine(ShakeEnvironment());
             StartCoroutine(DisablePlayer());
 
-            isJumping = false;
+            _isJumping = false;
         }
 
         // ================= JUMP =================
 
         IEnumerator JumpRoutine()
         {
-            if (!isGrounded) yield break;
+            if (!_isGrounded) yield break;
 
-            isJumping = true;
+            _isJumping = true;
 
-            anim.SetTrigger("Jump");
+            _anim.SetTrigger(Jump);
 
             yield return new WaitForSeconds(0.2f);
 
@@ -167,18 +172,18 @@ namespace Combat.Boss
             // Random moveForce between -1 and 3
             float randomMoveForce = Random.Range(minMoveForce, maxMoveForce);
 
-            rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(dir * randomMoveForce, jumpForce), ForceMode2D.Impulse);
+            _rb.linearVelocity = Vector2.zero;
+            _rb.AddForce(new Vector2(dir * randomMoveForce, jumpForce), ForceMode2D.Impulse);
 
             // Ignore early ground detection
-            jumpTimer = jumpIgnoreTime;
+            _jumpTimer = _jumpIgnoreTime;
         }
 
         // ================= THROW =================
 
         IEnumerator ThrowRoutine()
         {
-            anim.SetTrigger("Throw");
+            _anim.SetTrigger(Throw);
 
             // Wait until animation event calls SpawnStone()
             yield return null;
@@ -240,7 +245,7 @@ namespace Combat.Boss
                 // Trigger fall animation when boss lands
                 if (playerAnim != null)
                 {
-                    playerAnim.SetTrigger("Fall");
+                    playerAnim.SetTrigger(Fall);
                 }
 
                 // Disable player only for the duration of the shake

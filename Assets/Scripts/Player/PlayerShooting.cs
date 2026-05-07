@@ -1,6 +1,7 @@
+using Combat;
 using UnityEngine;
 
-namespace Combat
+namespace Player
 {
     public class PlayerShooting : MonoBehaviour
     {
@@ -10,15 +11,15 @@ namespace Combat
         
         [SerializeField] private float startDelay = 1.5f;
 
-        private InputHandler input;
-        private float nextFireTime;
+        private InputHandler _input;
+        private float _nextFireTime;
         
-        private bool canFire;
-        public bool CanFire => canFire;
+        private bool _canFire;
+        public bool CanFire => _canFire;
 
         void Awake()
         {
-            input = GetComponent<InputHandler>();
+            _input = GetComponent<InputHandler>();
         }
 
         void Start()
@@ -28,14 +29,14 @@ namespace Combat
 
         void EnableFire()
         {
-            canFire = true;
+            _canFire = true;
         }
 
         void Update()
         {
-            if(!canFire) return;
+            if(!_canFire) return;
             
-            if (input.FirePressed && Time.time >= nextFireTime)
+            if (_input.FirePressed && Time.time >= _nextFireTime)
             {
                 Shoot();
             }
@@ -48,7 +49,7 @@ namespace Combat
             Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
 
             bullet.GetComponent<Bullet>().SetDirection(direction);
-            nextFireTime = Time.time + fireCooldown;
+            _nextFireTime = Time.time + fireCooldown;
         }
     }
 }

@@ -1,6 +1,7 @@
+using Combat;
 using UnityEngine;
 
-namespace Combat
+namespace Boss.StoneBoss
 {
     public class BigStone : MonoBehaviour
     {
@@ -10,18 +11,18 @@ namespace Combat
     public int splitCount = 4;
     public LayerMask destructibleLayers;
 
-    private Rigidbody2D rb;
-    private bool hasAlreadySplit = false;
+    private Rigidbody2D _rb;
+    private bool _hasAlreadySplit;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Prevent multiple splits
-        if (hasAlreadySplit) return;
+        if (_hasAlreadySplit) return;
 
         // Only destroy when hitting objects on destructible layers
         if (((1 << collision.gameObject.layer) & destructibleLayers) != 0)
@@ -33,7 +34,7 @@ namespace Combat
                     dmg.TakeDamage(damage);
             }
 
-            hasAlreadySplit = true;
+            _hasAlreadySplit = true;
             SplitStone();
         }
     }
@@ -47,13 +48,13 @@ namespace Combat
                 Rigidbody2D effectRb = effect.GetComponent<Rigidbody2D>();
                 
                 // Apply reduced velocity for subtle movement
-                if (effectRb != null && rb != null)
+                if (effectRb != null && _rb != null)
                 {
-                    effectRb.linearVelocity = rb.linearVelocity * 0.3f;
+                    effectRb.linearVelocity = _rb.linearVelocity * 0.3f;
                 }
             }
 
-            Vector2 baseDir = rb.linearVelocity.normalized;
+            Vector2 baseDir = _rb.linearVelocity.normalized;
 
             for (int i = 0; i < splitCount; i++)
             {

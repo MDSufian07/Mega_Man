@@ -17,14 +17,14 @@ namespace Combat
         
         public GameObject bulletExplosionPrefab;
 
-        private Vector2 direction;
+        private Vector2 _direction;
 
         public event Action<GameObject> OnHit;
 
         // Set direction from shooter
         public void SetDirection(Vector2 dir)
         {
-            direction = dir.normalized;
+            _direction = dir.normalized;
         }
 
         void Start()
@@ -36,7 +36,7 @@ namespace Combat
         void Update()
         {
             // Move bullet
-            transform.Translate(direction * (speed * Time.deltaTime));
+            transform.Translate(_direction * (speed * Time.deltaTime));
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

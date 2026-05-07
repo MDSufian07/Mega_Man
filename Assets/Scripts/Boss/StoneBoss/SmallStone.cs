@@ -1,6 +1,7 @@
+using Combat;
 using UnityEngine;
 
-namespace Combat
+namespace Boss.StoneBoss
 {
     public class SmallStone : MonoBehaviour
     {
@@ -16,23 +17,23 @@ namespace Combat
     [Header("Effect")]
     public GameObject effectPrefab;
 
-        private Rigidbody2D rb;
+        private Rigidbody2D _rb;
 
         void Start()
         {
-            rb = GetComponent<Rigidbody2D>();
+            _rb = GetComponent<Rigidbody2D>();
 
             // Add extra force in current moving direction
-            if (rb != null && rb.linearVelocity != Vector2.zero)
+            if (_rb != null && _rb.linearVelocity != Vector2.zero)
             {
-                Vector2 dir = rb.linearVelocity.normalized;
-                rb.AddForce(dir * extraForce, ForceMode2D.Impulse);
+                Vector2 dir = _rb.linearVelocity.normalized;
+                _rb.AddForce(dir * extraForce, ForceMode2D.Impulse);
             }
 
             // Add upward force
-            if (rb != null)
+            if (_rb != null)
             {
-                rb.AddForce(Vector2.up * upwardForce, ForceMode2D.Impulse);
+                _rb.AddForce(Vector2.up * upwardForce, ForceMode2D.Impulse);
             }
 
             //  Auto destroy after time

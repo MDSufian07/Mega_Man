@@ -1,7 +1,7 @@
-using UnityEngine;
 using Combat;
+using UnityEngine;
 
-namespace Combat.Boss
+namespace Boss.YellowDevil
 {
     public class BlobDamage : MonoBehaviour
     {
