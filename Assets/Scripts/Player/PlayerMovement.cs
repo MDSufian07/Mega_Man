@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utilities;
 
 namespace Player
 {
@@ -47,8 +48,7 @@ namespace Player
 
         private void HandleMovementState()
         {
-            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
-
+            _isGrounded = GroundCheckUtility.IsGrounded(groundCheck.position, groundRadius, groundLayer);
             if (_input.JumpPressed && _isGrounded)
             {
                 _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);

@@ -1,6 +1,7 @@
 using System.Collections;
 using Player;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.StoneBoss
 {
@@ -106,27 +107,14 @@ namespace Boss.StoneBoss
 
         void CheckGround()
         {
-            _isGrounded = Physics2D.OverlapCircle(
-                groundCheck.position,
-                groundRadius,
-                groundLayer
-            );
+           _isGrounded= GroundCheckUtility.IsGrounded(groundCheck.position, groundRadius, groundLayer);
         }
 
         // ================= LOOK =================
 
         void LookAtPlayer()
         {
-            if (player == null) return;
-
-            Vector3 scale = _originalScale;
-
-            if (player.position.x > transform.position.x)
-                scale.x = Mathf.Abs(_originalScale.x);
-            else
-                scale.x = -Mathf.Abs(_originalScale.x);
-
-            transform.localScale = scale;
+            FlipUtility.FlipX(transform, player, _originalScale);
         }
 
         // ================= LAND DETECTION =================

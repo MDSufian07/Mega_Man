@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.BombBoss
 {
@@ -111,27 +112,14 @@ namespace Boss.BombBoss
 
         void LookAtPlayer()
         {
-            if (player == null) return;
-
-            Vector3 scale = _originalScale;
-
-            if (player.position.x > transform.position.x)
-                scale.x = Mathf.Abs(_originalScale.x);
-            else
-                scale.x = -Mathf.Abs(_originalScale.x);
-
-            transform.localScale = scale;
+           FlipUtility.FlipX(transform, player, _originalScale);
         }
 
         // ================= GROUND =================
 
         void CheckGround()
         {
-            bool groundedNow = Physics2D.OverlapCircle(
-                groundCheck.position,
-                groundCheckRadius,
-                groundLayer
-            );
+            bool groundedNow = GroundCheckUtility.IsGrounded(groundCheck.position, groundCheckRadius, groundLayer);
 
             if (groundedNow != _isGrounded)
             {
