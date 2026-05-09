@@ -35,7 +35,7 @@ namespace Ui
 
             playerHealth.OnHealthChanged += UpdatePlayerBar;
             playerHealth.OnDeath += ShowGameOver;
-        
+
             bossHealth.OnHealthChanged += UpdateBossBar;
             bossHealth.OnDeath += ShowWin;
 

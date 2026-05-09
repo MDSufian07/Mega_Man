@@ -212,7 +212,7 @@ namespace Boss.YellowDevil
                     blobMover.Configure(blobSpeed, blobStartDelay, blobArriveDelay);
                     blobMover.BeginMove(targetPoints[i].position, () =>
                     {
-                        if (partIndex < reassemblySprites.Length)
+                        if (targetSr != null && partIndex < reassemblySprites.Length)
                         {
                             targetSr.sprite = reassemblySprites[partIndex];
                         }

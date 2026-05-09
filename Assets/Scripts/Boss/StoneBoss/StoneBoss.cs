@@ -1,138 +1,68 @@
 using System.Collections;
 using Player;
 using UnityEngine;
-using Utilities;
 
 namespace Boss.StoneBoss
 {
-    public class StoneBoss : MonoBehaviour
+    public class StoneBoss : BaseBoss
     {
-        private static readonly int Jump = Animator.StringToHash("Jump");
-        private static readonly int Throw = Animator.StringToHash("Throw");
-        private static readonly int Fall = Animator.StringToHash("Fall");
+        private static readonly int Jump =
+            Animator.StringToHash("Jump");
+
+        private static readonly int Throw =
+            Animator.StringToHash("Throw");
+
+        private static readonly int Fall =
+            Animator.StringToHash("Fall");
 
         [Header("References")]
-        [SerializeField] private Transform player;
         [SerializeField] private Transform throwPoint;
         [SerializeField] private GameObject stonePrefab;
-
-        [Header("Ground Check")]
-        [SerializeField] private Transform groundCheck;
-        [SerializeField] private float groundRadius = 0.2f;
-        [SerializeField] private LayerMask groundLayer;
 
         [Header("Jump Settings")]
         [SerializeField] private float jumpForce = 8f;
         [SerializeField] private float maxMoveForce = 4f;
         [SerializeField] private float minMoveForce = -1f;
-        
 
         [Header("Throw Settings")]
         [SerializeField] private float throwForce = 15f;
         [SerializeField] private float throwUpForce = 5f;
-
-        [Header("Timing")]
-        [SerializeField] private float introDuration = 2f;
-        [SerializeField] private float idleDelay = 1f;
 
         [Header("Environment Shake")]
         [SerializeField] private Transform environmentToShake;
         [SerializeField] private float shakeDuration = 1f;
         [SerializeField] private float shakeAmount = 0.2f;
 
-        private Rigidbody2D _rb;
-        private Animator _anim;
-
-        private bool _isGrounded;
-        private bool _wasGrounded;
         private bool _isJumping;
+        private bool _wasGrounded;
 
-        // Fix for fake landing
-        private readonly float _jumpIgnoreTime = 0.2f;
-        private float _jumpTimer;
-        
-        private Vector3 _originalScale;
-
-        void Start()
+        protected override void Update()
         {
-            _rb = GetComponent<Rigidbody2D>();
-            _anim = GetComponent<Animator>();
-            _originalScale = transform.localScale;
-
-            if (player == null)
-            {
-                GameObject p = GameObject.FindGameObjectWithTag("Player");
-                if (p != null) player = p.transform;
-            }
-
-            StartCoroutine(MainLoop());
-        }
-
-        void Update()
-        {
-            CheckGround();
-
-            if (_jumpTimer > 0)
-                _jumpTimer -= Time.deltaTime;
+            base.Update();
 
             HandleLanding();
-            
-            // Always look at player when grounded
-            if (_isGrounded)
-                LookAtPlayer();
         }
 
-        // ================= MAIN LOOP =================
-
-        IEnumerator MainLoop()
+        protected override IEnumerator BossAction()
         {
-            _anim.Play("Idle");
-            yield return new WaitForSeconds(introDuration);
+            int action = Random.Range(0, 2);
 
-            while (true)
-            {
-                _anim.Play("Idle");
-                yield return new WaitForSeconds(idleDelay);
-
-                int action = Random.Range(0, 2);
-
-                if (action == 0)
-                    yield return StartCoroutine(JumpRoutine());
-                else
-                    yield return StartCoroutine(ThrowRoutine());
-            }
+            if (action == 0)
+                yield return JumpRoutine();
+            else
+                yield return ThrowRoutine();
         }
 
-        // ================= GROUND =================
-
-        void CheckGround()
-        {
-           _isGrounded= GroundCheckUtility.IsGrounded(groundCheck.position, groundRadius, groundLayer);
-        }
-
-        // ================= LOOK =================
-
-        void LookAtPlayer()
-        {
-            FlipUtility.FlipX(transform, player, _originalScale);
-        }
-
-        // ================= LAND DETECTION =================
+        // ================= LAND =================
 
         void HandleLanding()
         {
-            if (_jumpTimer > 0)
-            {
-                _wasGrounded = _isGrounded;
-                return;
-            }
-
-            if (!_wasGrounded && _isGrounded && _isJumping && _rb.linearVelocity.y <= 0)
+            if (!_wasGrounded && IsGrounded && _isJumping && Rb.linearVelocity.y <= 0)
             {
                 OnLand();
             }
 
-            _wasGrounded = _isGrounded;
+            _wasGrounded = IsGrounded;
         }
 
         void OnLand()
@@ -147,68 +77,68 @@ namespace Boss.StoneBoss
 
         IEnumerator JumpRoutine()
         {
-            if (!_isGrounded) yield break;
+            if (!IsGrounded || player == null) yield break;
 
             _isJumping = true;
 
-            _anim.SetTrigger(Jump);
+            Anim.SetTrigger(Jump);
 
             yield return new WaitForSeconds(0.2f);
-            
-            if(player == null) yield break;
-            float dir = (player.position.x > transform.position.x) ? 1f : -1f;
-            
-            // Random moveForce between -1 and 3
-            float randomMoveForce = Random.Range(minMoveForce, maxMoveForce);
 
-            _rb.linearVelocity = Vector2.zero;
-            _rb.AddForce(new Vector2(dir * randomMoveForce, jumpForce), ForceMode2D.Impulse);
+            float dir = player.position.x > transform.position.x ? 1f : -1f;
 
-            // Ignore early ground detection
-            _jumpTimer = _jumpIgnoreTime;
+            float moveForce = Random.Range(minMoveForce, maxMoveForce);
+
+            Rb.linearVelocity = Vector2.zero;
+
+            Rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
+
+            yield return new WaitUntil(() => !IsGrounded);
+
+            yield return new WaitUntil(() => IsGrounded);
         }
 
         // ================= THROW =================
 
         IEnumerator ThrowRoutine()
         {
-            _anim.SetTrigger(Throw);
+            Anim.SetTrigger(Throw);
 
-            // Wait until animation event calls SpawnStone()
             yield return null;
         }
-        
-        //================== SpawnStone=============
+
         public void SpawnStone()
         {
+            if (stonePrefab == null || throwPoint == null || player == null) return;
+
             GameObject stone = Instantiate(stonePrefab, throwPoint.position, Quaternion.identity);
 
-            Rigidbody2D srb = stone.GetComponent<Rigidbody2D>();
+            Rigidbody2D stoneRb = stone.GetComponent<Rigidbody2D>();
 
-            if (srb != null && player != null)
-            {
-                Vector2 dir = (player.position - throwPoint.position).normalized;
+            if (stoneRb == null) return;
+            
+            Vector2 dir = (player.position - throwPoint.position).normalized;
 
-                // Add arc
-                dir.y += throwUpForce / throwForce;
+            dir.y += throwUpForce / throwForce;
 
-                srb.linearVelocity = Vector2.zero;
-                srb.AddForce(dir * throwForce, ForceMode2D.Impulse);
-            }
+            stoneRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
         }
+
         // ================= SHAKE =================
 
         IEnumerator ShakeEnvironment()
         {
+            if (environmentToShake == null) yield break;
+
             Vector3 originalPos = environmentToShake.position;
+
             float time = shakeDuration;
 
             while (time > 0)
             {
-                environmentToShake.position =
-                    originalPos + (Vector3)Random.insideUnitCircle * shakeAmount;
-
+                environmentToShake.position = originalPos + (Vector3)Random.insideUnitCircle * shakeAmount;
                 time -= Time.deltaTime;
+
                 yield return null;
             }
 
@@ -219,47 +149,30 @@ namespace Boss.StoneBoss
 
         IEnumerator DisablePlayer()
         {
-            GameObject p = GameObject.FindGameObjectWithTag("Player");
-            
-            if (p == null) yield break;
-            var move = p.GetComponent<PlayerMovement>();
-            var shoot = p.GetComponent<PlayerShooting>();
-            var playerAnim = p.GetComponent<Animator>();
+            if (player == null) yield break;
+
+            GameObject p = player.gameObject;
+
+            PlayerMovement move = p.GetComponent<PlayerMovement>();
+            PlayerShooting shoot = p.GetComponent<PlayerShooting>();
+            Animator playerAnim = p.GetComponent<Animator>();
 
             if (move == null) yield break;
 
-            // Only disable movement and shooting if player is grounded
             if (move.IsGrounded)
-            {
                 move.enabled = false;
-                if (shoot != null) shoot.enabled = false;
 
-                // Trigger fall animation when boss lands
-                if (playerAnim != null)
-                {
-                    playerAnim.SetTrigger(Fall);
-                }
+            if (shoot != null)
+                shoot.enabled = false;
+                
+            if (playerAnim != null)
+                playerAnim.SetTrigger(Fall);
 
-                // Disable player only for the duration of the shake
-                yield return new WaitForSeconds(shakeDuration);
-
-                if (move == null) yield break;
-
-                move.enabled = true;
-                if (shoot != null) shoot.enabled = true;
-            }
-        }
-
-        // ================= DEBUG =================
-
-        void OnDrawGizmos()
-        {
-            if (groundCheck != null)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
-            }
+            yield return new WaitForSeconds(shakeDuration);
+                
+            move.enabled = true;
+            if (shoot != null)
+                shoot.enabled = true;
         }
     }
 }
-
