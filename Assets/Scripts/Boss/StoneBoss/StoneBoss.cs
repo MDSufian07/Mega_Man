@@ -61,7 +61,6 @@ namespace Boss.StoneBoss
             {
                 OnLand();
             }
-
             _wasGrounded = IsGrounded;
         }
 
@@ -74,7 +73,6 @@ namespace Boss.StoneBoss
         }
 
         // ================= JUMP =================
-
         IEnumerator JumpRoutine()
         {
             if (!IsGrounded || player == null) yield break;
@@ -94,7 +92,6 @@ namespace Boss.StoneBoss
             Rb.AddForce(new Vector2(dir * moveForce, jumpForce), ForceMode2D.Impulse);
 
             yield return new WaitUntil(() => !IsGrounded);
-
             yield return new WaitUntil(() => IsGrounded);
         }
 
@@ -103,7 +100,6 @@ namespace Boss.StoneBoss
         IEnumerator ThrowRoutine()
         {
             Anim.SetTrigger(Throw);
-
             yield return null;
         }
 
@@ -112,13 +108,11 @@ namespace Boss.StoneBoss
             if (stonePrefab == null || throwPoint == null || player == null) return;
 
             GameObject stone = Instantiate(stonePrefab, throwPoint.position, Quaternion.identity);
-
             Rigidbody2D stoneRb = stone.GetComponent<Rigidbody2D>();
 
             if (stoneRb == null) return;
             
             Vector2 dir = (player.position - throwPoint.position).normalized;
-
             dir.y += throwUpForce / throwForce;
 
             stoneRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
@@ -141,7 +135,6 @@ namespace Boss.StoneBoss
 
                 yield return null;
             }
-
             environmentToShake.position = originalPos;
         }
 
@@ -164,15 +157,14 @@ namespace Boss.StoneBoss
 
             if (shoot != null)
                 shoot.enabled = false;
-                
-            if (playerAnim != null)
+            
+            if (playerAnim != null && move.IsGrounded)
                 playerAnim.SetTrigger(Fall);
 
             yield return new WaitForSeconds(shakeDuration);
                 
             move.enabled = true;
-            if (shoot != null)
-                shoot.enabled = true;
+            if (shoot != null) shoot.enabled = true;
         }
     }
 }
