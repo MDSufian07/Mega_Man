@@ -1,73 +1,22 @@
-using System;
 using UnityEngine;
 
 namespace Combat
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : ProjectileBase
     {
-        [Header("Settings")]
-        [SerializeField] private float speed = 10f;
-        [SerializeField] private float lifeTime = 2f;
-        [SerializeField] private int damage = 10;
-
         [Header("Targeting")]
         [SerializeField] private bool isPlayerBullet = true;
         [SerializeField] private string playerTag = "Player";
         [SerializeField] private string enemyTag = "Enemy";
-        
-        public GameObject bulletExplosionPrefab;
-
-        private Vector2 _direction;
-
-        public event Action<GameObject> OnHit;
-
-        // Set direction from shooter
-        public void SetDirection(Vector2 dir)
+        protected override bool ShouldIgnore(Collider2D collision)
         {
-            _direction = dir.normalized;
+            // Ignore the shooter side so player bullets don't disappear on player contact.
+            return isPlayerBullet && collision.CompareTag(playerTag);
         }
 
-        void Start()
+        protected override bool CanDamageTarget(Collider2D collision)
         {
-            // Auto destroy after time
-            Destroy(gameObject, lifeTime);
-        }
-
-        void Update()
-        {
-            // Move bullet
-            transform.Translate(_direction * (speed * Time.deltaTime));
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (isPlayerBullet && collision.CompareTag(playerTag))
-            {
-                // Ignore the shooter side so player bullets don't disappear on player contact.
-                return;
-            }
-
-            bool canDamageThisTarget = !isPlayerBullet || collision.CompareTag(enemyTag);
-            IDamageable damageable = collision.GetComponent<IDamageable>();
-            
-            // Fallback: check parent if not found on child
-            if (damageable == null)
-            {
-                damageable = collision.GetComponentInParent<IDamageable>();
-            }
-            
-            if (canDamageThisTarget && damageable != null)
-            {
-                damageable.TakeDamage(damage);
-            }
-
-            // Invoke hit event
-            OnHit?.Invoke(collision.gameObject);
-            
-            Instantiate(bulletExplosionPrefab, transform.position, Quaternion.identity);
-
-            // Destroy bullet on any valid hit except ignored friendly collision.
-            Destroy(gameObject);
+            return !isPlayerBullet || collision.CompareTag(enemyTag);
         }
     }
 }

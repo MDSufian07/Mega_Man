@@ -1,32 +1,12 @@
-using System;
 using Combat;
 using UnityEngine;
 
 namespace Boss.YellowDevil
 {
-    public class YellowDevilBullet : MonoBehaviour
+    public class YellowDevilBullet : ProjectileBase
     {
-        [Header("Settings")]
-        [SerializeField] private float speed = 10f;
-        [SerializeField] private float lifeTime = 2f;
-        [SerializeField] private int damage = 10;
-
         [Header("Targeting")]
         [SerializeField] private string playerTag = "Player";
-
-        [Header("VFX")]
-        [SerializeField] private GameObject bulletExplosionPrefab;
-
-        private Vector2 _direction;
-
-        public event Action<GameObject> OnHit;
-
-        // Set direction from shooter
-        public void SetDirection(Vector2 dir)
-        {
-            _direction = dir.normalized;
-        }
-
         public void SetPlayerTag(string tag)
         {
             if (!string.IsNullOrWhiteSpace(tag))
@@ -35,39 +15,14 @@ namespace Boss.YellowDevil
             }
         }
 
-        void Start()
+        protected override bool ShouldIgnore(Collider2D collision)
         {
-            // Auto destroy after time
-            Destroy(gameObject, lifeTime);
+            return false;
         }
 
-        void Update()
+        protected override bool CanDamageTarget(Collider2D collision)
         {
-            // Move bullet
-            transform.Translate(_direction * (speed * Time.deltaTime));
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (!collision.CompareTag(playerTag))
-            {
-                return;
-            }
-
-            IDamageable damageable = collision.GetComponent<IDamageable>();
-            if (damageable != null)
-            {
-                damageable.TakeDamage(damage);
-            }
-
-            OnHit?.Invoke(collision.gameObject);
-
-            if (bulletExplosionPrefab != null)
-            {
-                Instantiate(bulletExplosionPrefab, transform.position, Quaternion.identity);
-            }
-
-            Destroy(gameObject);
+            return collision.CompareTag(playerTag);
         }
     }
 }
