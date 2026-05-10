@@ -13,25 +13,69 @@ namespace Player
         private void Awake()
         {
             _inputActions = new PlayerInputActions();
+
+            _inputActions.Player.Move.performed += OnMovePerformed;
+            _inputActions.Player.Move.canceled += OnMoveCanceled;
+
+            _inputActions.Player.Jump.performed += OnJumpPerformed;
+            _inputActions.Player.Jump.canceled += OnJumpCanceled;
+
+            _inputActions.Player.Fire.performed += OnFirePerformed;
+            _inputActions.Player.Fire.canceled += OnFireCanceled;
         }
 
         private void OnEnable()
         {
             _inputActions.Enable();
-
-            _inputActions.Player.Move.performed += ctx => MoveInput = ctx.ReadValue<float>();
-            _inputActions.Player.Move.canceled += _ => MoveInput = 0f;
-
-            _inputActions.Player.Jump.performed += _ => JumpPressed = true;
-            _inputActions.Player.Jump.canceled += _ => JumpPressed = false;
-
-            _inputActions.Player.Fire.performed += _ => FirePressed = true;
-            _inputActions.Player.Fire.canceled += _ => FirePressed = false;
         }
 
         private void OnDisable()
         {
             _inputActions.Disable();
+        }
+
+        private void OnDestroy()
+        {
+            if (_inputActions == null) return;
+
+            _inputActions.Player.Move.performed -= OnMovePerformed;
+            _inputActions.Player.Move.canceled -= OnMoveCanceled;
+
+            _inputActions.Player.Jump.performed -= OnJumpPerformed;
+            _inputActions.Player.Jump.canceled -= OnJumpCanceled;
+
+            _inputActions.Player.Fire.performed -= OnFirePerformed;
+            _inputActions.Player.Fire.canceled -= OnFireCanceled;
+        }
+
+        private void OnMovePerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        {
+            MoveInput = ctx.ReadValue<float>();
+        }
+
+        private void OnMoveCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        {
+            MoveInput = 0f;
+        }
+
+        private void OnJumpPerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        {
+            JumpPressed = true;
+        }
+
+        private void OnJumpCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        {
+            JumpPressed = false;
+        }
+
+        private void OnFirePerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        {
+            FirePressed = true;
+        }
+
+        private void OnFireCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        {
+            FirePressed = false;
         }
     }
 }
