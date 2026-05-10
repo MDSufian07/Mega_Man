@@ -1,12 +1,13 @@
 using Combat;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.YellowDevil
 {
     public class YellowDevilBullet : ProjectileBase
     {
         [Header("Targeting")]
-        [SerializeField] private string playerTag = "Player";
+        [SerializeField] private string playerTag = GameTags.Player;
         public void SetPlayerTag(string tag)
         {
             if (!string.IsNullOrWhiteSpace(tag))

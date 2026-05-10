@@ -1,19 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.BombBoss
 {
     public class BombBoss : BaseBoss
     {
-        private static readonly int Throw =
-            Animator.StringToHash("Throw");
-
-        private static readonly int IsGroundedHash =
-            Animator.StringToHash("isGrounded");
-
-        private static readonly int Jump =
-            Animator.StringToHash("Jump");
-
         [Header("References")]
         [SerializeField] private Transform throwPoint;
         [SerializeField] private GameObject bombPrefab;
@@ -39,7 +31,7 @@ namespace Boss.BombBoss
         {
             base.Start();
 
-            Anim.Play("BombBossIntro");
+            Anim.Play(AnimatorHashes.BombBossIntro);
         }
 
         protected override void Update()
@@ -59,7 +51,7 @@ namespace Boss.BombBoss
             else if (IsGrounded && !_isJumping)
                 LookAtPlayer();
 
-            Anim.SetBool(IsGroundedHash, IsGrounded);
+            Anim.SetBool(AnimatorHashes.IsGrounded, IsGrounded);
         }
 
         protected override IEnumerator BossAction()
@@ -81,7 +73,7 @@ namespace Boss.BombBoss
 
             _isJumping = true;
 
-            Anim.SetTrigger(Jump);
+            Anim.SetTrigger(AnimatorHashes.Jump);
 
             yield return new WaitForSeconds(0.2f);
 
@@ -113,7 +105,7 @@ namespace Boss.BombBoss
         {
             if (!IsGrounded || _isJumping || _bombActive) yield break;
 
-            Anim.SetTrigger(Throw);
+            Anim.SetTrigger(AnimatorHashes.Throw);
 
             yield return new WaitForSeconds(0.4f);
 

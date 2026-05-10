@@ -1,5 +1,6 @@
 using Combat;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.StoneBoss
 {
@@ -27,7 +28,7 @@ namespace Boss.StoneBoss
         // Only destroy when hitting objects on destructible layers
         if (((1 << collision.gameObject.layer) & destructibleLayers) != 0)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag(GameTags.Player))
             {
                 var dmg = collision.GetComponent<IDamageable>();
                 if (dmg != null)

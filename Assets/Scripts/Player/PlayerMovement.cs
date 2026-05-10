@@ -6,10 +6,6 @@ namespace Player
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMovement : MonoBehaviour
     {
-        private static readonly int IsRunning = Animator.StringToHash("isRunning");
-        private static readonly int IsJumping = Animator.StringToHash("isJumping");
-        private static readonly int IsFiring = Animator.StringToHash("isFiring");
-        
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float jumpForce = 10f;
 
@@ -54,9 +50,9 @@ namespace Player
                 _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
             }
 
-            _anim.SetBool(IsRunning, _input.MoveInput != 0);
-            _anim.SetBool(IsJumping, !_isGrounded);
-            _anim.SetBool(IsFiring, _shooting.CanFire && _input.FirePressed);
+            _anim.SetBool(AnimatorHashes.IsRunning, _input.MoveInput != 0);
+            _anim.SetBool(AnimatorHashes.IsJumping, !_isGrounded);
+            _anim.SetBool(AnimatorHashes.IsFiring, _shooting.CanFire && _input.FirePressed);
 
             if (_input.MoveInput > 0)
                 transform.localScale = new Vector3(1, 1, 1);

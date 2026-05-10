@@ -2,6 +2,7 @@ using System.Collections;
 using Combat;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace Boss.YellowDevil
 {
@@ -37,7 +38,7 @@ namespace Boss.YellowDevil
         [Header("Attack")]
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform playerTarget;
-        [SerializeField] private string playerTag = "Player";
+        [SerializeField] private string playerTag = GameTags.Player;
         
         [Header("Death Effects")]
         [SerializeField] private GameObject deathEffectPrefab;

@@ -1,5 +1,6 @@
 using Combat;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.StoneBoss
 {
@@ -39,7 +40,7 @@ namespace Boss.StoneBoss
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.CompareTag("Player"))
+            if (collision.collider.CompareTag(GameTags.Player))
             {
                 var dmg = collision.collider.GetComponent<IDamageable>();
                 if (dmg != null)

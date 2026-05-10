@@ -1,6 +1,7 @@
 using System.Collections;
 using Combat;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.BombBoss
 {
@@ -44,7 +45,7 @@ namespace Boss.BombBoss
 
             foreach (Collider2D hit in hits)
             {
-                if (hit.CompareTag("Player"))
+                if (hit.CompareTag(GameTags.Player))
                 {
                     IDamageable damageable = hit.GetComponent<IDamageable>();
                     if (damageable != null)

@@ -50,7 +50,7 @@ namespace Boss
         {
             if (player != null) return;
 
-            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            GameObject playerObject = GameObject.FindGameObjectWithTag(GameTags.Player);
 
             if (playerObject != null)
                 player = playerObject.transform;
@@ -78,7 +78,7 @@ namespace Boss
 
             while (true)
             {
-                Anim.Play("Idle");
+                Anim.Play(AnimatorHashes.Idle);
 
                 yield return new WaitForSeconds(idleDelay);
 

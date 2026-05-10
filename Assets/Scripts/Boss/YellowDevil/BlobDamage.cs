@@ -1,5 +1,6 @@
 using Combat;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.YellowDevil
 {
@@ -9,7 +10,7 @@ namespace Boss.YellowDevil
         [SerializeField] private int damage = 1;
 
         [Header("Targeting")]
-        [SerializeField] private string playerTag = "Player";
+        [SerializeField] private string playerTag = GameTags.Player;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

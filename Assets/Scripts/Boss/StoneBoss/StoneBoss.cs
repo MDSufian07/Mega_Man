@@ -1,20 +1,12 @@
 using System.Collections;
 using Player;
 using UnityEngine;
+using Utilities;
 
 namespace Boss.StoneBoss
 {
     public class StoneBoss : BaseBoss
     {
-        private static readonly int Jump =
-            Animator.StringToHash("Jump");
-
-        private static readonly int Throw =
-            Animator.StringToHash("Throw");
-
-        private static readonly int Fall =
-            Animator.StringToHash("Fall");
-
         [Header("References")]
         [SerializeField] private Transform throwPoint;
         [SerializeField] private GameObject stonePrefab;
@@ -79,7 +71,7 @@ namespace Boss.StoneBoss
 
             _isJumping = true;
 
-            Anim.SetTrigger(Jump);
+            Anim.SetTrigger(AnimatorHashes.Jump);
 
             yield return new WaitForSeconds(0.2f);
             
@@ -100,7 +92,7 @@ namespace Boss.StoneBoss
 
         IEnumerator ThrowRoutine()
         {
-            Anim.SetTrigger(Throw);
+            Anim.SetTrigger(AnimatorHashes.Throw);
             yield return null;
         }
 
@@ -160,7 +152,7 @@ namespace Boss.StoneBoss
                 shoot.enabled = false;
             
             if (playerAnim != null && move.IsGrounded)
-                playerAnim.SetTrigger(Fall);
+                playerAnim.SetTrigger(AnimatorHashes.Fall);
 
             yield return new WaitForSeconds(shakeDuration);
                 
