@@ -33,11 +33,17 @@ namespace Ui
             _playerMax = PlayerHealthMax();
             _bossMax = BossHealthMax();
 
-            playerHealth.OnHealthChanged += UpdatePlayerBar;
-            playerHealth.OnDeath += ShowGameOver;
+            if (playerHealth != null)
+            {
+                playerHealth.OnHealthChanged += UpdatePlayerBar;
+                playerHealth.OnDeath += ShowGameOver;
+            }
 
-            bossHealth.OnHealthChanged += UpdateBossBar;
-            bossHealth.OnDeath += ShowWin;
+            if (bossHealth != null)
+            {
+                bossHealth.OnHealthChanged += UpdateBossBar;
+                bossHealth.OnDeath += ShowWin;
+            }
 
             UpdatePlayerBar(_playerMax);
             UpdateBossBar(_bossMax);
@@ -45,14 +51,37 @@ namespace Ui
             SetupButtons();
         }
 
+        void OnDisable()
+        {
+            UnsubscribeHealthEvents();
+        }
+
+        void OnDestroy()
+        {
+            UnsubscribeHealthEvents();
+        }
+
+        private void UnsubscribeHealthEvents()
+        {
+            if (playerHealth != null)
+            {
+                playerHealth.OnHealthChanged -= UpdatePlayerBar;
+                playerHealth.OnDeath -= ShowGameOver;
+            }
+
+            if (bossHealth != null)
+            {
+                bossHealth.OnHealthChanged -= UpdateBossBar;
+                bossHealth.OnDeath -= ShowWin;
+            }
+        }
+
         private int PlayerHealthMax() => GetMaxHealth(playerHealth);
         private int BossHealthMax() => GetMaxHealth(bossHealth);
 
         int GetMaxHealth(Health h)
         {
-            return typeof(Health)
-                .GetField("maxHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.GetValue(h) as int? ?? 100;
+            return h != null ? h.MaxHealth : 0;
         }
 
         void UpdatePlayerBar(int current)
@@ -108,4 +137,3 @@ namespace Ui
         }
     }
 }
-

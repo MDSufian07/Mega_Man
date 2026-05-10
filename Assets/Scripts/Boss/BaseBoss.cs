@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using Utilities;
-// ReSharper disable All
 
 namespace Boss
 {
@@ -43,35 +42,25 @@ namespace Boss
             CheckGround();
 
             if (player != null)
-            {
                 LookAtPlayer();
-            }
         }
 
         // ================= PLAYER =================
-
         protected virtual void FindPlayer()
         {
             if (player != null) return;
 
-            GameObject playerObject =
-                GameObject.FindGameObjectWithTag("Player");
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
             if (playerObject != null)
-            {
                 player = playerObject.transform;
-            }
         }
 
         // ================= GROUND =================
 
         protected virtual void CheckGround()
         {
-            IsGrounded = GroundCheckUtility.IsGrounded(
-                groundCheck.position,
-                groundCheckRadius,
-                groundLayer
-            );
+            IsGrounded = GroundCheckUtility.IsGrounded(groundCheck.position, groundCheckRadius, groundLayer);
         }
 
         // ================= LOOK =================
@@ -107,10 +96,7 @@ namespace Boss
 
             Gizmos.color = Color.red;
 
-            Gizmos.DrawWireSphere(
-                groundCheck.position,
-                groundCheckRadius
-            );
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
 }

@@ -82,7 +82,8 @@ namespace Boss.StoneBoss
             Anim.SetTrigger(Jump);
 
             yield return new WaitForSeconds(0.2f);
-
+            
+            if(player== null) yield break;
             float dir = player.position.x > transform.position.x ? 1f : -1f;
 
             float moveForce = Random.Range(minMoveForce, maxMoveForce);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Boss.BombBoss
 {
-    public class Bomb2D : MonoBehaviour
+    public class Bomb : MonoBehaviour
     {
         [SerializeField] private float explodeDelay = 2f; 
         [SerializeField] private float damageDelay = 0.1f;
