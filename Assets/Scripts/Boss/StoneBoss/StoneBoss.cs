@@ -74,7 +74,7 @@ namespace Boss.StoneBoss
             Anim.SetTrigger(AnimatorHashes.Jump);
 
             yield return new WaitForSeconds(0.2f);
-            
+
             if(player== null) yield break;
             float dir = player.position.x > transform.position.x ? 1f : -1f;
 
@@ -104,7 +104,7 @@ namespace Boss.StoneBoss
             Rigidbody2D stoneRb = stone.GetComponent<Rigidbody2D>();
 
             if (stoneRb == null) return;
-            
+
             Vector2 dir = (player.position - throwPoint.position).normalized;
             dir.y += throwUpForce / throwForce;
 
@@ -150,12 +150,12 @@ namespace Boss.StoneBoss
 
             if (shoot != null)
                 shoot.enabled = false;
-            
+
             if (playerAnim != null && move.IsGrounded)
                 playerAnim.SetTrigger(AnimatorHashes.Fall);
 
             yield return new WaitForSeconds(shakeDuration);
-                
+
             move.enabled = true;
             if (shoot != null) shoot.enabled = true;
         }

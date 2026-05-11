@@ -6,12 +6,12 @@ namespace Combat
     public class Health : MonoBehaviour, IDamageable
     {
         [SerializeField] private int maxHealth = 100;
-        private int currentHealth;
+        private int _currentHealth;
         
-        private bool canTakeDamage = true;
+        private bool _canTakeDamage = true;
         
         public int MaxHealth => maxHealth;
-        public int CurrentHealth => currentHealth;
+        public int CurrentHealth => _currentHealth;
         
         public event Action<int> OnHealthChanged;
         public event Action OnDeath;
@@ -19,18 +19,18 @@ namespace Combat
 
         void Awake()
         {
-            currentHealth = maxHealth;
+            _currentHealth = maxHealth;
         }
 
         public void TakeDamage(int damage)
         {
-            if (!canTakeDamage) return;
+            if (!_canTakeDamage) return;
 
-            currentHealth -= damage;
+            _currentHealth -= damage;
 
-            OnHealthChanged?.Invoke(currentHealth);
+            OnHealthChanged?.Invoke(_currentHealth);
 
-            if (currentHealth <= 0)
+            if (_currentHealth <= 0)
             {
                 Die();
             }
@@ -38,7 +38,7 @@ namespace Combat
         
         public void SetInvincible(bool value)
         {
-            canTakeDamage = !value;
+            _canTakeDamage = !value;
         }
 
         private void Die()
