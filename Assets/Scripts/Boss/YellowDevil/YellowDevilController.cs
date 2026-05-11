@@ -8,7 +8,8 @@ namespace Boss.YellowDevil
 {
     public class YellowDevilController : MonoBehaviour
     {
-        [FormerlySerializedAs("rightBaseSR")] [Header("Sprite Renderers")]
+        [Header("Sprite Renderers")]
+        [FormerlySerializedAs("rightBaseSR")] 
         [SerializeField] private SpriteRenderer rightBaseSr; 
         [FormerlySerializedAs("leftBaseSR")] 
         [SerializeField] private SpriteRenderer leftBaseSr;  // Renderer for the Left Side

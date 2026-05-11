@@ -8,12 +8,12 @@ namespace Player
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform firePoint;
         [SerializeField] private float fireCooldown = 0.5f;
-        
+
         [SerializeField] private float startDelay = 1.5f;
 
         private InputHandler _input;
         private float _nextFireTime;
-        
+
         private bool _canFire;
         public bool CanFire => _canFire;
 
@@ -48,7 +48,11 @@ namespace Player
 
             Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
 
-            bullet.GetComponent<Bullet>().SetDirection(direction);
+            Bullet bulletComponent = bullet.GetComponent<Bullet>();
+            if (bulletComponent != null)
+            {
+                bulletComponent.SetDirection(direction);
+            }
             _nextFireTime = Time.time + fireCooldown;
         }
     }

@@ -20,7 +20,7 @@ namespace Player
             _health = GetComponent<Health>();
         }
 
-        void Start()
+        void OnEnable()
         {
             if (_health != null)
             {
@@ -28,7 +28,7 @@ namespace Player
             }
         }
 
-        void OnDestroy()
+        void OnDisable()
         {
             if (_health != null)
             {

@@ -28,7 +28,7 @@ namespace Player
             _rb = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
             _input = GetComponent<InputHandler>();
-        
+
             _shooting = GetComponent<PlayerShooting>();
         }
 
