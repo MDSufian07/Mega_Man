@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: f317c5bda291bbe44b97a4ef7d7cc1b2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 419925300057563369
+    second: mini_flower_death_0014_0
+  - first:
+      213: 884827020387460414
+    second: mini_flower_death_0014_1
+  - first:
+      213: -1086488359540525156
+    second: mini_flower_death_0014_2
+  - first:
+      213: 8056701317099392125
+    second: mini_flower_death_0014_3
+  - first:
+      213: -6485537763092748644
+    second: mini_flower_death_0014_4
+  - first:
+      213: -4896247139911834041
+    second: mini_flower_death_0014_5
+  - first:
+      213: -2368703813572946669
+    second: mini_flower_death_0014_6
+  - first:
+      213: 4973325180955845209
+    second: mini_flower_death_0014_7
+  - first:
+      213: -3156900410441415674
+    second: mini_flower_death_0014_8
+  - first:
+      213: -6714072994252223800
+    second: mini_flower_death_0014_9
+  - first:
+      213: -3028983230526044792
+    second: mini_flower_death_0014_10
+  - first:
+      213: 1684633000017358990
+    second: mini_flower_death_0014_11
+  - first:
+      213: 6856208523941610951
+    second: mini_flower_death_0014_12
+  - first:
+      213: -1052577193968953615
+    second: mini_flower_death_0014_13
+  - first:
+      213: -7982196882630121283
+    second: mini_flower_death_0014_14
+  - first:
+      213: 8087275834488784947
+    second: mini_flower_death_0014_15
+  - first:
+      213: -1058870106883480280
+    second: mini_flower_death_0014_16
+  - first:
+      213: 1337602744625293879
+    second: mini_flower_death_0014_17
+  - first:
+      213: -1286475766570769096
+    second: mini_flower_death_0014_18
+  - first:
+      213: -4086599246878340879
+    second: mini_flower_death_0014_19
+  - first:
+      213: 3817722020092733879
+    second: mini_flower_death_0014_20
+  - first:
+      213: 3407664891198233604
+    second: mini_flower_death_0014_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mini_flower_death_0014_0
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 280
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e06126e5dfd3d500800000000000000
+      internalID: 419925300057563369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_1
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 275
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35acddac79874c00800000000000000
+      internalID: 884827020387460414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 269
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c977dfce7940ce0f0800000000000000
+      internalID: -1086488359540525156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_3
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 259
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c812369272fcf60800000000000000
+      internalID: 8056701317099392125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_4
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 242
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c96a97d24cdbef5a0800000000000000
+      internalID: -6485537763092748644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_5
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 234
+        width: 42
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 746680dea290d0cb0800000000000000
+      internalID: -4896247139911834041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_6
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 255
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3151fd57e6ca02fd0800000000000000
+      internalID: -2368703813572946669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_7
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 258
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 952e06bf6ecc40540800000000000000
+      internalID: 4973325180955845209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_8
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 236
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 604ca5c7dcf6034d0800000000000000
+      internalID: -3156900410441415674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 226
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ca8d853f22d2d2a0800000000000000
+      internalID: -6714072994252223800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_10
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 224
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88541e1dcc3e6f5d0800000000000000
+      internalID: -3028983230526044792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_11
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 233
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e807fe6b9c4016710800000000000000
+      internalID: 1684633000017358990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_12
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 227
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c58b87a355262f50800000000000000
+      internalID: 6856208523941610951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_13
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 219
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f69dce6e9e7461f0800000000000000
+      internalID: -1052577193968953615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_14
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 195
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db8e99b0a3a893190800000000000000
+      internalID: -7982196882630121283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_15
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 198
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3380e43f586cb3070800000000000000
+      internalID: 8087275834488784947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_16
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 209
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8252ee77f332e41f0800000000000000
+      internalID: -1058870106883480280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_17
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 202
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73a6afbfb9e109210800000000000000
+      internalID: 1337602744625293879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_18
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 201
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 835a6693b15852ee0800000000000000
+      internalID: -1286475766570769096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_19
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 161
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f8007ef2ab7947c0800000000000000
+      internalID: -4086599246878340879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_20
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 175
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b960da33f54bf430800000000000000
+      internalID: 3817722020092733879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_flower_death_0014_21
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 179
+        width: 25
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40cd079f9257a4f20800000000000000
+      internalID: 3407664891198233604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mini_flower_death_0014_0: 419925300057563369
+      mini_flower_death_0014_1: 884827020387460414
+      mini_flower_death_0014_10: -3028983230526044792
+      mini_flower_death_0014_11: 1684633000017358990
+      mini_flower_death_0014_12: 6856208523941610951
+      mini_flower_death_0014_13: -1052577193968953615
+      mini_flower_death_0014_14: -7982196882630121283
+      mini_flower_death_0014_15: 8087275834488784947
+      mini_flower_death_0014_16: -1058870106883480280
+      mini_flower_death_0014_17: 1337602744625293879
+      mini_flower_death_0014_18: -1286475766570769096
+      mini_flower_death_0014_19: -4086599246878340879
+      mini_flower_death_0014_2: -1086488359540525156
+      mini_flower_death_0014_20: 3817722020092733879
+      mini_flower_death_0014_21: 3407664891198233604
+      mini_flower_death_0014_3: 8056701317099392125
+      mini_flower_death_0014_4: -6485537763092748644
+      mini_flower_death_0014_5: -4896247139911834041
+      mini_flower_death_0014_6: -2368703813572946669
+      mini_flower_death_0014_7: 4973325180955845209
+      mini_flower_death_0014_8: -3156900410441415674
+      mini_flower_death_0014_9: -6714072994252223800
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

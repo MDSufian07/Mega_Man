@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: cabfebcf234a2e24a8353259f9580eb2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3381377907868761974
+    second: flower_venus_death_0006_0
+  - first:
+      213: -8801456763243341732
+    second: flower_venus_death_0006_1
+  - first:
+      213: -6425935774078478352
+    second: flower_venus_death_0006_2
+  - first:
+      213: -2404090393718938245
+    second: flower_venus_death_0006_3
+  - first:
+      213: 3190964997246210074
+    second: flower_venus_death_0006_4
+  - first:
+      213: -7971433490377389503
+    second: flower_venus_death_0006_5
+  - first:
+      213: 3261603955436278536
+    second: flower_venus_death_0006_6
+  - first:
+      213: -6403533971078527657
+    second: flower_venus_death_0006_7
+  - first:
+      213: -2473953570184960456
+    second: flower_venus_death_0006_8
+  - first:
+      213: 6296617613215209330
+    second: flower_venus_death_0006_9
+  - first:
+      213: 1969983725573894294
+    second: flower_venus_death_0006_10
+  - first:
+      213: 471038307404748415
+    second: flower_venus_death_0006_11
+  - first:
+      213: -3988910013113816336
+    second: flower_venus_death_0006_12
+  - first:
+      213: 7386393148604181282
+    second: flower_venus_death_0006_13
+  - first:
+      213: -429444580657773628
+    second: flower_venus_death_0006_14
+  - first:
+      213: 1959464251776366229
+    second: flower_venus_death_0006_15
+  - first:
+      213: 2393495662313467360
+    second: flower_venus_death_0006_16
+  - first:
+      213: 5226265058273285726
+    second: flower_venus_death_0006_17
+  - first:
+      213: 5561497252913294141
+    second: flower_venus_death_0006_18
+  - first:
+      213: -1513187063611846823
+    second: flower_venus_death_0006_19
+  - first:
+      213: -8148092353883396111
+    second: flower_venus_death_0006_20
+  - first:
+      213: -3673350267525514468
+    second: flower_venus_death_0006_21
+  - first:
+      213: -2086173829613166230
+    second: flower_venus_death_0006_22
+  - first:
+      213: -8968071448196136873
+    second: flower_venus_death_0006_23
+  - first:
+      213: -3292660795169524218
+    second: flower_venus_death_0006_24
+  - first:
+      213: 1204593213438181209
+    second: flower_venus_death_0006_25
+  - first:
+      213: -5461987632853864272
+    second: flower_venus_death_0006_26
+  - first:
+      213: 2714730741001219208
+    second: flower_venus_death_0006_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: flower_venus_death_0006_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 310
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67ffed9ba411dee20800000000000000
+      internalID: 3381377907868761974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 301
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c58dbe8b4b1fad580800000000000000
+      internalID: -8801456763243341732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_2
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 273
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f7d394a57d72d6a0800000000000000
+      internalID: -6425935774078478352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 244
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75247a3684f2aed0800000000000000
+      internalID: -2404090393718938245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_4
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 284
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a10d09f22c5984c20800000000000000
+      internalID: 3190964997246210074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 239
+        width: 29
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14a47679977cf5190800000000000000
+      internalID: -7971433490377389503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_6
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 232
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 803d9c9448b834d20800000000000000
+      internalID: 3261603955436278536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_7
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 228
+        width: 47
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 755c7bad7c31227a0800000000000000
+      internalID: -6403533971078527657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_8
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 260
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836e052e550caadd0800000000000000
+      internalID: -2473953570184960456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_9
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 245
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 277192abb54126750800000000000000
+      internalID: 6296617613215209330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_10
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 262
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690f120d2c9c65b10800000000000000
+      internalID: 1969983725573894294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_11
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 183
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f76167c48d6798600800000000000000
+      internalID: 471038307404748415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_12
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 223
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fa2a5b2a7b84a8c0800000000000000
+      internalID: -3988910013113816336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_13
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 186
+        width: 26
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22b6ee11f6db18660800000000000000
+      internalID: 7386393148604181282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_14
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 191
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c34d2fdd6e4a0af0800000000000000
+      internalID: -429444580657773628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_15
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 153
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 596f435fa5a613b10800000000000000
+      internalID: 1959464251776366229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_16
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 171
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ede1a3af97673120800000000000000
+      internalID: 2393495662313467360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_17
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 167
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e565a6c616c678840800000000000000
+      internalID: 5226265058273285726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_18
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 140
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3b253319486e2d40800000000000000
+      internalID: 5561497252913294141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_19
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 98
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95f03b20264100be0800000000000000
+      internalID: -1513187063611846823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_20
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f724b1bc292cee80800000000000000
+      internalID: -8148092353883396111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_21
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 89
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1b3e88d463a50dc0800000000000000
+      internalID: -3673350267525514468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_22
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 75
+        width: 91
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a61e03a74fb6c03e0800000000000000
+      internalID: -2086173829613166230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_23
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 46
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75042f168820b8380800000000000000
+      internalID: -8968071448196136873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_24
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 70
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 606b01ab37e1e42d0800000000000000
+      internalID: -3292660795169524218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_25
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 62
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95f34d9352397b010800000000000000
+      internalID: 1204593213438181209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_26
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 68
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b03b20df2f1334b0800000000000000
+      internalID: -5461987632853864272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_venus_death_0006_27
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 40
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88ce536c939aca520800000000000000
+      internalID: 2714730741001219208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      flower_venus_death_0006_0: 3381377907868761974
+      flower_venus_death_0006_1: -8801456763243341732
+      flower_venus_death_0006_10: 1969983725573894294
+      flower_venus_death_0006_11: 471038307404748415
+      flower_venus_death_0006_12: -3988910013113816336
+      flower_venus_death_0006_13: 7386393148604181282
+      flower_venus_death_0006_14: -429444580657773628
+      flower_venus_death_0006_15: 1959464251776366229
+      flower_venus_death_0006_16: 2393495662313467360
+      flower_venus_death_0006_17: 5226265058273285726
+      flower_venus_death_0006_18: 5561497252913294141
+      flower_venus_death_0006_19: -1513187063611846823
+      flower_venus_death_0006_2: -6425935774078478352
+      flower_venus_death_0006_20: -8148092353883396111
+      flower_venus_death_0006_21: -3673350267525514468
+      flower_venus_death_0006_22: -2086173829613166230
+      flower_venus_death_0006_23: -8968071448196136873
+      flower_venus_death_0006_24: -3292660795169524218
+      flower_venus_death_0006_25: 1204593213438181209
+      flower_venus_death_0006_26: -5461987632853864272
+      flower_venus_death_0006_27: 2714730741001219208
+      flower_venus_death_0006_3: -2404090393718938245
+      flower_venus_death_0006_4: 3190964997246210074
+      flower_venus_death_0006_5: -7971433490377389503
+      flower_venus_death_0006_6: 3261603955436278536
+      flower_venus_death_0006_7: -6403533971078527657
+      flower_venus_death_0006_8: -2473953570184960456
+      flower_venus_death_0006_9: 6296617613215209330
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

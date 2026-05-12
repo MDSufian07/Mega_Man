@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: a8e1e2d402c401b4bba80dccd3dbbbf6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 68053927491648108
+    second: flower_hand_fx_0008_0
+  - first:
+      213: 141277180421791556
+    second: flower_hand_fx_0008_1
+  - first:
+      213: -6452266934376400069
+    second: flower_hand_fx_0008_2
+  - first:
+      213: -3335592199215287424
+    second: flower_hand_fx_0008_3
+  - first:
+      213: -3747841660005568861
+    second: flower_hand_fx_0008_4
+  - first:
+      213: 6587523047722462700
+    second: flower_hand_fx_0008_5
+  - first:
+      213: -5912817442608369471
+    second: flower_hand_fx_0008_6
+  - first:
+      213: 1506887731911595312
+    second: flower_hand_fx_0008_7
+  - first:
+      213: 7649838626800939118
+    second: flower_hand_fx_0008_8
+  - first:
+      213: -6783718987874944444
+    second: flower_hand_fx_0008_9
+  - first:
+      213: 428743740348107346
+    second: flower_hand_fx_0008_10
+  - first:
+      213: 3504976009089601573
+    second: flower_hand_fx_0008_11
+  - first:
+      213: 5311316357690655322
+    second: flower_hand_fx_0008_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 447
+        width: 25
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ab5bdbfa6c1f000800000000000000
+      internalID: 68053927491648108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 417
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44fd8e9d8dae5f100800000000000000
+      internalID: 141277180421791556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_2
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 405
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3bfe74a861f476a0800000000000000
+      internalID: -6452266934376400069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 350
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 083753a419895b1d0800000000000000
+      internalID: -3335592199215287424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_4
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 338
+        width: 55
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ae25fcfdddfcfbc0800000000000000
+      internalID: -3747841660005568861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_5
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 261
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ced22394f459b6b50800000000000000
+      internalID: 6587523047722462700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_6
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 133
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c038970dd371fda0800000000000000
+      internalID: -5912817442608369471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_7
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 157
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0351cf8886a89e410800000000000000
+      internalID: 1506887731911595312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_8
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 76
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e60388353bfa92a60800000000000000
+      internalID: 7649838626800939118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_9
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 104
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44a34afa5836bd1a0800000000000000
+      internalID: -6783718987874944444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_10
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 57
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25a0f17092433f500800000000000000
+      internalID: 428743740348107346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_11
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 33
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5205d003c1d24a030800000000000000
+      internalID: 3504976009089601573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_hand_fx_0008_12
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 19
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a528fd5361695b940800000000000000
+      internalID: 5311316357690655322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      flower_hand_fx_0008_0: 68053927491648108
+      flower_hand_fx_0008_1: 141277180421791556
+      flower_hand_fx_0008_10: 428743740348107346
+      flower_hand_fx_0008_11: 3504976009089601573
+      flower_hand_fx_0008_12: 5311316357690655322
+      flower_hand_fx_0008_2: -6452266934376400069
+      flower_hand_fx_0008_3: -3335592199215287424
+      flower_hand_fx_0008_4: -3747841660005568861
+      flower_hand_fx_0008_5: 6587523047722462700
+      flower_hand_fx_0008_6: -5912817442608369471
+      flower_hand_fx_0008_7: 1506887731911595312
+      flower_hand_fx_0008_8: 7649838626800939118
+      flower_hand_fx_0008_9: -6783718987874944444
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

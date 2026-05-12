@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: a6413e67d522757479f737470da8e033
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8062845108945122198
+    second: flower_mini_pink_bullet_death_0004_0
+  - first:
+      213: 7511827042722894512
+    second: flower_mini_pink_bullet_death_0004_1
+  - first:
+      213: -5196013989623721093
+    second: flower_mini_pink_bullet_death_0004_2
+  - first:
+      213: -5310795376115963107
+    second: flower_mini_pink_bullet_death_0004_3
+  - first:
+      213: -7669813446433735152
+    second: flower_mini_pink_bullet_death_0004_4
+  - first:
+      213: -8328769170690300110
+    second: flower_mini_pink_bullet_death_0004_5
+  - first:
+      213: 8219078775155615654
+    second: flower_mini_pink_bullet_death_0004_6
+  - first:
+      213: 4216823279863811398
+    second: flower_mini_pink_bullet_death_0004_7
+  - first:
+      213: -2922854673575310233
+    second: flower_mini_pink_bullet_death_0004_8
+  - first:
+      213: 3418212039056823683
+    second: flower_mini_pink_bullet_death_0004_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 80
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6937ba568eaf4ef60800000000000000
+      internalID: 8062845108945122198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 99
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b2dbaf55ee5f3860800000000000000
+      internalID: 7511827042722894512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 90
+        width: 31
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b73948c5ecc04e7b0800000000000000
+      internalID: -5196013989623721093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_3
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 79
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b22d34eb34c46b0800000000000000
+      internalID: -5310795376115963107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_4
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 64
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e7dcf8e495f8590800000000000000
+      internalID: -7669813446433735152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_5
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 52
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 237a7c421944a6c80800000000000000
+      internalID: -8328769170690300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 30
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a76a167998001270800000000000000
+      internalID: 8219078775155615654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_7
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 27
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d41ec6e6a258a30800000000000000
+      internalID: 4216823279863811398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_8
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 6
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76c047b092fef67d0800000000000000
+      internalID: -2922854673575310233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_mini_pink_bullet_death_0004_9
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 7
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38512f23dbdef6f20800000000000000
+      internalID: 3418212039056823683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      flower_mini_pink_bullet_death_0004_0: 8062845108945122198
+      flower_mini_pink_bullet_death_0004_1: 7511827042722894512
+      flower_mini_pink_bullet_death_0004_2: -5196013989623721093
+      flower_mini_pink_bullet_death_0004_3: -5310795376115963107
+      flower_mini_pink_bullet_death_0004_4: -7669813446433735152
+      flower_mini_pink_bullet_death_0004_5: -8328769170690300110
+      flower_mini_pink_bullet_death_0004_6: 8219078775155615654
+      flower_mini_pink_bullet_death_0004_7: 4216823279863811398
+      flower_mini_pink_bullet_death_0004_8: -2922854673575310233
+      flower_mini_pink_bullet_death_0004_9: 3418212039056823683
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
