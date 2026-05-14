@@ -59,5 +59,10 @@ namespace Player
             else if (_input.MoveInput < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
         }
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
+        }
     }
 }

@@ -1,10 +1,9 @@
-using Combat;
 using UnityEngine;
 using Utilities;
 
-namespace Boss.YellowDevil
+namespace Combat
 {
-    public class BlobDamage : MonoBehaviour
+    public class CollisionDamage : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField] private int damage = 1;
