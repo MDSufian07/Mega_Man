@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5324681042462271984}
   - component: {fileID: 3312923176650247670}
   - component: {fileID: 1680362945079153193}
+  - component: {fileID: 5739881219545824026}
   m_Layer: 0
   m_Name: Cagney Carnation
   m_TagString: Untagged
@@ -148,7 +149,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -307,6 +308,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss.YellowDevil.CollisionDamage
   damage: 1
   playerTag: Player
+--- !u!114 &5739881219545824026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856257092561235555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
+  maxHealth: 100
 --- !u!1 &930288388350095187
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +1011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4509831785839343371
 Transform:
   m_ObjectHideFlags: 0
@@ -1259,7 +1273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8737659356573921581
 Transform:
   m_ObjectHideFlags: 0
@@ -1744,7 +1758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532109599227891027
 Transform:
   m_ObjectHideFlags: 0
@@ -1792,7 +1806,7 @@ Transform:
   m_GameObject: {fileID: 8748369035223298685}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.25, y: -2, z: 0}
+  m_LocalPosition: {x: -3.25, y: -1.75, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1912,7 +1926,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
