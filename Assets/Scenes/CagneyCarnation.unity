@@ -528,6 +528,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a48748a9f4374748b2d7db643b30416, type: 3}
+--- !u!1 &533604740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8748369035223298685, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+  m_PrefabInstance: {fileID: 3154898582869360573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &533604747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533604740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92de1518aa9c37c44adf71ac1b75d64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.CagneyCarnationController
+  introTime: 2
+  idleTime: 1
 --- !u!1 &673598452
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +687,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5739881219545824026, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
   m_PrefabInstance: {fileID: 3154898582869360573}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1658115674}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
@@ -963,7 +982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 725292501578967241, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3386824211265072074, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1030,6 +1049,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
+--- !u!1 &1658115674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 856257092561235555, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+  m_PrefabInstance: {fileID: 3154898582869360573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1658115681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658115674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92de1518aa9c37c44adf71ac1b75d64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.CagneyCarnationController
+  introTime: 2
+  idleTime: 1
 --- !u!1 &1676640787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 856257092561235555, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 856257092561235555, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: m_TagString
@@ -1194,12 +1232,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748369035223298685, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 856257092561235555, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1658115681}
+    - targetCorrespondingSourceObject: {fileID: 8748369035223298685, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 533604747}
   m_SourcePrefab: {fileID: 100100000, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
 --- !u!1001 &5267713419705889219
 PrefabInstance:
@@ -1262,120 +1306,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a48748a9f4374748b2d7db643b30416, type: 3}
---- !u!1001 &6250796094713487792
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 766746729398664423, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_Name
-      value: SeedsVineBig
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072341151721625466, guid: e24a3850c43849445bf373366b0a5626, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e24a3850c43849445bf373366b0a5626, type: 3}
---- !u!1001 &7904829294598168953
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.85609
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2925185376619335449, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845670942614768269, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
-      propertyPath: m_Name
-      value: SeedsVineSmall
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1392,5 +1322,3 @@ SceneRoots:
   - {fileID: 673598453}
   - {fileID: 242773314}
   - {fileID: 1482748339}
-  - {fileID: 7904829294598168953}
-  - {fileID: 6250796094713487792}

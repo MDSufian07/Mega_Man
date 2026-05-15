@@ -15,6 +15,10 @@ namespace Utilities
 
         public static readonly int Idle = Animator.StringToHash("Idle");
         public static readonly int BombBossIntro = Animator.StringToHash("BombBossIntro");
+        
+        public static readonly int CagneyCarnationIdle = Animator.StringToHash("CCIdle");
+        public static readonly int CagneyCarnationCreatingObject = Animator.StringToHash("CCCreatingObject");
+        public static readonly int CagneyCarnationFiringSeeds = Animator.StringToHash("CCFiringSeeds");
     }
 }
 
