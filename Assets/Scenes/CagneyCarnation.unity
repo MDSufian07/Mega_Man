@@ -545,8 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92de1518aa9c37c44adf71ac1b75d64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.CagneyCarnationController
-  introTime: 2
-  idleTime: 1
+  finalFormHealth: 30
 --- !u!1 &673598452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5766483511328077855, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: maxHealth
-      value: 125
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7702380241082755171, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
       propertyPath: jumpForce
@@ -1066,8 +1065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92de1518aa9c37c44adf71ac1b75d64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.CagneyCarnationController
-  introTime: 2
-  idleTime: 1
+  finalFormHealth: 60
 --- !u!1 &1676640787
 GameObject:
   m_ObjectHideFlags: 0

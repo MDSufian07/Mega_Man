@@ -1,63 +1,102 @@
 using System.Collections;
+using Combat;
 using UnityEngine;
 using Utilities;
+using Random = UnityEngine.Random;
 
 
 namespace CagneyCarnation
 {
     public class CagneyCarnationController : MonoBehaviour
     {
-        [SerializeField] private float introTime = 2f;
-        [SerializeField] private float idleTime = 1f;
+        [SerializeField] private float finalFormHealth = 30f;
         
-        private Animator animator;
+        private Animator _animator;
+        private CarnationState _currentState;
+        private Health _health;
+
         void Start()
         {
-            animator = GetComponent<Animator>();
-            StartCoroutine(CagneyCarnationMasterLoop());
-        }
-
-        IEnumerator CagneyCarnationMasterLoop()
-        {
-            yield return new WaitForSeconds(introTime);
-
-            while (true)
-            {
-                animator.Play(AnimatorHashes.CagneyCarnationIdle);
-                yield return new WaitForSeconds(idleTime);
-                StartCoroutine(MainLoop());
-            }
-
+            _animator = GetComponent<Animator>();
+            StartCoroutine(MainLoop());
+            _health = GetComponent<Health>();
         }
 
         IEnumerator MainLoop()
         {
-            int action = Random.Range(0, 2);
-
-            if (action == 0)
-                yield return FiringSeeds();
-            else if (action == 1)
-                yield return ObjectCreation();
-        }
-
-        IEnumerator FiringSeeds()
-        {
-            animator.Play(AnimatorHashes.CagneyCarnationFiringSeeds);
-            yield return new WaitForSeconds(idleTime);
-            yield return null;
-        }
-
-        IEnumerator ObjectCreation()
-        {
-            animator.Play(AnimatorHashes.CagneyCarnationCreatingObject);
+            float introTime= _animator.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(introTime);
+
+            while (_health.CurrentHealth >=finalFormHealth)
+            {
+                yield return PlayStateAndWait("CCIdle");
+                yield return BossAction();
+            }
+
+            yield return FinalFormRoutine();
         }
 
-
-        // Update is called once per frame
-        void Update()
+        IEnumerator BossAction()
         {
+            int action = Random.Range(0, 4);
 
+            switch (action)
+            {
+                case 0:
+                    yield return FiringSeedsRoutine();
+                    break;
+                
+                case 1:
+                    yield return CreatingObstacleRoutine();
+                    break;
+                
+                case 2:
+                    yield return FaceAttackHighRoutine();
+                    break;
+                
+                case 3:
+                    yield return FaceAttackLowRoutine();
+                    break;
+            }
         }
+
+        IEnumerator FiringSeedsRoutine()
+        {
+            yield return PlayStateAndWait("CCFiringSeeds");
+        }
+
+        IEnumerator CreatingObstacleRoutine()
+        {
+            yield return PlayStateAndWait("CCCreatingObject");
+        }
+
+        IEnumerator FaceAttackHighRoutine()
+        {
+            yield return PlayStateAndWait("CCHighFaceAttack");
+        }
+
+        IEnumerator FaceAttackLowRoutine()
+        {
+            yield return PlayStateAndWait("CCLowFaceAttack");
+        }
+
+        IEnumerator FinalFormRoutine()
+        {
+            yield return PlayStateAndWait("CCFinalFormIntro");
+             while (true)
+             {
+                 yield return PlayStateAndWait("CCFinalFormIdle");
+                 yield return PlayStateAndWait("CCFireingPollen");
+             }
+        }
+
+        IEnumerator PlayStateAndWait(string stateName)
+        {
+            _animator.Play(stateName);
+            yield return null; // allow animator to enter the new state
+            float currentAnimationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(currentAnimationLength);
+        }
+
     }
 }
