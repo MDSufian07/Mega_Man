@@ -1,5 +1,6 @@
 using System.Collections;
 using Combat;
+using Unity.VisualScripting;
 using UnityEngine;
 using Utilities;
 using Random = UnityEngine.Random;
@@ -11,9 +12,15 @@ namespace CagneyCarnation
     {
         [SerializeField] private float finalFormHealth = 30f;
         
+        [Header("Object Creation")]
+        [SerializeField] private Transform[] boomerangTravelPoint;
+        [SerializeField] private GameObject boomerangPrefab;
+        [SerializeField] private float boomerangSpeed= 5f;
+
         private Animator _animator;
         private CarnationState _currentState;
         private Health _health;
+        private Coroutine _boomerangRoutine;
 
         void Start()
         {
@@ -67,6 +74,10 @@ namespace CagneyCarnation
 
         IEnumerator CreatingObstacleRoutine()
         {
+            int ObjectCreationAction = Random.Range(0, 2);
+
+            if (ObjectCreationAction == 0) yield return AcornFire();
+            if(ObjectCreationAction == 1) yield return BomerangRoutine();
             yield return PlayStateAndWait("CCCreatingObject");
         }
 
@@ -96,6 +107,54 @@ namespace CagneyCarnation
             yield return null; // allow animator to enter the new state
             float currentAnimationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(currentAnimationLength);
+        }
+
+        IEnumerator AcornFire()
+        {
+            yield return null;
+        }
+
+        IEnumerator BomerangRoutine()
+        {
+            if (boomerangPrefab == null || boomerangTravelPoint == null || boomerangTravelPoint.Length == 0) yield break;
+
+            GameObject boomerang = SpawnBoomerang();
+            if (boomerang == null) yield break;
+
+            int index = 0;
+            while (boomerang != null && index < boomerangTravelPoint.Length)
+            {
+                Transform target = boomerangTravelPoint[index];
+                if (target == null)
+                {
+                    index++;
+                    continue;
+                }
+
+                boomerang.transform.position = Vector3.MoveTowards(boomerang.transform.position, target.position, boomerangSpeed * Time.deltaTime);
+
+                if (Vector3.Distance(boomerang.transform.position, target.position) <= 0.02f)
+                {
+                    index++;
+                }
+                yield return null;
+            }
+
+            if (boomerang != null) Destroy(boomerang);
+            _boomerangRoutine = null;
+        }
+
+        // Animation Event: call this from the boomerang spawn frame.
+        public void OnBoomerangSpawnEvent()
+        {
+            if (_boomerangRoutine != null) return;
+            _boomerangRoutine = StartCoroutine(BomerangRoutine());
+        }
+
+        private GameObject SpawnBoomerang()
+        {
+            if (boomerangTravelPoint == null || boomerangTravelPoint.Length == 0 || boomerangTravelPoint[0] == null) return null;
+            return Instantiate(boomerangPrefab, boomerangTravelPoint[0].position, Quaternion.identity);
         }
 
     }
