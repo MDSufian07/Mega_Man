@@ -20,7 +20,11 @@ namespace CagneyCarnation
         [SerializeField] private GameObject[] subVinesGameObjects;
         [SerializeField] private float subVinesActiveTime = 2f;
         [SerializeField] private float subVinesSpawnInterval = 1f;
-
+        
+        [Header("Pollen Settings")]
+        [SerializeField] Transform[] pollenWaypoints;
+        [SerializeField] GameObject pollenWaypointPrefab;
+        
         private Animator _animator;
         private CarnationState _currentState;
         private Health _health;
@@ -145,6 +149,25 @@ namespace CagneyCarnation
             return boomerang;
         }
 
+        public void OnPollenSpawnEvent()
+        {
+            SpawnPollen();
+        }
+
+        private GameObject SpawnPollen()
+        {
+            if(pollenWaypoints == null || pollenWaypoints.Length == 0) return null;
+            
+            GameObject pollen = Instantiate(pollenWaypointPrefab, pollenWaypoints[0].position, Quaternion.identity);
+            ProjectilePathFollower follower = pollen.GetComponent<ProjectilePathFollower>();
+            if (follower != null)
+            {
+                follower.SetWaypointPath(pollenWaypoints);
+            }
+            
+            return pollen;
+        }
+
         IEnumerator SubVinesRoutine()
         {
             yield return new WaitForSeconds(1f);
@@ -185,6 +208,8 @@ namespace CagneyCarnation
                 _currentActiveVineIndex = -1;
             }
         }
+        
+        //======================POLLEN========================
 
     }
 }

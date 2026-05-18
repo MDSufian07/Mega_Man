@@ -746,6 +746,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
+--- !u!1 &1084786116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084786117}
+  m_Layer: 0
+  m_Name: PollenWayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1084786117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084786116}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.69116, y: 1.03996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1950788766}
+  - {fileID: 1276078340}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1239872834
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,6 +881,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
+--- !u!1 &1276078339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1276078340}
+  m_Layer: 0
+  m_Name: Point 1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1276078340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276078339}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.35, y: -0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1084786117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1428575550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1355,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1950788765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1950788766}
+  m_Layer: 0
+  m_Name: Point 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1950788766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950788765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7, y: -0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1084786117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3154898582869360573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1352,9 +1447,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 157896527}
     - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: pollenWaypointPrefab
+      value: 
+      objectReference: {fileID: 754908127862317753, guid: 4cbbf9919e6cb1b4e92bd78ee473df4b, type: 3}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: subVinesSpawnInterval
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: pollenWaypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: 'pollenWaypoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1950788766}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: 'pollenWaypoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1276078340}
     - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: subVinesGameObjects.Array.size
       value: 3
@@ -1490,3 +1601,4 @@ SceneRoots:
   - {fileID: 242773314}
   - {fileID: 1482748339}
   - {fileID: 773346329}
+  - {fileID: 1084786117}
