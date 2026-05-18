@@ -735,6 +735,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 773346329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &907241439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 907241440}
+  m_Layer: 0
+  m_Name: SeedsSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &907241440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907241439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1064177883 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5766483511328077855, guid: c6a989d5703a77b42a7542a8219bea8a, type: 3}
@@ -1439,6 +1470,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: seedSpawnPoint
+      value: 
+      objectReference: {fileID: 907241440}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: subVinesActiveTime
       value: 4
       objectReference: {fileID: 0}
@@ -1454,6 +1489,18 @@ PrefabInstance:
       propertyPath: subVinesSpawnInterval
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: seedPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: 'seedPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6575920872344194229, guid: 85b20f60bc7c4ae4fa78bd2268d5963d, type: 3}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: 'seedPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8681394238052862733, guid: db240480c4e9e1d4a93cc7cbc2827d83, type: 3}
     - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: pollenWaypoints.Array.size
       value: 2
@@ -1602,3 +1649,4 @@ SceneRoots:
   - {fileID: 1482748339}
   - {fileID: 773346329}
   - {fileID: 1084786117}
+  - {fileID: 907241440}

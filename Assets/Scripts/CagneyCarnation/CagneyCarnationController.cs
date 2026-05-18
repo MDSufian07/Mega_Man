@@ -25,6 +25,14 @@ namespace CagneyCarnation
         [SerializeField] Transform[] pollenWaypoints;
         [SerializeField] GameObject pollenWaypointPrefab;
         
+        [Header("Seed Firing Settings")]
+        [SerializeField] private GameObject[]  seedPrefabs;
+        [SerializeField] private float  seedFiringActiveTime = 6f;
+        [SerializeField] private float  seedSpawnInterval = .5f;
+        [SerializeField] private Transform seedSpawnPoint;
+        [SerializeField] private float minRangeX = -5;
+        [SerializeField] private float maxRangeX = 5;
+        
         private Animator _animator;
         private CarnationState _currentState;
         private Health _health;
@@ -126,7 +134,7 @@ namespace CagneyCarnation
             yield return new WaitForSeconds(currentAnimationLength);
         }
 
-        // Animation Event: call this from the boomerang spawn frame.
+        // ====================== BOOMERANG===================
         public void OnBoomerangSpawnEvent()
         {
             SpawnBoomerang();
@@ -149,25 +157,7 @@ namespace CagneyCarnation
             return boomerang;
         }
 
-        public void OnPollenSpawnEvent()
-        {
-            SpawnPollen();
-        }
-
-        private GameObject SpawnPollen()
-        {
-            if(pollenWaypoints == null || pollenWaypoints.Length == 0) return null;
-            
-            GameObject pollen = Instantiate(pollenWaypointPrefab, pollenWaypoints[0].position, Quaternion.identity);
-            ProjectilePathFollower follower = pollen.GetComponent<ProjectilePathFollower>();
-            if (follower != null)
-            {
-                follower.SetWaypointPath(pollenWaypoints);
-            }
-            
-            return pollen;
-        }
-
+        //=====================VINES=========================
         IEnumerator SubVinesRoutine()
         {
             yield return new WaitForSeconds(1f);
@@ -210,6 +200,52 @@ namespace CagneyCarnation
         }
         
         //======================POLLEN========================
+        public void OnPollenSpawnEvent()
+        {
+            SpawnPollen();
+        }
+
+        private GameObject SpawnPollen()
+        {
+            if(pollenWaypoints == null || pollenWaypoints.Length == 0) return null;
+            
+            GameObject pollen = Instantiate(pollenWaypointPrefab, pollenWaypoints[0].position, Quaternion.identity);
+            ProjectilePathFollower follower = pollen.GetComponent<ProjectilePathFollower>();
+            if (follower != null)
+            {
+                follower.SetWaypointPath(pollenWaypoints);
+            }
+            
+            return pollen;
+        }
+
+        IEnumerator SpawnSeedsRoutine()
+        {
+            if(seedPrefabs == null || seedPrefabs.Length == 0 || seedSpawnPoint == null) yield break;
+            
+            float elapsedTime = 0f;
+            
+            yield return new WaitForSeconds(1f);
+            
+            while (elapsedTime < seedFiringActiveTime)
+            {
+                int randomIndex = Random.Range(0, seedPrefabs.Length);
+                GameObject seed = Instantiate(seedPrefabs[randomIndex], seedSpawnPoint.position, Quaternion.identity);
+                float randomX = Random.Range(minRangeX, maxRangeX);
+                seed.transform.position += new Vector3(randomX, 0f, 0f);
+                Destroy(seed, 5f); // Destroy seeds after 5 seconds to clean up
+                
+                // Wait for spawn interval before spawning next seed
+                yield return new WaitForSeconds(seedSpawnInterval);
+                elapsedTime += seedSpawnInterval;
+            }
+        }
+
+        public void OnSeedsFiringEvent()
+        {
+            // Start coroutine immediately (no delay needed if animation event triggers at right time)
+            StartCoroutine(SpawnSeedsRoutine());
+        }
 
     }
 }
