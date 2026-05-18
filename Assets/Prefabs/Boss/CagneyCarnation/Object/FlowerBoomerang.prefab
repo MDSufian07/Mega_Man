@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1986381917580102562}
   - component: {fileID: 101342334327421577}
   - component: {fileID: -343709028587874778}
+  - component: {fileID: -5505574065839658004}
   m_Layer: 0
   m_Name: FlowerBoomerang
   m_TagString: Untagged
@@ -289,6 +290,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
   playerTag: Player
+--- !u!114 &-5505574065839658004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856211974997809503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc9dabaf6ef44e4864a8d3c86a735b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utilities.ProjectilePathFollower
+  speed: 10
+  waypointPath:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  destroyOnComplete: 1
 --- !u!1 &9013676752287094052
 GameObject:
   m_ObjectHideFlags: 0

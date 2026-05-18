@@ -1,6 +1,5 @@
 using System.Collections;
 using Combat;
-using Unity.VisualScripting;
 using UnityEngine;
 using Utilities;
 using Random = UnityEngine.Random;
@@ -12,16 +11,29 @@ namespace CagneyCarnation
     {
         [SerializeField] private float finalFormHealth = 30f;
         
-        [Header("Object Creation")]
-        [SerializeField] private Transform[] boomerangTravelPoint;
+        [Header("Boomerang Settings")]
         [SerializeField] private GameObject boomerangPrefab;
-        [SerializeField] private float boomerangSpeed= 5f;
+        [SerializeField] private Transform[] boomerangWaypoints;
+
+        [Header("FinalForm Settings")] 
+        [SerializeField] private GameObject mainVinesGameObject;
+        [SerializeField] private GameObject[] subVinesGameObjects;
+        [SerializeField] private float subVinesActiveTime = 2f;
+        [SerializeField] private float subVinesSpawnInterval = 1f;
 
         private Animator _animator;
         private CarnationState _currentState;
         private Health _health;
-        private Coroutine _boomerangRoutine;
+        private int _currentActiveVineIndex = -1;
 
+        void Awake()
+        {
+            foreach (GameObject subVines in subVinesGameObjects)
+            {
+                subVines.SetActive(false);
+            }
+            mainVinesGameObject.SetActive(false);
+        }
         void Start()
         {
             _animator = GetComponent<Animator>();
@@ -74,10 +86,6 @@ namespace CagneyCarnation
 
         IEnumerator CreatingObstacleRoutine()
         {
-            int ObjectCreationAction = Random.Range(0, 2);
-
-            if (ObjectCreationAction == 0) yield return AcornFire();
-            if(ObjectCreationAction == 1) yield return BomerangRoutine();
             yield return PlayStateAndWait("CCCreatingObject");
         }
 
@@ -94,6 +102,11 @@ namespace CagneyCarnation
         IEnumerator FinalFormRoutine()
         {
             yield return PlayStateAndWait("CCFinalFormIntro");
+            if(mainVinesGameObject!=null)mainVinesGameObject.SetActive(true);
+            
+            // Start sub vines routine WITHOUT yield return - runs in PARALLEL
+            StartCoroutine(SubVinesRoutine());
+            
              while (true)
              {
                  yield return PlayStateAndWait("CCFinalFormIdle");
@@ -109,52 +122,68 @@ namespace CagneyCarnation
             yield return new WaitForSeconds(currentAnimationLength);
         }
 
-        IEnumerator AcornFire()
-        {
-            yield return null;
-        }
-
-        IEnumerator BomerangRoutine()
-        {
-            if (boomerangPrefab == null || boomerangTravelPoint == null || boomerangTravelPoint.Length == 0) yield break;
-
-            GameObject boomerang = SpawnBoomerang();
-            if (boomerang == null) yield break;
-
-            int index = 0;
-            while (boomerang != null && index < boomerangTravelPoint.Length)
-            {
-                Transform target = boomerangTravelPoint[index];
-                if (target == null)
-                {
-                    index++;
-                    continue;
-                }
-
-                boomerang.transform.position = Vector3.MoveTowards(boomerang.transform.position, target.position, boomerangSpeed * Time.deltaTime);
-
-                if (Vector3.Distance(boomerang.transform.position, target.position) <= 0.02f)
-                {
-                    index++;
-                }
-                yield return null;
-            }
-
-            if (boomerang != null) Destroy(boomerang);
-            _boomerangRoutine = null;
-        }
-
         // Animation Event: call this from the boomerang spawn frame.
         public void OnBoomerangSpawnEvent()
         {
-            if (_boomerangRoutine != null) return;
-            _boomerangRoutine = StartCoroutine(BomerangRoutine());
+            SpawnBoomerang();
         }
 
         private GameObject SpawnBoomerang()
         {
-            if (boomerangTravelPoint == null || boomerangTravelPoint.Length == 0 || boomerangTravelPoint[0] == null) return null;
-            return Instantiate(boomerangPrefab, boomerangTravelPoint[0].position, Quaternion.identity);
+            if (boomerangPrefab == null ||boomerangWaypoints == null || boomerangWaypoints.Length == 0) return null;
+            
+            // Spawn at first waypoint
+            GameObject boomerang = Instantiate(boomerangPrefab, boomerangWaypoints[0].position, Quaternion.identity);
+            
+            // Set waypoints on the prefab
+            ProjectilePathFollower follower = boomerang.GetComponent<ProjectilePathFollower>();
+            if (follower != null)
+            {
+                follower.SetWaypointPath(boomerangWaypoints);
+            }
+            
+            return boomerang;
+        }
+
+        IEnumerator SubVinesRoutine()
+        {
+            yield return new WaitForSeconds(1f);
+            while (true)
+            {
+                RandomEnableSubVines();
+                yield return new WaitForSeconds(subVinesSpawnInterval);
+            }
+        }
+        
+        private void RandomEnableSubVines()
+        {
+            if (subVinesGameObjects == null || subVinesGameObjects.Length == 0) return;
+
+            int randomIndex;
+            
+            // Keep trying until we get an index that's not currently active
+            do
+            {
+                randomIndex = Random.Range(0, subVinesGameObjects.Length);
+            } while (randomIndex == _currentActiveVineIndex);
+
+            _currentActiveVineIndex = randomIndex;
+            GameObject selectedVines = subVinesGameObjects[randomIndex];
+          
+            selectedVines.SetActive(true);
+            StartCoroutine(DisableSubVinesAfterTime(selectedVines, randomIndex));
+        }
+
+        private IEnumerator DisableSubVinesAfterTime(GameObject selectedVines, int vineIndex)
+        {
+            yield return new WaitForSeconds(subVinesActiveTime);
+            selectedVines.SetActive(false);
+            
+            // Clear the active vine index when disabled
+            if (_currentActiveVineIndex == vineIndex)
+            {
+                _currentActiveVineIndex = -1;
+            }
         }
 
     }
