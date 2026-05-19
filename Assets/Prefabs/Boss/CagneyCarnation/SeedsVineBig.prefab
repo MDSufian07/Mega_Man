@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3072341151721625466}
   - component: {fileID: 5467607380701319854}
   - component: {fileID: 89744117231126486}
+  - component: {fileID: 5748584420446046901}
   m_Layer: 0
   m_Name: SeedsVineBig
   m_TagString: Untagged
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1871003519849428459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5467607380701319854
@@ -80,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ac77897340653ad499667d481e93de6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -114,3 +116,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5748584420446046901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766746729398664423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e6a030d811a1b418824cb7db5f5dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.VinesToFlyTrap
+  flyTrapPrefab: {fileID: 1216342501188035698, guid: fe829ac652f94ef4a91c235c3ce867c1, type: 3}
+  flyTrapSpawnPoint: {fileID: 1871003519849428459}
+  vinesActiveTime: 1.8
+--- !u!1 &2327917088264034692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871003519849428459}
+  m_Layer: 0
+  m_Name: VenusFlytrapSpwanPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1871003519849428459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327917088264034692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.415, y: 1.951, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3072341151721625466}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
