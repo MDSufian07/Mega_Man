@@ -1470,6 +1470,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: maxRangeX
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
+      propertyPath: minRangeX
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706368099774440584, guid: e2f4306dd53eeef46ba5617562565e59, type: 3}
       propertyPath: seedSpawnPoint
       value: 
       objectReference: {fileID: 907241440}
@@ -1621,10 +1629,6 @@ PrefabInstance:
     - target: {fileID: 6919847051756523983, guid: 9a48748a9f4374748b2d7db643b30416, type: 3}
       propertyPath: m_Name
       value: FlowerPlatform
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919847051756523983, guid: 9a48748a9f4374748b2d7db643b30416, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

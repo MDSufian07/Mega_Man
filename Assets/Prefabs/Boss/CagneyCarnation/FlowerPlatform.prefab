@@ -195,9 +195,9 @@ GameObject:
   - component: {fileID: 6710299905032917712}
   - component: {fileID: 4372246100514440201}
   - component: {fileID: 1188536529947374956}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlowerPlatform
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

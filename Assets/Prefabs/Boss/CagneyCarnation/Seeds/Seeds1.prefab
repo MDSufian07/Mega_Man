@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6380612766824906007}
   - component: {fileID: 4013990679126784260}
   - component: {fileID: -366354806808806943}
+  - component: {fileID: 6400169882118489676}
   m_Layer: 0
   m_Name: Seeds1
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6575920872344194229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79, y: -1.773, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -185,7 +186,22 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &6400169882118489676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6575920872344194229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42d82f1867cbb64ba10af86bbf57633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.SeedToVine
+  vinePrefabs:
+  - {fileID: 766746729398664423, guid: e24a3850c43849445bf373366b0a5626, type: 3}
+  - {fileID: 3845670942614768269, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4341167405762109625}
   - component: {fileID: 1941093172207096230}
   - component: {fileID: -185055955983208745}
+  - component: {fileID: -8345894756480990927}
   m_Layer: 0
   m_Name: Seeds2
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8681394238052862733}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.14, y: -1.773, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107,7 +108,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a016e35511eb7a943bf005f0a43e5458, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -146,7 +147,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -185,7 +186,22 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-8345894756480990927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681394238052862733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42d82f1867cbb64ba10af86bbf57633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.SeedToVine
+  vinePrefabs:
+  - {fileID: 766746729398664423, guid: e24a3850c43849445bf373366b0a5626, type: 3}
+  - {fileID: 3845670942614768269, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
