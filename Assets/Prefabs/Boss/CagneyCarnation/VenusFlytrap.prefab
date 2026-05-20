@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2954427439481296511}
   m_Layer: 0
   m_Name: VenusFlytrap
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,8 +132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 2
   rotationSpeed: 50
-  directionChangeTime: 0.5
-  lifeTime: 5
+  rotationInterval: 1
+  rotationDuration: 0.5
+  lifeTime: 10
+  growthTime: 1
 --- !u!114 &-7410689825078741681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c166352824e54c0f8e718b761d9ed01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
-  damage: 0
+  damage: 1
   playerTag: Player
 --- !u!114 &5051637032010103912
 MonoBehaviour:
@@ -160,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
-  maxHealth: 8
+  maxHealth: 4
 --- !u!58 &2954427439481296511
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,72 +6,80 @@ namespace CagneyCarnation
     {
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float rotationSpeed = 50f;
-        [SerializeField] private float directionChangeTime = 0.5f;
+        [SerializeField] private float rotationInterval = 1f;
+        [SerializeField] private float rotationDuration = 0.2f;
         [SerializeField] private float lifeTime = 5f;
+        [SerializeField] private float growthTime = 1f;
 
         private float yAxisRotation;
 
         private float timer;
-
+        private float elapsedTime;
+        private float rotationTimeLeft;
         private int rotationDirection;
 
         private void Start()
         {
             PickInitialDirection();
-            ApplyInitialRotation();
-
-            PickRandomRotation();
-
             Destroy(gameObject, lifeTime);
         }
 
         private void Update()
         {
+            elapsedTime += Time.deltaTime;
             Move();
-            SlitherRotation();
+            UpdateRandomRotation();
         }
 
         private void Move()
         {
-            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-        }
-
-        private void SlitherRotation()
-        {
-            timer += Time.deltaTime;
-
-            if (timer >= directionChangeTime)
-            {
-                timer = 0f;
-
-                // Change between + and -
-                rotationDirection *= -1;
-            }
-
-            float rotationAmount = rotationDirection * rotationSpeed * Time.deltaTime;
-
-            // Reverse if facing right
-            if (yAxisRotation == 180f)
-            {
-                rotationAmount *= -1;
-            }
-
-            transform.Rotate(0, 0, rotationAmount);
+            if (elapsedTime >= growthTime)
+                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
         }
 
         private void PickInitialDirection()
         {
             yAxisRotation = Random.Range(0, 2) == 0 ? 0f : 180f;
-        }
-
-        private void ApplyInitialRotation()
-        {
             transform.rotation = Quaternion.Euler(0, yAxisRotation, 0);
         }
 
-        private void PickRandomRotation()
+        private void UpdateRandomRotation()
         {
-            rotationDirection = Random.Range(0, 2) == 0 ? -1 : 1;
+            timer += Time.deltaTime;
+
+            if (timer >= rotationInterval)
+            {
+                timer = 0f;
+                RandomRotation();
+            }
+
+            if (rotationTimeLeft > 0f && rotationDirection != 0)
+            {
+                float rotationAmount = rotationDirection * rotationSpeed * Time.deltaTime;
+                transform.Rotate(0f, 0f, rotationAmount);
+                rotationTimeLeft = Mathf.Max(0f, rotationTimeLeft - Time.deltaTime);
+            }
+        }
+
+        private void RandomRotation()
+        {
+            int random = Random.Range(0, 3);
+
+            switch (random)
+            {
+                case 0:
+                    rotationDirection = 1;
+                    rotationTimeLeft = rotationDuration;
+                    break;
+                case 1:
+                    rotationDirection = -1;
+                    rotationTimeLeft = rotationDuration;
+                    break;
+                case 2:
+                    rotationDirection = 0;
+                    rotationTimeLeft = 0f;
+                    break;
+            }
         }
     }
 }
