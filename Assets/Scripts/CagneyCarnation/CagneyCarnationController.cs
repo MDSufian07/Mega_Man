@@ -4,7 +4,6 @@ using Combat;
 using UnityEngine;
 using Utilities;
 
-
 namespace CagneyCarnation
 {
     public class CagneyCarnationController : MonoBehaviour
