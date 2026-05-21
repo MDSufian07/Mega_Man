@@ -8,6 +8,8 @@ namespace Combat
         [Header("Settings")]
         [SerializeField] private int damage = 1;
 
+        [SerializeField] private bool destroyOnHit;
+
         [Header("Targeting")]
         [SerializeField] private string playerTag = GameTags.Player;
 
@@ -23,6 +25,8 @@ namespace Combat
             {
                 damageable.TakeDamage(damage);
             }
+            if (destroyOnHit)
+                Destroy(gameObject);
         }
     }
 }

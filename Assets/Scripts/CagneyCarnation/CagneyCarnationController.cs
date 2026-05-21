@@ -22,8 +22,8 @@ namespace CagneyCarnation
         [SerializeField] private float subVinesSpawnInterval = 1f;
         
         [Header("Pollen Settings")]
-        [SerializeField] Transform[] pollenWaypoints;
         [SerializeField] GameObject pollenWaypointPrefab;
+        [SerializeField] Transform pollenSpawnPoint;
         
         [Header("Seed Firing Settings")]
         [SerializeField] private GameObject[]  seedPrefabs;
@@ -143,17 +143,17 @@ namespace CagneyCarnation
         private GameObject SpawnBoomerang()
         {
             if (boomerangPrefab == null ||boomerangWaypoints == null || boomerangWaypoints.Length == 0) return null;
-            
+
             // Spawn at first waypoint
             GameObject boomerang = Instantiate(boomerangPrefab, boomerangWaypoints[0].position, Quaternion.identity);
-            
+
             // Set waypoints on the prefab
             ProjectilePathFollower follower = boomerang.GetComponent<ProjectilePathFollower>();
             if (follower != null)
             {
                 follower.SetWaypointPath(boomerangWaypoints);
             }
-            
+
             return boomerang;
         }
 
@@ -207,15 +207,7 @@ namespace CagneyCarnation
 
         private GameObject SpawnPollen()
         {
-            if(pollenWaypoints == null || pollenWaypoints.Length == 0) return null;
-            
-            GameObject pollen = Instantiate(pollenWaypointPrefab, pollenWaypoints[0].position, Quaternion.identity);
-            ProjectilePathFollower follower = pollen.GetComponent<ProjectilePathFollower>();
-            if (follower != null)
-            {
-                follower.SetWaypointPath(pollenWaypoints);
-            }
-            
+            GameObject pollen = Instantiate(pollenWaypointPrefab, pollenSpawnPoint.position, Quaternion.identity);
             return pollen;
         }
 

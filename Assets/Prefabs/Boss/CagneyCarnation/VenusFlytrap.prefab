@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
-  maxHealth: 4
+  maxHealth: 8
 --- !u!58 &2954427439481296511
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -198,4 +198,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.356
+  m_Radius: 0.33

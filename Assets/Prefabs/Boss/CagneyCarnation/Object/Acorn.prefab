@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5323750107307904649}
   - component: {fileID: 2575290904394488935}
   - component: {fileID: 1911866786339252264}
+  - component: {fileID: -6366043646378256164}
+  - component: {fileID: -429294305242155279}
   m_Layer: 0
   m_Name: Acorn
   m_TagString: Untagged
@@ -153,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 1
   playerTag: Player
 --- !u!95 &1911866786339252264
 Animator:
@@ -176,3 +179,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6366043646378256164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707109918047702359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030ce258d7ed64641bed2251cff65139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utilities.TargetFollowerRotation
+  targeTag: Player
+  rotationSpeed: 200
+--- !u!114 &-429294305242155279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707109918047702359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffaf68b0c921e041b30d1bd4ce342e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utilities.LinearMovement
+  moveSpeed: 5
+  lifeTime: 13.65
+  moveDirection: {x: -1, y: 0}

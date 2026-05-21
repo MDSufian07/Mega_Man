@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -447767041964259374}
   - component: {fileID: 6108860714380969628}
   - component: {fileID: 2283713862438328813}
+  - component: {fileID: 8901626244122262966}
+  - component: {fileID: 6714280942010835042}
   m_Layer: 0
   m_Name: WhitePollen
   m_TagString: Untagged
@@ -167,7 +169,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.3
+  m_Radius: 0.28
 --- !u!114 &2283713862438328813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,3 +184,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
   playerTag: Player
+--- !u!114 &8901626244122262966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754908127862317753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffaf68b0c921e041b30d1bd4ce342e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.PollenMovement
+  moveSpeed: 5
+  lifeTime: 5
+  moveDirection: {x: -1, y: 0}
+--- !u!114 &6714280942010835042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754908127862317753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a171bd90e72a54046aaa740b50793d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utilities.ObjectFloatingEffect
+  floatSpeed: 4
+  floatHeight: 0.7
+  initialYPos: 0

@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 6710299905032917712}
   - component: {fileID: 4372246100514440201}
   - component: {fileID: 1188536529947374956}
+  - component: {fileID: 8973302572218437520}
   m_Layer: 6
   m_Name: FlowerPlatform
   m_TagString: Untagged
@@ -365,3 +366,17 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &8973302572218437520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919847051756523983}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a171bd90e72a54046aaa740b50793d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utilities.ObjectFloatingEffect
+  floatSpeed: 3
+  floatHeight: 0.5

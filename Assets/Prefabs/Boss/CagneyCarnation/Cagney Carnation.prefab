@@ -38,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 569900759703258766}
   - {fileID: 6429393069883287257}
+  - {fileID: 4188180074640707957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5076431572866995013
@@ -309,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss.YellowDevil.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!114 &5739881219545824026
 MonoBehaviour:
@@ -322,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
-  maxHealth: 100
+  maxHealth: 1000
 --- !u!114 &4706368099774440584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,14 +337,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92de1518aa9c37c44adf71ac1b75d64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.CagneyCarnationController
-  finalFormHealth: 60
+  finalFormHealth: 837.9
   boomerangPrefab: {fileID: 4856211974997809503, guid: 26712406feacf994385f5ba1bdb8e006, type: 3}
   boomerangWaypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  vinesGameObject: {fileID: 8748369035223298685}
+  mainVinesGameObject: {fileID: 8748369035223298685}
+  subVinesGameObjects:
+  - {fileID: 4906645128118918700}
+  - {fileID: 7206816212927220815}
+  - {fileID: 5656778126788965959}
+  subVinesActiveTime: 4
+  subVinesSpawnInterval: 2.5
+  pollenWaypointPrefab: {fileID: 6249641567164262468, guid: 9eb978206f7f5c140b15f04eaf36ba61, type: 3}
+  pollenSpawnPoint: {fileID: 4188180074640707957}
+  seedPrefabs:
+  - {fileID: 6575920872344194229, guid: 85b20f60bc7c4ae4fa78bd2268d5963d, type: 3}
+  - {fileID: 8681394238052862733, guid: db240480c4e9e1d4a93cc7cbc2827d83, type: 3}
+  seedFiringActiveTime: 6
+  seedSpawnInterval: 1
+  seedSpawnPoint: {fileID: 0}
+  minRangeX: -6
+  maxRangeX: 6
 --- !u!1 &930288388350095187
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!1 &4060129406662281414
 GameObject:
@@ -794,6 +813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!1 &4326449174760325719
 GameObject:
@@ -1017,6 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!1 &4906645128118918700
 GameObject:
@@ -1279,6 +1300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!1 &5656778126788965959
 GameObject:
@@ -1535,6 +1557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!1 &6377460657327954438
 GameObject:
@@ -1764,7 +1787,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
+--- !u!1 &6608562441784159800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4188180074640707957}
+  m_Layer: 0
+  m_Name: PollenSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4188180074640707957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608562441784159800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.020000223, y: -0.003417248, z: 0.00006835979, w: 0.9997942}
+  m_LocalPosition: {x: 2.61, y: -0.03, z: 0}
+  m_LocalScale: {x: 0.8333333, y: 0.8333333, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1637355415865981230}
+  m_LocalEulerAnglesHint: {x: 2.292, y: -0.392, z: 0}
 --- !u!1 &7206816212927220815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,12 +1959,12 @@ GameObject:
   - component: {fileID: 7015413273953905260}
   - component: {fileID: 5885794800904082141}
   m_Layer: 0
-  m_Name: Vines
+  m_Name: MainVines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &569900759703258766
 Transform:
   m_ObjectHideFlags: 0
@@ -2142,4 +2197,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
