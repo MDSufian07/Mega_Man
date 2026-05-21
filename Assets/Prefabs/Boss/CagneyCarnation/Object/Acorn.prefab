@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1911866786339252264}
   - component: {fileID: -6366043646378256164}
   - component: {fileID: -429294305242155279}
+  - component: {fileID: -1600925821986464472}
   m_Layer: 0
   m_Name: Acorn
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.42874, y: 1.11525, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,7 +85,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c26e3df3f34496a4382f63e6c839288c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -192,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Utilities.TargetFollowerRotation
   targeTag: Player
-  rotationSpeed: 200
+  rotationSpeed: 150
 --- !u!114 &-429294305242155279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,5 +207,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Utilities.LinearMovement
   moveSpeed: 5
-  lifeTime: 13.65
+  lifeTime: 6
   moveDirection: {x: -1, y: 0}
+--- !u!114 &-1600925821986464472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707109918047702359}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a35d09a6ffa9b4ba1917accea99544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Combat.Health
+  maxHealth: 12

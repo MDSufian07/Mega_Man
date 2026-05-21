@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using Combat;
 using UnityEngine;
 using Utilities;
-using Random = UnityEngine.Random;
 
 
 namespace CagneyCarnation
@@ -14,6 +14,11 @@ namespace CagneyCarnation
         [Header("Boomerang Settings")]
         [SerializeField] private GameObject boomerangPrefab;
         [SerializeField] private Transform[] boomerangWaypoints;
+        
+        [Header("Acorn Settings")]
+        [SerializeField] private GameObject acornPrefab;
+        [SerializeField] private Transform[] acornSpawnPoint;
+        [SerializeField] private float acornSpawnInterval = 0.5f;
 
         [Header("FinalForm Settings")] 
         [SerializeField] private GameObject mainVinesGameObject;
@@ -134,11 +139,17 @@ namespace CagneyCarnation
             yield return new WaitForSeconds(currentAnimationLength);
         }
 
-        // ====================== BOOMERANG===================
-        public void OnBoomerangSpawnEvent()
+        // ====================== Creating Object ===================
+        public void OnObjectSpawnEvent()
         {
-            SpawnBoomerang();
+            int randomIndex = Random.Range(0, 2);
+            if (randomIndex == 0)
+                SpawnBoomerang();
+            else
+               StartCoroutine(SpawnAcorn());
         }
+        
+        //================== Boomerang ==================
 
         private GameObject SpawnBoomerang()
         {
@@ -155,6 +166,37 @@ namespace CagneyCarnation
             }
 
             return boomerang;
+        }
+        
+        //=================== Acorn =========================
+
+        private IEnumerator SpawnAcorn()
+        {
+            if (acornPrefab == null || acornSpawnPoint == null) yield break;
+
+            List<LinearMovement> acorns = new List<LinearMovement>();
+
+            // Spawn all acorns
+            foreach (Transform spawnPoint in acornSpawnPoint)
+            {
+                GameObject acorn = Instantiate(acornPrefab, spawnPoint.position, Quaternion.identity);
+
+                LinearMovement linearMovement = acorn.GetComponent<LinearMovement>();
+
+                if (linearMovement != null)
+                {
+                    linearMovement.enabled = false;
+                    acorns.Add(linearMovement);
+                }
+            }
+
+            // Enable one by one
+            foreach (LinearMovement linearMovement in acorns)
+            {
+                yield return new WaitForSeconds(acornSpawnInterval);
+
+                linearMovement.enabled = true;
+            }
         }
 
         //=====================VINES=========================
@@ -235,7 +277,7 @@ namespace CagneyCarnation
 
         public void OnSeedsFiringEvent()
         {
-            // Start coroutine immediately (no delay needed if animation event triggers at right time)
+           
             StartCoroutine(SpawnSeedsRoutine());
         }
 

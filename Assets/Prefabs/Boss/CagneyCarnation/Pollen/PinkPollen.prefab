@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5120896085304680219}
   - component: {fileID: 5973690062369959306}
   - component: {fileID: -5090071780389449675}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: PinkPollen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b695aa3321e07604f955ffe5a57316c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!114 &5973690062369959306
 MonoBehaviour:
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffaf68b0c921e041b30d1bd4ce342e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CagneyCarnation.PollenMovement
-  moveSpeed: 7
+  moveSpeed: 5
   lifeTime: 5
   moveDirection: {x: -1, y: 0}
 --- !u!114 &-5090071780389449675
@@ -195,6 +196,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a171bd90e72a54046aaa740b50793d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Utilities.ObjectFloatingEffect
-  floatSpeed: 4
+  floatSpeed: 6
   floatHeight: 0.5
-  initialYPos: 0

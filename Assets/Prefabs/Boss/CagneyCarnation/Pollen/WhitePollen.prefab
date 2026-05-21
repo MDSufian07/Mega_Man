@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2283713862438328813}
   - component: {fileID: 8901626244122262966}
   - component: {fileID: 6714280942010835042}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: WhitePollen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
+  destroyOnHit: 0
   playerTag: Player
 --- !u!114 &8901626244122262966
 MonoBehaviour:
@@ -213,4 +214,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Utilities.ObjectFloatingEffect
   floatSpeed: 4
   floatHeight: 0.7
-  initialYPos: 0

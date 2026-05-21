@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1941093172207096230}
   - component: {fileID: -185055955983208745}
   - component: {fileID: -8345894756480990927}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Seeds2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,3 +205,4 @@ MonoBehaviour:
   vinePrefabs:
   - {fileID: 766746729398664423, guid: e24a3850c43849445bf373366b0a5626, type: 3}
   - {fileID: 3845670942614768269, guid: f8bc2901d8d071a409de66f0ea7ee362, type: 3}
+  vineYaxisSpawnPoint: -1
