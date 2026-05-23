@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using CagneyCarnation;
 using Combat;
 using UnityEngine;
 using Utilities;
 
-namespace CagneyCarnation
+namespace Boss.CagneyCarnation
 {
     public class CagneyCarnationController : MonoBehaviour
     {
@@ -41,20 +42,27 @@ namespace CagneyCarnation
         private CarnationState _currentState;
         private Health _health;
         private int _currentActiveVineIndex = -1;
+        private bool _isDeath;
 
         void Awake()
         {
+            _animator = GetComponent<Animator>();
+            _health = GetComponent<Health>();
+            
             foreach (GameObject subVines in subVinesGameObjects)
             {
                 subVines.SetActive(false);
             }
             mainVinesGameObject.SetActive(false);
         }
+        void OnEnable()
+        {
+            _health.OnDeath += () => _isDeath = true;
+        }
+
         void Start()
         {
-            _animator = GetComponent<Animator>();
             StartCoroutine(MainLoop());
-            _health = GetComponent<Health>();
         }
 
         IEnumerator MainLoop()
@@ -69,6 +77,10 @@ namespace CagneyCarnation
             }
 
             yield return FinalFormRoutine();
+            if (_health.CurrentHealth <= 0)
+            {
+                _animator.Play("CCDeath");
+            }
         }
 
         IEnumerator BossAction()
@@ -114,23 +126,25 @@ namespace CagneyCarnation
         {
             yield return PlayStateAndWait("CCLowFaceAttack");
         }
-
+        
+        //============= FINAL FORM ==================
         IEnumerator FinalFormRoutine()
         {
             yield return PlayStateAndWait("CCFinalFormIntro");
             if(mainVinesGameObject!=null)mainVinesGameObject.SetActive(true);
             
-            // Start sub vines routine WITHOUT yield return - runs in PARALLEL
             StartCoroutine(SubVinesRoutine());
             
-             while (true)
+             while (!_isDeath)
              {
                  yield return PlayStateAndWait("CCFinalFormIdle");
+                 if(_isDeath) yield break;
                  yield return PlayStateAndWait("CCFireingPollen");
              }
+             _animator.Play("CCDeath");
         }
 
-        IEnumerator PlayStateAndWait(string stateName)
+        IEnumerator PlayStateAndWait(string stateName )
         {
             _animator.Play(stateName);
             yield return null; // allow animator to enter the new state
@@ -193,8 +207,9 @@ namespace CagneyCarnation
             foreach (LinearMovement linearMovement in acorns)
             {
                 yield return new WaitForSeconds(acornSpawnInterval);
-
-                linearMovement.enabled = true;
+                
+                if(linearMovement != null)
+                    linearMovement.enabled = true;
             }
         }
 
@@ -202,7 +217,7 @@ namespace CagneyCarnation
         IEnumerator SubVinesRoutine()
         {
             yield return new WaitForSeconds(1f);
-            while (true)
+            while (!_isDeath)
             {
                 RandomEnableSubVines();
                 yield return new WaitForSeconds(subVinesSpawnInterval);

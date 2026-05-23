@@ -11,7 +11,9 @@ namespace Ui
         [SerializeField] private Health playerHealth;
         [SerializeField] private Health bossHealth;
 
-        [SerializeField] private float panelShowDelay = 1.5f;
+        [Header("Panel Show Settings")]
+        [SerializeField] private float gameOverPanelShowDelay = 1.5f;
+        [SerializeField] private float winPanelShowDelay = 1.5f;
 
         private VisualElement _playerBarFill;
         private VisualElement _bossBarFill;
@@ -85,7 +87,7 @@ namespace Ui
             {
                 return;
             }
-
+            current = Mathf.Clamp(current, 0, max);
             float percent = (float)current / max;
             barFill.style.width = Length.Percent(percent * 100);
         }
@@ -102,12 +104,12 @@ namespace Ui
 
         void ShowGameOver()
         {
-            Invoke(nameof(DisplayGameOverPanel), panelShowDelay);
+            Invoke(nameof(DisplayGameOverPanel), gameOverPanelShowDelay);
         }
 
         void ShowWin()
         {
-            Invoke(nameof(DisplayWinPanel), panelShowDelay);
+            Invoke(nameof(DisplayWinPanel), winPanelShowDelay );
         }
 
         void DisplayGameOverPanel()

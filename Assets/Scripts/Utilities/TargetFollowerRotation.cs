@@ -12,7 +12,8 @@ namespace Utilities
 
         void Start()
         {
-            target = GameObject.FindGameObjectWithTag(targeTag).transform;
+            if (GameObject.FindGameObjectWithTag(targeTag) != null)
+                target = GameObject.FindGameObjectWithTag(targeTag).transform;
         }
         
         void Update()

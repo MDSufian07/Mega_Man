@@ -6,6 +6,7 @@ namespace Combat
     public class Health : MonoBehaviour, IDamageable
     {
         [SerializeField] private int maxHealth = 100;
+        [SerializeField] private bool isDestroyOnDeath = true;
         private int _currentHealth;
         
         private bool _canTakeDamage = true;
@@ -44,7 +45,8 @@ namespace Combat
         private void Die()
         {
             OnDeath?.Invoke();
-            Destroy(gameObject);
+            if(isDestroyOnDeath)
+                Destroy(gameObject);
         }
         
     }
