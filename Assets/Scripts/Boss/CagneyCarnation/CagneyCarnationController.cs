@@ -1,13 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using CagneyCarnation;
 using Combat;
 using UnityEngine;
-using Utilities;
 
 namespace Boss.CagneyCarnation
 {
-    public class CagneyCarnationController : MonoBehaviour
+    public partial class CagneyCarnationController : MonoBehaviour
     {
         [SerializeField] private float finalFormHealth = 30f;
         
@@ -75,9 +73,9 @@ namespace Boss.CagneyCarnation
                 yield return PlayStateAndWait("CCIdle");
                 yield return BossAction();
             }
-
             yield return FinalFormRoutine();
-            if (_health.CurrentHealth <= 0)
+            
+            if (_isDeath)
             {
                 _animator.Play("CCDeath");
             }
@@ -106,194 +104,5 @@ namespace Boss.CagneyCarnation
                     break;
             }
         }
-
-        IEnumerator FiringSeedsRoutine()
-        {
-            yield return PlayStateAndWait("CCFiringSeeds");
-        }
-
-        IEnumerator CreatingObstacleRoutine()
-        {
-            yield return PlayStateAndWait("CCCreatingObject");
-        }
-
-        IEnumerator FaceAttackHighRoutine()
-        {
-            yield return PlayStateAndWait("CCHighFaceAttack");
-        }
-
-        IEnumerator FaceAttackLowRoutine()
-        {
-            yield return PlayStateAndWait("CCLowFaceAttack");
-        }
-        
-        //============= FINAL FORM ==================
-        IEnumerator FinalFormRoutine()
-        {
-            yield return PlayStateAndWait("CCFinalFormIntro");
-            if(mainVinesGameObject!=null)mainVinesGameObject.SetActive(true);
-            
-            StartCoroutine(SubVinesRoutine());
-            
-             while (!_isDeath)
-             {
-                 yield return PlayStateAndWait("CCFinalFormIdle");
-                 if(_isDeath) yield break;
-                 yield return PlayStateAndWait("CCFireingPollen");
-             }
-             _animator.Play("CCDeath");
-        }
-
-        IEnumerator PlayStateAndWait(string stateName )
-        {
-            _animator.Play(stateName);
-            yield return null; // allow animator to enter the new state
-            float currentAnimationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
-            yield return new WaitForSeconds(currentAnimationLength);
-        }
-
-        // ====================== Creating Object ===================
-        public void OnObjectSpawnEvent()
-        {
-            int randomIndex = Random.Range(0, 2);
-            if (randomIndex == 0)
-                SpawnBoomerang();
-            else
-               StartCoroutine(SpawnAcorn());
-        }
-        
-        //================== Boomerang ==================
-
-        private GameObject SpawnBoomerang()
-        {
-            if (boomerangPrefab == null ||boomerangWaypoints == null || boomerangWaypoints.Length == 0) return null;
-
-            // Spawn at first waypoint
-            GameObject boomerang = Instantiate(boomerangPrefab, boomerangWaypoints[0].position, Quaternion.identity);
-
-            // Set waypoints on the prefab
-            ProjectilePathFollower follower = boomerang.GetComponent<ProjectilePathFollower>();
-            if (follower != null)
-            {
-                follower.SetWaypointPath(boomerangWaypoints);
-            }
-
-            return boomerang;
-        }
-        
-        //=================== Acorn =========================
-
-        private IEnumerator SpawnAcorn()
-        {
-            if (acornPrefab == null || acornSpawnPoint == null) yield break;
-
-            List<LinearMovement> acorns = new List<LinearMovement>();
-
-            // Spawn all acorns
-            foreach (Transform spawnPoint in acornSpawnPoint)
-            {
-                GameObject acorn = Instantiate(acornPrefab, spawnPoint.position, Quaternion.identity);
-
-                LinearMovement linearMovement = acorn.GetComponent<LinearMovement>();
-
-                if (linearMovement != null)
-                {
-                    linearMovement.enabled = false;
-                    acorns.Add(linearMovement);
-                }
-            }
-
-            // Enable one by one
-            foreach (LinearMovement linearMovement in acorns)
-            {
-                yield return new WaitForSeconds(acornSpawnInterval);
-                
-                if(linearMovement != null)
-                    linearMovement.enabled = true;
-            }
-        }
-
-        //=====================VINES=========================
-        IEnumerator SubVinesRoutine()
-        {
-            yield return new WaitForSeconds(1f);
-            while (!_isDeath)
-            {
-                RandomEnableSubVines();
-                yield return new WaitForSeconds(subVinesSpawnInterval);
-            }
-        }
-        
-        private void RandomEnableSubVines()
-        {
-            if (subVinesGameObjects == null || subVinesGameObjects.Length == 0) return;
-
-            int randomIndex;
-            
-            // Keep trying until we get an index that's not currently active
-            do
-            {
-                randomIndex = Random.Range(0, subVinesGameObjects.Length);
-            } while (randomIndex == _currentActiveVineIndex);
-
-            _currentActiveVineIndex = randomIndex;
-            GameObject selectedVines = subVinesGameObjects[randomIndex];
-          
-            selectedVines.SetActive(true);
-            StartCoroutine(DisableSubVinesAfterTime(selectedVines, randomIndex));
-        }
-
-        private IEnumerator DisableSubVinesAfterTime(GameObject selectedVines, int vineIndex)
-        {
-            yield return new WaitForSeconds(subVinesActiveTime);
-            selectedVines.SetActive(false);
-            
-            // Clear the active vine index when disabled
-            if (_currentActiveVineIndex == vineIndex)
-            {
-                _currentActiveVineIndex = -1;
-            }
-        }
-        
-        //======================POLLEN========================
-        public void OnPollenSpawnEvent()
-        {
-            SpawnPollen();
-        }
-
-        private GameObject SpawnPollen()
-        {
-            GameObject pollen = Instantiate(pollenWaypointPrefab, pollenSpawnPoint.position, Quaternion.identity);
-            return pollen;
-        }
-
-        IEnumerator SpawnSeedsRoutine()
-        {
-            if(seedPrefabs == null || seedPrefabs.Length == 0 || seedSpawnPoint == null) yield break;
-            
-            float elapsedTime = 0f;
-            
-            yield return new WaitForSeconds(1f);
-            
-            while (elapsedTime < seedFiringActiveTime)
-            {
-                int randomIndex = Random.Range(0, seedPrefabs.Length);
-                GameObject seed = Instantiate(seedPrefabs[randomIndex], seedSpawnPoint.position, Quaternion.identity);
-                float randomX = Random.Range(minRangeX, maxRangeX);
-                seed.transform.position += new Vector3(randomX, 0f, 0f);
-                Destroy(seed, 5f); // Destroy seeds after 5 seconds to clean up
-                
-                // Wait for spawn interval before spawning next seed
-                yield return new WaitForSeconds(seedSpawnInterval);
-                elapsedTime += seedSpawnInterval;
-            }
-        }
-
-        public void OnSeedsFiringEvent()
-        {
-           
-            StartCoroutine(SpawnSeedsRoutine());
-        }
-
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CagneyCarnation
+namespace Boss.CagneyCarnation
 {
     public class VinesToFlyTrap : MonoBehaviour
     {
