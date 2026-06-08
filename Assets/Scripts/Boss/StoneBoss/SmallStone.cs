@@ -40,7 +40,7 @@ namespace Boss.StoneBoss
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.CompareTag(GameTags.Player))
+            if (collision.collider.CompareTag(nameof(GameTags.Player)))
             {
                 var dmg = collision.collider.GetComponent<IDamageable>();
                 if (dmg != null)

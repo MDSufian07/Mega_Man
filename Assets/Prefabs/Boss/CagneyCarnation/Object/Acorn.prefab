@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat.CollisionDamage
   damage: 1
   destroyOnHit: 1
-  playerTag: Player
+  playerTag: 0
 --- !u!95 &1911866786339252264
 Animator:
   serializedVersion: 7
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030ce258d7ed64641bed2251cff65139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Utilities.TargetFollowerRotation
-  targeTag: Player
+  targeTag: 0
   rotationSpeed: 150
   intialRotation: 180
 --- !u!114 &-429294305242155279

@@ -172,7 +172,7 @@ MonoBehaviour:
   speed: 15
   lifeTime: 3
   damage: 4
-  isPlayerBullet: 1
-  playerTag: Player
-  enemyTag: Enemy
   bulletExplosionPrefab: {fileID: 3798391946978026533, guid: 95754586ad315a644b8cc51f4e6ebcf6, type: 3}
+  isPlayerBullet: 1
+  playerTag: 0
+  enemyTag: 1

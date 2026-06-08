@@ -7,10 +7,10 @@ namespace Boss.YellowDevil
     public class YellowDevilBullet : ProjectileBase
     {
         [Header("Targeting")]
-        [SerializeField] private string playerTag = GameTags.Player;
-        public void SetPlayerTag(string tag)
+        [SerializeField] private GameTags playerTag = GameTags.Player;
+        public void SetPlayerTag(GameTags tag)
         {
-            if (!string.IsNullOrWhiteSpace(tag))
+            if (!string.IsNullOrWhiteSpace(tag.ToString()))
             {
                 playerTag = tag;
             }
@@ -23,7 +23,7 @@ namespace Boss.YellowDevil
 
         protected override bool CanDamageTarget(Collider2D collision)
         {
-            return collision.CompareTag(playerTag);
+            return collision.CompareTag(playerTag.ToString());
         }
     }
 }

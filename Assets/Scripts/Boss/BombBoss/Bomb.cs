@@ -45,7 +45,7 @@ namespace Boss.BombBoss
 
             foreach (Collider2D hit in hits)
             {
-                if (hit.CompareTag(GameTags.Player))
+                if (hit.CompareTag(nameof(GameTags.Player)))
                 {
                     IDamageable damageable = hit.GetComponent<IDamageable>();
                     if (damageable != null)

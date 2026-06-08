@@ -50,7 +50,7 @@ namespace Boss
         {
             if (player != null) return;
 
-            GameObject playerObject = GameObject.FindGameObjectWithTag(GameTags.Player);
+            GameObject playerObject = GameObject.FindGameObjectWithTag(nameof(GameTags.Player));
 
             if (playerObject != null)
                 player = playerObject.transform;

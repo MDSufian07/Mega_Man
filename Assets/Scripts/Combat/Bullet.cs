@@ -7,17 +7,17 @@ namespace Combat
     {
         [Header("Targeting")]
         [SerializeField] private bool isPlayerBullet = true;
-        [SerializeField] private string playerTag = GameTags.Player;
-        [SerializeField] private string enemyTag = GameTags.Enemy;
+        [SerializeField] private GameTags playerTag = GameTags.Player;
+        [SerializeField] private GameTags enemyTag = GameTags.Enemy;
         protected override bool ShouldIgnore(Collider2D collision)
         {
             // Ignore the shooter side so player bullets don't disappear on player contact.
-            return isPlayerBullet && collision.CompareTag(playerTag);
+            return isPlayerBullet && collision.CompareTag(playerTag.ToString());
         }
 
         protected override bool CanDamageTarget(Collider2D collision)
         {
-            return !isPlayerBullet || collision.CompareTag(enemyTag);
+            return !isPlayerBullet || collision.CompareTag(enemyTag.ToString());
         }
     }
 }

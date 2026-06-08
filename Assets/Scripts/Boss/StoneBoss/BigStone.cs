@@ -28,7 +28,7 @@ namespace Boss.StoneBoss
         // Only destroy when hitting objects on destructible layers
         if (((1 << collision.gameObject.layer) & destructibleLayers) != 0)
         {
-            if (collision.CompareTag(GameTags.Player))
+            if (collision.CompareTag(GameTags.Player.ToString()))
             {
                 var dmg = collision.GetComponent<IDamageable>();
                 if (dmg != null)

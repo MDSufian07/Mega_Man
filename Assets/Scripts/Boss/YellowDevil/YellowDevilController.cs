@@ -39,7 +39,7 @@ namespace Boss.YellowDevil
         [Header("Attack")]
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform playerTarget;
-        [SerializeField] private string playerTag = GameTags.Player;
+        [SerializeField] private GameTags playerTag = GameTags.Player;
         
         [Header("Death Effects")]
         [SerializeField] private GameObject deathEffectPrefab;
@@ -161,7 +161,7 @@ namespace Boss.YellowDevil
             Transform target = playerTarget;
             if (target == null)
             {
-                GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+                GameObject player = GameObject.FindGameObjectWithTag(playerTag.ToString());
                 if (player != null)
                 {
                     target = player.transform;

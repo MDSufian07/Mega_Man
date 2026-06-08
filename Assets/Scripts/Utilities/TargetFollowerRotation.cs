@@ -5,15 +5,15 @@ namespace Utilities
     public class TargetFollowerRotation : MonoBehaviour
     {
     
-        [SerializeField] private string targeTag = GameTags.Player;
+        [SerializeField] private GameTags targeTag = GameTags.Player;
         [SerializeField] private float rotationSpeed = 80f;
         [SerializeField] private float intialRotation = 180f;
-        
+
         private Transform target;
 
         void Start()
         {
-           GameObject player = GameObject.FindGameObjectWithTag(targeTag);
+           GameObject player = GameObject.FindGameObjectWithTag(targeTag.ToString());
 
            if (player != null)
            {

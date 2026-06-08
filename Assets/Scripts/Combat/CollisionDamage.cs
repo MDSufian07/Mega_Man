@@ -12,11 +12,11 @@ namespace Combat
         [SerializeField] private bool destroyOnHit;
 
         [Header("Targeting")]
-        [SerializeField] private string playerTag = GameTags.Player;
+        [SerializeField] private GameTags playerTag = GameTags.Player;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.CompareTag(playerTag))
+            if (!collision.CompareTag(playerTag.ToString()))
             {
                 return;
             }
