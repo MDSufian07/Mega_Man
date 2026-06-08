@@ -1,7 +1,6 @@
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-namespace CagneyCarnation
+namespace Boss.CagneyCarnation
 {
     public class SeedToVine : MonoBehaviour
     {

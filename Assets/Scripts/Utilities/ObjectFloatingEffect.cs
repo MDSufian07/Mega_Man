@@ -22,7 +22,7 @@ namespace Utilities
         private void FloatUpDown()
         {
             float yOffset = Mathf.Sin(Time.time * floatSpeed) * floatHeight;
-            transform.position = new Vector3(transform.position.x, startPosition.y + yOffset, transform.position.z);
+            transform.position = new Vector2(transform.position.x, startPosition.y + yOffset);
         }
     }
 }

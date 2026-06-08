@@ -7,13 +7,18 @@ namespace Utilities
     
         [SerializeField] private string targeTag = GameTags.Player;
         [SerializeField] private float rotationSpeed = 80f;
+        [SerializeField] private float intialRotation = 180f;
         
         private Transform target;
 
         void Start()
         {
-            if (GameObject.FindGameObjectWithTag(targeTag) != null)
-                target = GameObject.FindGameObjectWithTag(targeTag).transform;
+           GameObject player = GameObject.FindGameObjectWithTag(targeTag);
+
+           if (player != null)
+           {
+               target = player.transform;
+           }
         }
         
         void Update()
@@ -27,7 +32,7 @@ namespace Utilities
             
             Vector2 direction = target.position - transform.position;
             
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 180;
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + intialRotation;
             
             float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
             

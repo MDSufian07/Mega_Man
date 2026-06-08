@@ -21,10 +21,9 @@ namespace Utilities
 
         private IEnumerator FollowPath()
         {
-            // Validate waypoints are set in prefab
+            // Validate waypoints are set 
             if (waypointPath == null || waypointPath.Length == 0)
             {
-                Debug.LogWarning("No waypoint path assigned on prefab! Configure them in the inspector.", gameObject);
                 Destroy(gameObject);
                 yield break;
             }
@@ -44,7 +43,6 @@ namespace Utilities
                 yield return null;
             }
             
-            // Destroy when complete
             if (destroyOnComplete)
             {
                 Destroy(gameObject);

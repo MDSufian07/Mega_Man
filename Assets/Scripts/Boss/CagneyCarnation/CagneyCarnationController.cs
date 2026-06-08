@@ -40,7 +40,10 @@ namespace Boss.CagneyCarnation
         private CarnationState _currentState;
         private Health _health;
         private int _currentActiveVineIndex = -1;
-        private bool _isDeath;
+        private static bool _isDeath;
+        
+        public static bool IsDeath => _isDeath;
+
 
         void Awake()
         {
@@ -60,8 +63,11 @@ namespace Boss.CagneyCarnation
 
         void Start()
         {
+            _isDeath = false;
             StartCoroutine(MainLoop());
         }
+        
+        
 
         IEnumerator MainLoop()
         {
@@ -78,6 +84,7 @@ namespace Boss.CagneyCarnation
             if (_isDeath)
             {
                 _animator.Play("CCDeath");
+                
             }
         }
 

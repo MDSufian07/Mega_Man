@@ -1,5 +1,6 @@
 using UnityEngine;
 using Utilities;
+using Boss.CagneyCarnation;
 
 namespace Combat
 {
@@ -16,6 +17,11 @@ namespace Combat
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.CompareTag(playerTag))
+            {
+                return;
+            }
+
+            if (CagneyCarnationController.IsDeath)
             {
                 return;
             }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CagneyCarnation
+namespace Utilities
 {
     public class PolygonCollider2DUpdater : MonoBehaviour
     {
