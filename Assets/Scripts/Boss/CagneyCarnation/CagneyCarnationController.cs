@@ -71,8 +71,7 @@ namespace Boss.CagneyCarnation
 
         IEnumerator MainLoop()
         {
-            float introTime= _animator.GetCurrentAnimatorStateInfo(0).length;
-            yield return new WaitForSeconds(introTime);
+            yield return PlayStateAndWait("CCIntro");
 
             while (_health.CurrentHealth >=finalFormHealth)
             {
