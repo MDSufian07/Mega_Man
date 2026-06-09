@@ -7,6 +7,7 @@ namespace Combat
     {
         [SerializeField] private int maxHealth = 100;
         [SerializeField] private bool isDestroyOnDeath = true;
+        
         private int _currentHealth;
         
         private bool _canTakeDamage = true;

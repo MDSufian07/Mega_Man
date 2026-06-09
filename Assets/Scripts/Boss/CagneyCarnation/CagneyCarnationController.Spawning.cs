@@ -91,7 +91,7 @@ namespace Boss.CagneyCarnation
                 GameObject seed = Instantiate(seedPrefabs[randomIndex], seedSpawnPoint.position, Quaternion.identity);
                 float randomX = Random.Range(minRangeX, maxRangeX);
                 seed.transform.position += new Vector3(randomX, 0f, 0f);
-                Destroy(seed, 5f); // Destroy seeds after 5 seconds to clean up
+                Destroy(seed, 5f);
 
                 // Wait for spawn interval before spawning next seed
                 yield return new WaitForSeconds(seedSpawnInterval);

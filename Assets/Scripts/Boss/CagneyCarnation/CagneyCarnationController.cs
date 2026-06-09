@@ -1,5 +1,4 @@
 using System.Collections;
-using CagneyCarnation;
 using Combat;
 using UnityEngine;
 
@@ -37,7 +36,6 @@ namespace Boss.CagneyCarnation
         [SerializeField] private float maxRangeX = 5;
         
         private Animator _animator;
-        private CarnationState _currentState;
         private Health _health;
         private int _currentActiveVineIndex = -1;
         private static bool _isDeath;

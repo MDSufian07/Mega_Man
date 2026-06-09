@@ -8,6 +8,7 @@ namespace Boss
     {
         [Header("References")]
         [SerializeField] protected Transform player;
+        [SerializeField] private GameTags playerTag = GameTags.Player;
 
         [Header("Ground Check")]
         [SerializeField] protected Transform groundCheck;
@@ -50,7 +51,7 @@ namespace Boss
         {
             if (player != null) return;
 
-            GameObject playerObject = GameObject.FindGameObjectWithTag(nameof(GameTags.Player));
+            GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag.ToString());
 
             if (playerObject != null)
                 player = playerObject.transform;

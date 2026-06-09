@@ -8,6 +8,7 @@ namespace Player
     {
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float jumpForce = 10f;
+        [SerializeField] private float jumpCooldown = 0.2f;
 
         [SerializeField] private Transform groundCheck;
         [SerializeField] private float groundRadius = 0.2f;
@@ -20,6 +21,7 @@ namespace Player
         private PlayerShooting _shooting;
 
         private bool _isGrounded;
+        private float _jumpCooldownTimer;
 
         public bool IsGrounded => _isGrounded;
 
@@ -44,10 +46,13 @@ namespace Player
 
         private void HandleMovementState()
         {
+            _jumpCooldownTimer -= Time.deltaTime;
+            
             _isGrounded = GroundCheckUtility.IsGrounded(groundCheck.position, groundRadius, groundLayer);
-            if (_input.JumpPressed && _isGrounded)
+            if (_input.JumpPressed && _isGrounded && _jumpCooldownTimer <= 0)
             {
                 _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
+                _jumpCooldownTimer = jumpCooldown;
             }
 
             _anim.SetBool(AnimatorHashes.IsRunning, _input.MoveInput != 0);
